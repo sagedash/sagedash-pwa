@@ -8,7 +8,7 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { 
       font-family: 'Segoe UI', sans-serif; 
-      background: #f5f0e6; /* Light beige */
+      background: linear-gradient(135deg, #f0f9f4 0%, #e0f2e9 100%);
       min-height: 100vh;
       display: flex;
       align-items: center;
@@ -18,6 +18,7 @@
     .container {
       text-align: center;
       max-width: 500px;
+      width: 100%;
     }
     .leaf { 
       font-size: 5rem; 
@@ -31,14 +32,15 @@
     }
     h1 { 
       font-size: 2.8rem; 
-      color: #5d4a2e; 
+      color: #065f46; 
       margin: 1rem 0;
       font-weight: 700;
       white-space: nowrap;
+      width: 100%;
     }
     p { 
       font-size: 1.1rem; 
-      color: #6b5a3a; 
+      color: #374151; 
       margin: 1.5rem 0;
       font-weight: 500;
     }
@@ -58,23 +60,29 @@
       min-width: 140px;
     }
     .primary {
-      background: #8b6f47;
+      background: #10b981;
       color: white;
       border: none;
-      box-shadow: 0 4px 12px rgba(139, 111, 71, 0.3);
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
     }
     .primary:hover {
-      background: #6b5433;
+      background: #059669;
       transform: translateY(-2px);
     }
     .secondary {
       background: white;
-      color: #5d4a2e;
-      border: 2px solid #e6d9c1;
+      color: #065f46;
+      border: 2px solid #d1fae5;
     }
     .secondary:hover {
-      border-color: #8b6f47;
-      background: #fdf8f0;
+      border-color: #10b981;
+      background: #f0fdf4;
+    }
+    @media (prefers-color-scheme: dark) {
+      body { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); }
+      h1, p { color: #e6f7f0; }
+      .secondary { background: #2d2d2d; color: #e6f7f0; border-color: #374151; }
+      .secondary:hover { background: #374151; }
     }
   </style>
 </head>
@@ -82,7 +90,7 @@
   <div class="container">
     <div class="leaf">🌿</div>
     <h1>Bond Closer. Rise Together.</h1>
-    <p>Expert Parenting Coach for Teen Communication.</p>
+    <p>Expert parenting coach for teen communication.</p>
     <div class="buttons">
       <button class="primary">Install App</button>
       <button class="secondary">Sign In</button>
