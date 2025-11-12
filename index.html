@@ -19,10 +19,12 @@
       text-align: center;
       max-width: 500px;
       width: 100%;
+      margin: 0 auto;
     }
     .leaf { 
       font-size: 5rem; 
-      margin-bottom: 1rem;
+      margin: 0 auto 1rem;
+      width: fit-content;
       animation: pulse 2s infinite;
     }
     @keyframes pulse {
@@ -33,33 +35,37 @@
     h1 { 
       font-size: 2.8rem; 
       color: #065f46; 
-      margin: 1rem 0;
+      margin: 1rem auto;
       font-weight: 700;
       white-space: nowrap;
+      width: fit-content;
       display: block;
-      width: 100%;
+      line-height: 1.2;
     }
     p { 
       font-size: 1.1rem; 
       color: #374151; 
-      margin: 1rem 0;
+      margin: 1rem auto;
       font-weight: 500;
-      width: 100%;
+      width: fit-content;
+      max-width: 90%;
     }
     .launch-info {
-      margin: 1.5rem 0;
+      margin: 1.5rem auto;
       font-size: 1.2rem;
       font-weight: 600;
       color: #065f46;
-      width: 100%;
+      width: fit-content;
+      line-height: 1.4;
     }
     .countdown {
       display: flex;
       justify-content: center;
       gap: 1.5rem;
-      margin: 2rem 0;
+      margin: 2rem auto;
       font-weight: 600;
       color: #065f46;
+      width: fit-content;
     }
     .countdown-item {
       text-align: center;
@@ -80,7 +86,8 @@
       gap: 1rem;
       justify-content: center;
       flex-wrap: wrap;
-      width: 100%;
+      margin: 2rem auto 0;
+      width: fit-content;
     }
     button {
       padding: 14px 32px;
@@ -122,11 +129,11 @@
   <div class="container">
     <div class="leaf">🌿</div>
     <h1>Bond Closer. Rise Together.</h1>
-    <p>Expert parenting coach for teen communication.</p>
+    <p>Expert Parenting Coach for Teen Communication</p>
     
     <div class="launch-info">
       Official Launch Countdown<br>
-      Launching December 1, 2025.
+      Launching December 1, 2025
     </div>
 
     <div class="countdown">
