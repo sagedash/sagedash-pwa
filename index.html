@@ -46,6 +46,26 @@
       font-weight: 500;
       width: 100%;
     }
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2rem 0;
+      font-weight: 600;
+      color: #065f46;
+    }
+    .countdown-item {
+      text-align: center;
+    }
+    .countdown-num {
+      font-size: 2.5rem;
+      font-weight: 700;
+    }
+    .countdown-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
     .buttons {
       display: flex;
       gap: 1rem;
@@ -83,7 +103,7 @@
     }
     @media (prefers-color-scheme: dark) {
       body { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); }
-      h1, p { color: #e6f7f0; }
+      h1, p, .countdown { color: #e6f7f0; }
       .secondary { background: #2d2d2d; color: #e6f7f0; border-color: #374151; }
       .secondary:hover { background: #374151; }
     }
@@ -94,10 +114,53 @@
     <div class="leaf">🌿</div>
     <h1>Bond Closer. Rise Together.</h1>
     <p>Expert parenting coach for teen communication.</p>
+    
+    <div class="countdown">
+      <div class="countdown-item">
+        <div class="countdown-num" id="days">00</div>
+        <div class="countdown-label">Days</div>
+      </div>
+      <div class="countdown-item">
+        <div class="countdown-num" id="hours">00</div>
+        <div class="countdown-label">Hours</div>
+      </div>
+      <div class="countdown-item">
+        <div class="countdown-num" id="minutes">00</div>
+        <div class="countdown-label">Minutes</div>
+      </div>
+      <div class="countdown-item">
+        <div class="countdown-num" id="seconds">00</div>
+        <div class="countdown-label">Seconds</div>
+      </div>
+    </div>
+
     <div class="buttons">
       <button class="primary">Install App</button>
       <button class="secondary">Sign In</button>
     </div>
   </div>
+
+  <script>
+    const targetDate = new Date('2025-11-18T00:00:00').getTime();
+    const countdown = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById('days').textContent = days.toString().padStart(2, '0');
+      document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+      document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+      document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+
+      if (distance < 0) {
+        clearInterval(countdown);
+        document.querySelector('.countdown').innerHTML = '<p class="text-xl font-bold text-green-600">We\'re Live!</p>';
+      }
+    }, 1000);
+  </script>
 </body>
 </html>
