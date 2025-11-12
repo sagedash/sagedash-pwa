@@ -42,14 +42,21 @@
     p { 
       font-size: 1.1rem; 
       color: #374151; 
-      margin: 1.5rem 0;
+      margin: 1rem 0;
       font-weight: 500;
+      width: 100%;
+    }
+    .launch-info {
+      margin: 1.5rem 0;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #065f46;
       width: 100%;
     }
     .countdown {
       display: flex;
       justify-content: center;
-      gap: 1rem;
+      gap: 1.5rem;
       margin: 2rem 0;
       font-weight: 600;
       color: #065f46;
@@ -58,13 +65,15 @@
       text-align: center;
     }
     .countdown-num {
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       font-weight: 700;
+      line-height: 1;
     }
     .countdown-label {
       font-size: 0.8rem;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 1px;
+      margin-top: 0.5rem;
     }
     .buttons {
       display: flex;
@@ -74,19 +83,19 @@
       width: 100%;
     }
     button {
-      padding: 12px 28px;
+      padding: 14px 32px;
       font-size: 1rem;
       font-weight: 600;
       border-radius: 999px;
       cursor: pointer;
       transition: all 0.3s;
-      min-width: 140px;
+      min-width: 160px;
     }
     .primary {
       background: #10b981;
       color: white;
       border: none;
-      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+      box-shadow: 0 4px 16px rgba(16, 185, 129, 0.3);
     }
     .primary:hover {
       background: #059669;
@@ -103,7 +112,7 @@
     }
     @media (prefers-color-scheme: dark) {
       body { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); }
-      h1, p, .countdown { color: #e6f7f0; }
+      h1, p, .launch-info, .countdown { color: #e6f7f0; }
       .secondary { background: #2d2d2d; color: #e6f7f0; border-color: #374151; }
       .secondary:hover { background: #374151; }
     }
@@ -113,8 +122,13 @@
   <div class="container">
     <div class="leaf">🌿</div>
     <h1>Bond Closer. Rise Together.</h1>
-    <p>Expert Parenting Coach for Teen communication</p>
+    <p>Expert parenting coach for teen communication.</p>
     
+    <div class="launch-info">
+      Official Launch Countdown<br>
+      Launching December 1, 2025.
+    </div>
+
     <div class="countdown">
       <div class="countdown-item">
         <div class="countdown-num" id="days">00</div>
@@ -135,13 +149,13 @@
     </div>
 
     <div class="buttons">
-      <button class="primary">Install App</button>
+      <button class="primary">Get Beta Invite</button>
       <button class="secondary">Sign In</button>
     </div>
   </div>
 
   <script>
-    const targetDate = new Date('2025-11-18T00:00:00').getTime();
+    const targetDate = new Date('2025-12-01T00:00:00').getTime();
     const countdown = setInterval(() => {
       const now = new Date().getTime();
       const distance = targetDate - now;
@@ -158,7 +172,8 @@
 
       if (distance < 0) {
         clearInterval(countdown);
-        document.querySelector('.countdown').innerHTML = '<p class="text-xl font-bold text-green-600">We\'re Live!</p>';
+        document.querySelector('.launch-info').innerHTML = '<p class="text-xl font-bold text-green-600">We\'re Live!</p>';
+        document.querySelector('.countdown').innerHTML = '';
       }
     }, 1000);
   </script>
