@@ -8,7 +8,7 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { 
       font-family: 'Segoe UI', sans-serif; 
-      background: linear-gradient(135deg, #f0f9f4 0%, #e0f2e9 100%);
+      background: #f3f1ef; /* Your background */
       min-height: 100vh;
       display: flex;
       align-items: center;
@@ -35,7 +35,7 @@
     }
     h1 { 
       font-size: 2.8rem; 
-      color: #065f46; 
+      color: #3e3e3c; /* Your main text */
       margin: 1rem auto;
       font-weight: 700;
       white-space: nowrap;
@@ -49,7 +49,7 @@
     }
     p { 
       font-size: 1.1rem; 
-      color: #374151; 
+      color: #3e3e3c; /* Your main text */
       margin: 1rem auto;
       font-weight: 500;
       width: fit-content;
@@ -59,7 +59,7 @@
       margin: 1.5rem auto;
       font-size: 1.2rem;
       font-weight: 600;
-      color: #065f46;
+      color: #3e3e3c; /* Your main text */
       width: fit-content;
       line-height: 1.4;
     }
@@ -69,7 +69,7 @@
       gap: 1.5rem;
       margin: 2rem auto;
       font-weight: 600;
-      color: #065f46;
+      color: #3e3e3c; /* Your main text */
       width: fit-content;
     }
     .countdown-item {
@@ -104,29 +104,36 @@
       min-width: 160px;
     }
     .primary {
-      background: #10b981;
+      background: #9ca58a; /* Your button */
       color: white;
       border: none;
-      box-shadow: 0 4px 16px rgba(16, 185, 129, 0.3);
+      box-shadow: 0 4px 16px rgba(156, 165, 138, 0.3);
     }
     .primary:hover {
-      background: #059669;
+      background: #433931; /* Your hover */
       transform: translateY(-2px);
     }
     .secondary {
       background: white;
-      color: #065f46;
-      border: 2px solid #d1fae5;
+      color: #945e5b; /* Your link color */
+      border: 2px solid #e6d9c1;
     }
     .secondary:hover {
-      border-color: #10b981;
-      background: #f0fdf4;
+      border-color: #945e5b;
+      background: #fdf8f0;
+    }
+    a {
+      color: #945e5b; /* Your link color */
+      text-decoration: underline;
+    }
+    a:hover {
+      color: #433931; /* Your hover */
     }
     @media (prefers-color-scheme: dark) {
-      body { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); }
-      h1, p, .launch-info, .countdown { color: #e6f7f0; }
-      .secondary { background: #2d2d2d; color: #e6f7f0; border-color: #374151; }
-      .secondary:hover { background: #374151; }
+      body { background: #2d2d2d; }
+      h1, p, .launch-info, .countdown, a { color: #f0f0f0; }
+      .secondary { background: #3a3a3a; color: #f0b8b5; border-color: #5a5a5a; }
+      .secondary:hover { background: #5a5a5a; }
     }
   </style>
 </head>
