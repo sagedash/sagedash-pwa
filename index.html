@@ -1,13 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SageDash</title>
-    <script type="module" src="/src/main.tsx"></script>
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SageDash</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: 'Segoe UI', sans-serif; 
+      background: linear-gradient(135deg, #f0f9f4 0%, #e0f2e9 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .container {
+      text-align: center;
+      max-width: 500px;
+    }
+    .leaf { 
+      font-size: 5rem; 
+      margin-bottom: 1rem;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    h1 { 
+      font-size: 2.5rem; 
+      color: #065f46; 
+      margin: 1rem 0;
+      line-height: 1.2;
+    }
+    p { 
+      font-size: 1.1rem; 
+      color: #374151; 
+      margin: 1.5rem 0;
+    }
+    .buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    button {
+      padding: 12px 28px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.3s;
+      min-width: 140px;
+    }
+    .primary {
+      background: #10b981;
+      color: white;
+      border: none;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    }
+    .primary:hover {
+      background: #059669;
+      transform: translateY(-2px);
+    }
+    .secondary {
+      background: white;
+      color: #065f46;
+      border: 2px solid #d1fae5;
+    }
+    .secondary:hover {
+      border-color: #10b981;
+      background: #f0fdf4;
+    }
+    @media (prefers-color-scheme: dark) {
+      body { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); }
+      h1, p { color: #e6f7f0; }
+      .secondary { background: #2d2d2d; color: #e6f7f0; border-color: #374151; }
+      .secondary:hover { background: #374151; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="leaf">🌿</div>
+    <h1>Bond Closer.<br>Rise Together.</h1>
+    <p>3 wise lines. One stronger family.</p>
+    <div class="buttons">
+      <button class="primary">Install App</button>
+      <button class="secondary">Sign In</button>
+    </div>
+  </div>
+</body>
 </html>
