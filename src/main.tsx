@@ -7,11 +7,11 @@ const Home = () => (
   <div className="min-h-screen bg-[#f3f1ef] flex items-center justify-center p-6">
     <div className="text-center max-w-md">
       <img src="/logo.png" alt="SageDash Logo" className="w-72 h-auto mx-auto mb-6 animate-pulse" />
-      <h1 className="text-3xl font-bold text-[#3e3e3c] mb-4">Bond Closer. Rise Together.</h1>
-      <p className="text-lg text-[#3e3e3c] mb-8">Expert parenting coach for teen communication.</p>
+      <h1 className="text-2xl md:text-3xl font-bold text-[#3e3e3c] mb-4 leading-tight">Expert Parenting Coach for Teen Communication</h1>
+      <p className="text-lg text-[#3e3e3c] mb-8">Bond Closer. Rise Together.</p>
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
         <a href="/onboarding" className="px-8 py-3 bg-[#9ca58a] text-white rounded-full font-medium hover:bg-[#433931] transition shadow-lg">Start Onboarding</a>
-        <button className="px-8 py-3 border-2 border-[#d1fae5] text-[#3e3e3c] rounded-full font-medium hover:border-[#9ca58a] transition">Sign In</button>
+        <button className="px-8 py-3 border-2 border-[#d1fae5] text-[#945e5b] rounded-full font-medium hover:border-[#9ca58a] transition">Sign In</button>
       </div>
     </div>
   </div>
