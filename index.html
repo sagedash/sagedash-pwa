@@ -8,7 +8,7 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { 
       font-family: 'Segoe UI', sans-serif; 
-      background: #f3f1ef; /* Your background */
+      background: #f3f1ef;
       min-height: 100vh;
       display: flex;
       align-items: center;
@@ -35,8 +35,8 @@
     }
     h1 { 
       font-size: 2.8rem; 
-      color: #3e3e3c; /* Your main text */
-      margin: 1rem auto;
+      color: #3e3e3c;
+      margin: 1rem 0;
       font-weight: 700;
       white-space: nowrap;
       display: block;
@@ -49,42 +49,13 @@
     }
     p { 
       font-size: 1.1rem; 
-      color: #3e3e3c; /* Your main text */
-      margin: 1rem auto;
+      color: #3e3e3c;
+      margin: 1.5rem 0;
       font-weight: 500;
       width: fit-content;
       max-width: 90%;
-    }
-    .launch-info {
-      margin: 1.5rem auto;
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: #3e3e3c; /* Your main text */
-      width: fit-content;
-      line-height: 1.4;
-    }
-    .countdown {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin: 2rem auto;
-      font-weight: 600;
-      color: #3e3e3c; /* Your main text */
-      width: fit-content;
-    }
-    .countdown-item {
-      text-align: center;
-    }
-    .countdown-num {
-      font-size: 2.8rem;
-      font-weight: 700;
-      line-height: 1;
-    }
-    .countdown-label {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-top: 0.5rem;
+      margin-left: auto;
+      margin-right: auto;
     }
     .buttons {
       display: flex;
@@ -93,8 +64,10 @@
       flex-wrap: wrap;
       margin: 2rem auto 0;
       width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
     }
-    button {
+    a.button, button {
       padding: 14px 32px;
       font-size: 1rem;
       font-weight: 600;
@@ -102,36 +75,30 @@
       cursor: pointer;
       transition: all 0.3s;
       min-width: 160px;
+      text-decoration: none;
     }
     .primary {
-      background: #9ca58a; /* Your button */
+      background: #9ca58a;
       color: white;
       border: none;
       box-shadow: 0 4px 16px rgba(156, 165, 138, 0.3);
     }
     .primary:hover {
-      background: #433931; /* Your hover */
+      background: #433931;
       transform: translateY(-2px);
     }
     .secondary {
       background: white;
-      color: #945e5b; /* Your link color */
-      border: 2px solid #e6d9c1;
+      color: #945e5b;
+      border: 2px solid #d1fae5;
     }
     .secondary:hover {
       border-color: #945e5b;
       background: #fdf8f0;
     }
-    a {
-      color: #945e5b; /* Your link color */
-      text-decoration: underline;
-    }
-    a:hover {
-      color: #433931; /* Your hover */
-    }
     @media (prefers-color-scheme: dark) {
       body { background: #2d2d2d; }
-      h1, p, .launch-info, .countdown, a { color: #f0f0f0; }
+      h1, p { color: #f0f0f0; }
       .secondary { background: #3a3a3a; color: #f0b8b5; border-color: #5a5a5a; }
       .secondary:hover { background: #5a5a5a; }
     }
@@ -141,60 +108,12 @@
   <div class="container">
     <img src="/logo.png" alt="SageDash Logo" class="logo">
     <h1>Bond Closer. Rise Together.</h1>
-    <p>Expert parenting coach for teen communication</p>
+    <p>Expert Parenting Coach for Teen Communication</p>
     
-    <div class="launch-info">
-      Official Launch Countdown<br>
-      Launching December 1, 2025
-    </div>
-
-    <div class="countdown">
-      <div class="countdown-item">
-        <div class="countdown-num" id="days">00</div>
-        <div class="countdown-label">Days</div>
-      </div>
-      <div class="countdown-item">
-        <div class="countdown-num" id="hours">00</div>
-        <div class="countdown-label">Hours</div>
-      </div>
-      <div class="countdown-item">
-        <div class="countdown-num" id="minutes">00</div>
-        <div class="countdown-label">Minutes</div>
-      </div>
-      <div class="countdown-item">
-        <div class="countdown-num" id="seconds">00</div>
-        <div class="countdown-label">Seconds</div>
-      </div>
-    </div>
-
     <div class="buttons">
-      <button class="primary">Get Beta Invite</button>
+      <a href="onboarding.html" class="primary">Start Onboarding</a>
       <button class="secondary">Sign In</button>
     </div>
   </div>
-
-  <script>
-    const targetDate = new Date('2025-12-01T00:00:00').getTime();
-    const countdown = setInterval(() => {
-      const now = new Date().getTime();
-      const distance = targetDate - now;
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      document.getElementById('days').textContent = days.toString().padStart(2, '0');
-      document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-      document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-      document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-
-      if (distance < 0) {
-        clearInterval(countdown);
-        document.querySelector('.launch-info').innerHTML = '<p class="text-xl font-bold text-green-600">We\'re Live!</p>';
-        document.querySelector('.countdown').innerHTML = '';
-      }
-    }, 1000);
-  </script>
 </body>
 </html>
