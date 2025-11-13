@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>How It Works — SageDash</title>
+  <link rel="manifest" href="/app/manifest.json" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="wrap">
+    <nav class="nav">
+      <div class="nav-left">
+        <a href="/"><img src="/logo.png" class="logo" alt="SageDash"></a>
+      </div>
+      <div class="nav-right">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/about.html" class="nav-link">About</a>
+        <a href="/how-it-works.html" class="nav-link">How It Works</a>
+        <a href="/pricing.html" class="nav-link">Pricing</a>
+        <a href="/support.html" class="nav-link">Support</a>
+        <a href="/blog.html" class="nav-link">Blog</a>
+      </div>
+    </nav>
+
+    <section class="band band--alt">
+      <div class="section">
+        <h1 class="section-title center no-bold">How it works</h1>
+        <div class="divider"></div>
+
+        <div class="steps">
+          <div class="card">
+            <span class="step-label">Step 1</span>
+            <div class="card-title no-bold">Set quick profiles</div>
+            <p class="card-text center">Tell Sage how you parent and how your teen ticks—fast, friendly sliders.</p>
+          </div>
+          <div class="card">
+            <span class="step-label">Step 2</span>
+            <div class="card-title no-bold">Pick the moment</div>
+            <p class="card-text center">Grades, friends, screens, sports. Choose a moment or describe your situation.</p>
+          </div>
+          <div class="card">
+            <span class="step-label">Step 3</span>
+            <div class="card-title no-bold">Get 3 lines in seconds</div>
+            <p class="card-text center">Empathy first, validation, then choice/hope—ready to say or send.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band band--white" id="samples">
+      <div class="section">
+        <h2 class="section-title center no-bold">Sample lines</h2>
+        <div class="divider"></div>
+
+        <div class="cards three">
+          <div class="card center">
+            <div class="card-title">Tough grade today</div>
+            <ul class="lines">
+              <li>That stings—come here a sec?</li>
+              <li>You tried. We’ll regroup together.</li>
+              <li>Hug or quiet first—your call.</li>
+            </ul>
+          </div>
+          <div class="card center">
+            <div class="card-title">Friend drama</div>
+            <ul class="lines">
+              <li>Oof, that sounds heavy.</li>
+              <li>Your heart is so good.</li>
+              <li>Want ears or advice?</li>
+            </ul>
+          </div>
+          <div class="card center">
+            <div class="card-title">Screen time balance</div>
+            <ul class="lines">
+              <li>Let’s make a tiny rule.</li>
+              <li>We’ll test it one week.</li>
+              <li>Ready to pick the start?</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></div>
+      <div>© <span id="y"></span> SageDash</div>
+    </footer>
+  </div>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
