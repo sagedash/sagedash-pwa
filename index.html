@@ -9,26 +9,16 @@
 </head>
 <body>
   <div class="wrap">
-    <nav class="nav">
-      <div class="nav-left">
-        <a href="/"><img src="/logo.png" class="logo" alt="SageDash"></a>
-      </div>
-      <div class="nav-right">
-        <a href="/" class="nav-link">Home</a>
-        <a href="/about.html" class="nav-link">About</a>
-        <a href="/how-it-works.html" class="nav-link">How It Works</a>
-        <a href="/pricing.html" class="nav-link">Pricing</a>
-        <a href="/support.html" class="nav-link">Support</a>
-        <a href="/blog.html" class="nav-link">Blog</a>
-      </div>
-    </nav>
+    <div id="header"></div>
 
     <section class="band band--white">
       <div class="section narrow center">
-        <h1 class="page-title no-bold">Expert parenting coach for teen communication</h1>
+        <h1 class="page-title no-bold">Expert Parenting Coach for Teen Communication</h1>
+        <p class="slogan">Bond Closer. Rise Together.</p>
         <p class="lead">Short, warm lines you can use right now—personalized to you and your teen.</p>
 
-        <p class="launch-line">Launch date: <strong>December 1, 2025</strong></p>
+        <p class="launch-line">Launch Date: December 1, 2025</p>
+
         <div id="clock" class="countdown" aria-live="polite">
           <div class="timebox"><span class="num" id="d">–</span><span class="lab">Days</span></div>
           <div class="timebox"><span class="num" id="h">–</span><span class="lab">Hours</span></div>
@@ -45,10 +35,7 @@
       </div>
     </section>
 
-    <footer class="footer">
-      <div><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></div>
-      <div>© <span id="y"></span> SageDash</div>
-    </footer>
+    <div id="footer"></div>
   </div>
 
   <script>
@@ -66,7 +53,7 @@
       els.d.textContent = d; els.h.textContent = pad(h); els.m.textContent = pad(m); els.s.textContent = pad(s);
     }
     tick(); setInterval(tick, 1000);
-    document.getElementById('y').textContent = new Date().getFullYear();
   </script>
+  <script src="/site.js"></script>
 </body>
 </html>
