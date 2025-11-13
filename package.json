@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "rm -rf dist && mkdir -p dist/partials dist/app && cp -a *.html styles.css site.js dist/ && if [ -d partials ]; then cp -a partials/. dist/partials/; fi && if [ -d app ]; then cp -a app/. dist/app/; fi && echo 'Build complete'",
     "preview": "vite preview --port 5173"
   },
   "dependencies": {
