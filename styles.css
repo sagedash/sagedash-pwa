@@ -174,13 +174,14 @@ a:hover{ color:var(--hover); text-decoration:underline }
   border-radius:999px; font-size:15px; letter-spacing:.2px;
   display:block;                /* center fix */
   width:max-content;            /* shrink to pill */
-  margin:0 auto 8px;            /* ✅ centered */
+  margin:0 auto 8px;            /* centered */
 }
 
-/* Step titles (same size, not bold) */
+/* Step titles (centered, not bold) */
 .steps .card .card-title{
   font-size:clamp(20px,2.8vw,26px);
   font-weight:400 !important;
+  text-align:center;            /* ✅ centered titles */
 }
 
 /* Mobile behavior */
@@ -247,7 +248,7 @@ a:hover{ color:var(--hover); text-decoration:underline }
 .form textarea.control{
   min-height:140px; line-height:1.5; resize:vertical;
 }
-.form .actions{ margin-top:10px; text-align:left } /* left-align submit */
+.form .actions{ margin-top:10px; text-align:left }
 
 /* Blog layout */
 .grid-2col{
@@ -272,7 +273,7 @@ a:hover{ color:var(--hover); text-decoration:underline }
   padding:16px;
 }
 .post-card .post-title{
-  font-size:clamp(20px,3vw,24px);       /* larger post names */
+  font-size:clamp(20px,3vw,24px);
   color:var(--hover);
   font-weight:400;
   margin:0 0 6px;
