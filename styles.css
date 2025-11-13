@@ -169,14 +169,13 @@ a:hover{ color:var(--hover); text-decoration:underline }
 
 /* Step label (button-like) */
 .step-label{
-  display:inline-block; margin-bottom:8px;
   background:var(--sage); color:#fff; font-weight:700;
   padding:7px 14px;
-  border-radius:999px; font-size:15px;
-  letter-spacing:.2px;
+  border-radius:999px; font-size:15px; letter-spacing:.2px;
+  display:block;                /* center fix */
+  width:max-content;            /* shrink to pill */
+  margin:0 auto 8px;            /* ✅ centered */
 }
-/* ✅ Center the Step 1/2/3 pills */
-.steps .step-label{ margin-left:auto; margin-right:auto; }
 
 /* Step titles (same size, not bold) */
 .steps .card .card-title{
@@ -279,7 +278,7 @@ a:hover{ color:var(--hover); text-decoration:underline }
   margin:0 0 6px;
 }
 
-/* RIGHT: simple list (no box), larger "Posts" heading */
+/* RIGHT: simple list (no box / no background) */
 .blog-side-title{
   font-size:clamp(20px,3vw,24px);
   color:var(--hover);
