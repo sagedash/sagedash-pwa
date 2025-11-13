@@ -175,6 +175,8 @@ a:hover{ color:var(--hover); text-decoration:underline }
   border-radius:999px; font-size:15px;
   letter-spacing:.2px;
 }
+/* ✅ Center the Step 1/2/3 pills */
+.steps .step-label{ margin-left:auto; margin-right:auto; }
 
 /* Step titles (same size, not bold) */
 .steps .card .card-title{
@@ -255,18 +257,38 @@ a:hover{ color:var(--hover); text-decoration:underline }
 @media (max-width:980px){
   .grid-2col{ grid-template-columns:1fr }
 }
-.side-list{
-  background:#fff; border:1px solid var(--border); border-radius:var(--radius);
-  padding:14px; box-shadow:var(--shadow-s);
+
+/* LEFT: post previews in beige boxes, 2 per row */
+.post-grid{
+  display:grid; grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
 }
-.side-list h3{
-  margin:0 0 8px; font-weight:400; color:var(--hover); font-size:18px;
+@media (max-width:860px){
+  .post-grid{ grid-template-columns:1fr }
 }
-.side-list ul{ list-style:none; margin:0; padding:0 }
-.side-list li{ padding:8px 0; border-bottom:1px solid var(--border) }
-.side-list li:last-child{ border-bottom:none }
-.side-list a{ text-decoration:none }
-.side-list a:hover{ text-decoration:underline }
+.post-card{
+  background:var(--alt);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:16px;
+}
+.post-card .post-title{
+  font-size:clamp(20px,3vw,24px);       /* larger post names */
+  color:var(--hover);
+  font-weight:400;
+  margin:0 0 6px;
+}
+
+/* RIGHT: simple list (no box), larger "Posts" heading */
+.blog-side-title{
+  font-size:clamp(20px,3vw,24px);
+  color:var(--hover);
+  font-weight:400;
+  margin:0 0 10px;
+}
+.blog-side-list{ list-style:none; margin:0; padding:0 }
+.blog-side-list li{ padding:8px 0; border-bottom:1px solid var(--border) }
+.blog-side-list li:last-child{ border-bottom:none }
 
 /* FAQ */
 .faq{
