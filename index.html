@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sagedash — Bond Closer. Rise Together.</title>
+  <link rel="icon" href="logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- NAV -->
+    <nav class="nav">
+      <div class="nav-left">
+        <img src="logo.png" alt="Sagedash" class="logo"/>
+        <span class="brand">Sagedash</span>
+      </div>
+      <div class="nav-right">Bond Closer. Rise Together.</div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero">
+      <h1>Expert parenting coach for teen communication</h1>
+      <p class="sub">Get three short, loving lines you can say right now—tailored to your teen.</p>
+
+      <div class="hero-actions">
+        <a class="btn btn-dark" href="#samples">Try 10 free moments</a>
+
+        <!-- Waitlist (Buttondown) -->
+        <form action="https://buttondown.email/api/emails/subscribe" method="post" class="waitlist">
+          <input type="hidden" name="origin" value="sagedash.app" />
+          <input type="email" name="email" required placeholder="you@email.com" />
+          <button class="btn btn-sage" type="submit">Join the waitlist</button>
+        </form>
+      </div>
+
+      <p class="disclaimer">Private. Not therapy. We never sell your data.</p>
+    </header>
+
+    <!-- HOW IT WORKS -->
+    <section class="section">
+      <h2>How it works</h2>
+      <div class="cards">
+        <div class="card">
+          <div class="card-title">Pick a moment</div>
+          <div class="card-text">Homework, screens, friends, motivation and more.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">See 3 short lines</div>
+          <div class="card-text">Empathy first. Parent-voiced. Teen-tuned.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Use & refine</div>
+          <div class="card-text">Copy, tweak tone, and keep the bond warm.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SAMPLE LINES (static preview for now) -->
+    <section id="samples" class="section">
+      <h2>Sample lines</h2>
+      <div class="cards three">
+        <div class="card">
+          <div class="card-title">Tough grade today</div>
+          <ul class="lines">
+            <li>Ah, that’s rough—I’m here.</li>
+            <li>You’re capable; this is one bump.</li>
+            <li>Want quiet time or talk it through?</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">Friend drama</div>
+          <ul class="lines">
+            <li>That’s tough—I get it.</li>
+            <li>Your feelings make sense.</li>
+            <li>Vent, distract, or plan a text?</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">Screen time balance</div>
+          <ul class="lines">
+            <li>We both want balance.</li>
+            <li>Your health matters to me.</li>
+            <li>You choose the schedule; I’ll back it.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING TEASER -->
+    <section class="section">
+      <h2>Plans</h2>
+      <p class="muted">Start free. Upgrade anytime.</p>
+      <div class="cards three">
+        <div class="card">
+          <div class="card-title">Hint</div>
+          <div class="price">Free</div>
+          <div class="card-text">100 moments, 3 lines each</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Core</div>
+          <div class="price">$8 solo / $12 family</div>
+          <div class="card-text">AI-tailored 3 lines (2 refinements)</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Soul</div>
+          <div class="price">$13 solo / $19 family</div>
+          <div class="card-text">Free-style chat · 1,000 sends/mo</div>
+        </div>
+      </div>
+      <p class="disclaimer">Fair use: Soul includes 1,000 sends/month. Resets monthly.</p>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section narrow">
+      <h2>FAQ</h2>
+      <details class="faq">
+        <summary>How do you personalize the lines?</summary>
+        <p>We blend your profile (voice, love language) with your teen’s vibe (outgoing/quiet/mixed), plus context. Empathy first—always.</p>
+      </details>
+      <details class="faq">
+        <summary>Is this therapy?</summary>
+        <p>No. Sagedash offers supportive communication guidance. For crises, please seek professional help.</p>
+      </details>
+      <details class="faq">
+        <summary>What about privacy?</summary>
+        <p>Your profile is private and used only to tailor suggestions. We never sell your data.</p>
+      </details>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div>
+        <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · <a href="/support">Support</a>
+      </div>
+      <div>© <span id="y"></span> Sagedash</div>
+    </footer>
+
+  </div>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
