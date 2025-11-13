@@ -65,7 +65,7 @@ a:hover{ color:var(--hover); text-decoration:underline }
 }
 .nav-left{ display:flex; align-items:center; gap:10px }
 
-/* Logo 229×100 */
+/* Logo */
 .logo{
   width:229px; height:100px;
   object-fit:contain; object-position:left center; display:block
@@ -88,11 +88,18 @@ a:hover{ color:var(--hover); text-decoration:underline }
 
 /* Headings */
 .page-title{
-  font-size:clamp(22px, 3vw, 28px); /* main headline */
+  font-size:clamp(22px, 3vw, 28px); /* default smaller headline */
   color:var(--hover);
   font-weight:400;
   margin:0 0 8px;
 }
+/* Larger title for About / How It Works */
+.page-title-lg{
+  font-size:clamp(24px, 3.6vw, 32px);
+  font-weight:400;
+  color:var(--hover);
+}
+
 .lead{
   font-size:clamp(16px,2.2vw,19px);
   color:#55524f;
@@ -102,12 +109,12 @@ a:hover{ color:var(--hover); text-decoration:underline }
 .slogan{
   margin:8px 0 4px;
   color:var(--hover);
-  font-weight:700;                       /* bold */
-  font-size:clamp(18px,2.6vw,22px);      /* smaller than page-title */
+  font-weight:700;
+  font-size:clamp(18px,2.6vw,22px);
   line-height:1.25;
 }
 
-/* Launch line (kept one step down + extra spacing) */
+/* Launch line */
 .launch-line{
   font-size:clamp(24px, 3.6vw, 34px);
   color:var(--hover);
