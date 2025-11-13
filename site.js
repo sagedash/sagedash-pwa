@@ -1,6 +1,6 @@
 // site.js — loads header/footer partials with graceful fallback
 
-const LOGO_SRC = 'logo.png'; // <-- change this if your logo file has a different name
+const LOGO_SRC = '/assets/logo.png'; // absolute path so it always works
 
 const FALLBACK_HEADER = `
 <nav class="nav">
@@ -27,9 +27,7 @@ async function inject(el, url, fallback) {
   if (!el) return;
   try {
     const res = await fetch(url, { cache: 'no-store' });
-    if (!res.ok) { el.innerHTML = fallback; return; }
-    const html = await res.text();
-    el.innerHTML = html;
+    el.innerHTML = res.ok ? await res.text() : fallback;
   } catch {
     el.innerHTML = fallback;
   }
@@ -38,8 +36,7 @@ async function inject(el, url, fallback) {
 function highlightActive(headerRoot) {
   if (!headerRoot) return;
   const path = location.pathname.replace(/\/+$/, '') || '/';
-  const links = headerRoot.querySelectorAll('.nav-link');
-  links.forEach(a => {
+  headerRoot.querySelectorAll('.nav-link').forEach(a => {
     const href = (a.getAttribute('href') || '').replace(/\/+$/, '') || '/';
     const isHome = (path === '/' && (href === '/' || href === '/index.html'));
     const match = isHome || (href !== '/' && path === href);
@@ -57,5 +54,5 @@ function highlightActive(headerRoot) {
   const y = document.querySelector('#footer #y, footer #y');
   if (y) y.textContent = new Date().getFullYear();
 
-  highlightActive(headerHost);
+  highlightActive(headerRoot = headerHost);
 })();
