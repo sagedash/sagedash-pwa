@@ -16,6 +16,7 @@
       <div class="nav-right">
         <a href="/" class="nav-link">Home</a>
         <a href="/about.html" class="nav-link">About</a>
+        <a href="/how-it-works.html" class="nav-link">How It Works</a>
         <a href="/pricing.html" class="nav-link">Pricing</a>
         <a href="/support.html" class="nav-link">Support</a>
         <a href="/blog.html" class="nav-link">Blog</a>
@@ -27,103 +28,20 @@
         <h1 class="page-title no-bold">Expert parenting coach for teen communication</h1>
         <p class="lead">Short, warm lines you can use right now—personalized to you and your teen.</p>
 
-        <div class="waitlist-row">
-          <span class="badge">Try 10 free moments</span>
-          <input type="email" placeholder="Enter your email for the waitlist" />
-          <button class="btn btn-sage">Join the waitlist</button>
+        <p class="launch-line">Launch date: <strong>December 1, 2025</strong></p>
+        <div id="clock" class="countdown" aria-live="polite">
+          <div class="timebox"><span class="num" id="d">–</span><span class="lab">Days</span></div>
+          <div class="timebox"><span class="num" id="h">–</span><span class="lab">Hours</span></div>
+          <div class="timebox"><span class="num" id="m">–</span><span class="lab">Minutes</span></div>
+          <div class="timebox"><span class="num" id="s">–</span><span class="lab">Seconds</span></div>
         </div>
-      </div>
-    </section>
 
-    <section class="band band--alt">
-      <div class="section">
-        <h2 class="section-title center no-bold">How it works</h2>
-        <div class="divider"></div>
-
-        <div class="steps">
-          <div class="card">
-            <span class="step-label">Step 1</span>
-            <div class="card-title no-bold">Set quick profiles</div>
-            <p class="card-text">Tell Sage how you parent and how your teen ticks—fast, friendly sliders.</p>
-          </div>
-          <div class="card">
-            <span class="step-label">Step 2</span>
-            <div class="card-title no-bold">Pick the moment</div>
-            <p class="card-text">Grades, friends, screens, sports. Choose a moment or describe your situation.</p>
-          </div>
-          <div class="card">
-            <span class="step-label">Step 3</span>
-            <div class="card-title no-bold">Get 3 lines in seconds</div>
-            <p class="card-text">Empathy first, validation, then choice/hope—ready to say or send.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="band band--white" id="samples">
-      <div class="section">
-        <h2 class="section-title center no-bold">Sample lines</h2>
-        <div class="divider"></div>
-
-        <div class="cards three">
-          <div class="card center">
-            <div class="card-title">Tough grade today</div>
-            <ul class="lines">
-              <li>That stings—come here a sec?</li>
-              <li>You tried. We’ll regroup together.</li>
-              <li>Hug or quiet first—your call.</li>
-            </ul>
-          </div>
-          <div class="card center">
-            <div class="card-title">Friend drama</div>
-            <ul class="lines">
-              <li>Oof, that sounds heavy.</li>
-              <li>Your heart is so good.</li>
-              <li>Want ears or advice?</li>
-            </ul>
-          </div>
-          <div class="card center">
-            <div class="card-title">Screen time balance</div>
-            <ul class="lines">
-              <li>Let’s make a tiny rule.</li>
-              <li>We’ll test it one week.</li>
-              <li>Ready to pick the start?</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="band band--alt">
-      <div class="section">
-        <h2 class="section-title center no-bold">Plans</h2>
-        <div class="divider"></div>
-
-        <div class="cards three pricing">
-          <div class="card plan">
-            <div class="card-title no-bold">Hint</div>
-            <div class="price">Free</div>
-            <p class="card-text">100 moments • 3 lines each</p>
-            <p class="card-text">Personality-aware (no AI)</p>
-            <button class="btn">Start free</button>
-          </div>
-
-          <div class="card plan">
-            <div class="card-title no-bold">Core</div>
-            <div class="price">$8 solo • $12 family</div>
-            <p class="card-text">Custom 3-line advice</p>
-            <p class="card-text">2 refinements with Sage</p>
-            <button class="btn btn-sage">Ask Sage</button>
-          </div>
-
-          <div class="card plan">
-            <div class="card-title no-bold">Soul</div>
-            <div class="price">$13 solo • $19 family</div>
-            <p class="card-text">Free-style chat with Sage</p>
-            <p class="card-text">1,000 sends / month</p>
-            <button class="btn btn-dark">Chat with Sage</button>
-          </div>
-        </div>
+        <!-- Beta invite form (Netlify) -->
+        <form name="beta" method="POST" data-netlify="true" class="inline-form" style="max-width:720px;margin:16px auto 0;">
+          <input type="hidden" name="form-name" value="beta">
+          <input type="email" name="email" placeholder="Enter your email to request beta access" required />
+          <button class="btn btn-sage" type="submit">Request beta invite</button>
+        </form>
       </div>
     </section>
 
@@ -132,6 +50,23 @@
       <div>© <span id="y"></span> SageDash</div>
     </footer>
   </div>
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+
+  <script>
+    // Countdown to Dec 1, 2025 00:00 America/Los_Angeles (PST = UTC-8)
+    const target = new Date('2025-12-01T00:00:00-08:00').getTime();
+    const els = { d: document.getElementById('d'), h: document.getElementById('h'), m: document.getElementById('m'), s: document.getElementById('s') };
+    const pad = n => String(n).padStart(2,'0');
+    function tick(){
+      const now = Date.now();
+      let diff = Math.max(0, target - now);
+      const d = Math.floor(diff / (1000*60*60*24)); diff -= d*(1000*60*60*24);
+      const h = Math.floor(diff / (1000*60*60));     diff -= h*(1000*60*60);
+      const m = Math.floor(diff / (1000*60));        diff -= m*(1000*60);
+      const s = Math.floor(diff / 1000);
+      els.d.textContent = d; els.h.textContent = pad(h); els.m.textContent = pad(m); els.s.textContent = pad(s);
+    }
+    tick(); setInterval(tick, 1000);
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
