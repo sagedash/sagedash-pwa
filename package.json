@@ -2,12 +2,9 @@
   "name": "sagedash-pwa",
   "version": "1.0.0",
   "private": true,
-  "license": "UNLICENSED",
-  "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "rm -rf dist && mkdir -p dist/partials dist/app && cp -a *.html styles.css site.js dist/ && if [ -d partials ]; then cp -a partials/. dist/partials/; fi && if [ -d app ]; then cp -a app/. dist/app/; fi && echo 'Build complete'",
-    "preview": "vite preview --port 5173"
+  "build": "rm -rf dist && mkdir -p dist/partials dist/app && cp -a *.html styles.css site.js dist/ && if [ -d partials ]; then cp -a partials/. dist/partials/; fi && if [ -d app ]; then cp -a app/. dist/app/; fi && if [ -d assets ]; then cp -a assets/. dist/assets/; fi && echo 'Build complete'"
+  
   },
   "dependencies": {
     "clsx": "^2.1.0",
