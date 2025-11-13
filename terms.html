@@ -3,74 +3,60 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Terms of Service — Sagedash</title>
-  <meta name="description" content="The terms that govern your use of Sagedash." />
-  <link rel="icon" href="/logo.png" />
-  <link rel="canonical" href="/terms.html" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>Terms of Service — SageDash</title>
+  <link rel="manifest" href="/app/manifest.json" />
   <link rel="stylesheet" href="/styles.css" />
-
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Sagedash" />
-  <meta property="og:title" content="Terms of Service — Sagedash" />
-  <meta property="og:description" content="The terms that govern your use of Sagedash." />
-  <meta property="og:image" content="/logo.png" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Terms of Service — Sagedash" />
-  <meta name="twitter:description" content="The terms that govern your use of Sagedash." />
-  <meta name="twitter:image" content="/logo.png" />
-
-  <meta name="theme-color" content="#9ca58a" />
 </head>
 <body>
   <div class="wrap">
-    <nav class="nav">
-      <div class="nav-left"><a href="/"><img src="/logo.png" alt="Sagedash logo" class="logo" /></a></div>
-      <div class="nav-right" style="display:flex;gap:16px;align-items:center;">
-        <a href="/" class="nav-link">Home</a>
-        <a href="/about.html" class="nav-link">About</a>
-        <a href="/pricing.html" class="nav-link">Pricing</a>
-        <a href="/support.html" class="nav-link">Support</a>
-        <a href="https://blog.usgeocoder.com/" class="nav-link">Blog</a>
+    <div id="header"></div>
+
+    <section class="band band--white">
+      <div class="section narrow">
+        <h1 class="page-title no-bold center">Terms of Service</h1>
+        <p class="lead center">Plain-English terms for using SageDash.</p>
+        <div class="divider"></div>
+
+        <h3 class="no-bold">1) Agreement</h3>
+        <p>By using SageDash, you agree to these terms. If you don’t agree, please don’t use the service.</p>
+
+        <h3 class="no-bold">2) Service & guidance</h3>
+        <p>SageDash provides suggested language for parent-teen communication. We don’t provide medical, psychological, legal, or crisis advice. For emergencies, call local services immediately.</p>
+
+        <h3 class="no-bold">3) Accounts</h3>
+        <p>You’re responsible for your account and keeping your password safe. Don’t share your login with others outside your family plan.</p>
+
+        <h3 class="no-bold">4) Payments</h3>
+        <p>Paid plans auto-renew monthly or annually until canceled. Prices may change with notice. Refunds are handled case-by-case where required by law.</p>
+
+        <h3 class="no-bold">5) Acceptable use</h3>
+        <ul>
+          <li>No illegal activity, abuse, harassment, or content that endangers minors.</li>
+          <li>No reverse engineering, scraping, or interfering with our systems.</li>
+          <li>Respect fair-use limits posted for your plan.</li>
+        </ul>
+
+        <h3 class="no-bold">6) AI features</h3>
+        <p>AI outputs may be inaccurate or incomplete. Use your judgment before acting on any suggestion.</        p>
+
+        <h3 class="no-bold">7) Termination</h3>
+        <p>We may suspend or terminate accounts that violate these terms or harm the service or others.</p>
+
+        <h3 class="no-bold">8) Liability</h3>
+        <p>SageDash is provided “as is.” To the extent allowed by law, we disclaim warranties and limit liability to amounts you paid in the last 12 months.</p>
+
+        <h3 class="no-bold">9) Changes</h3>
+        <p>We may update these terms. We’ll post the new version with an updated date.</p>
+
+        <h3 class="no-bold">10) Contact</h3>
+        <p>Questions: <a href="/support.html">Support</a>.</p>
+
+        <p class="muted">Last updated: November 13, 2025</p>
       </div>
-    </nav>
-
-    <section class="section narrow">
-      <h1>Terms of Service</h1>
-      <p>By using Sagedash, you agree to these terms.</p>
-
-      <h2>Service</h2>
-      <p>Sagedash provides supportive communication guidance for parents. It is not therapy or medical advice.</p>
-
-      <h2>Accounts & subscriptions</h2>
-      <p>You’re responsible for your account credentials and activity. Paid plans renew automatically until canceled in your account settings.</p>
-
-      <h2>Fair use</h2>
-      <p>The Soul plan includes 1,000 sends per month (soft warning at ~80%). Resets monthly.</p>
-
-      <h2>Acceptable use</h2>
-      <p>Don’t misuse the service, attack systems, or violate laws. We may suspend accounts that abuse resources or harm others.</p>
-
-      <h2>Liability</h2>
-      <p>Sagedash is provided “as is.” To the fullest extent permitted by law, we’re not liable for indirect, incidental, or consequential damages.</p>
-
-      <h2>Changes</h2>
-      <p>We may update these terms; material changes will be communicated or posted with a new effective date.</p>
-
-      <h2>Contact</h2>
-      <p>Questions? Email <a href="mailto:support@sagedash.app">support@sagedash.app</a>.</p>
     </section>
 
-    <footer class="footer">
-      <div>
-        <a href="/privacy.html">Privacy</a> ·
-        <a href="/terms.html">Terms</a>
-      </div>
-      <div>© <span id="y"></span> Sagedash</div>
-    </footer>
+    <div id="footer"></div>
   </div>
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+  <script src="/site.js"></script>
 </body>
 </html>
