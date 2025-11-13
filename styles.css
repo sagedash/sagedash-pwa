@@ -1,18 +1,18 @@
 /* ============================================
-   Sagedash — PT Sans + USgeocoder-style bands
+   Sagedash — PT Sans + banded layout (refined)
    ============================================ */
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap');
 
 /* Tokens */
 :root{
-  --bg:#ffffff;         /* main site uses strong white sections */
-  --ink:#2f2f2d;        /* darker body copy */
-  --sage:#8f9b79;       /* slightly deeper than #9ca58a for contrast */
-  --link:#8a4e4b;       /* warm terracotta */
-  --hover:#3a342d;      /* rich brown for headings */
-  --alt:#f4f2ef;        /* light band background (section separator) */
+  --bg:#ffffff;
+  --ink:#2f2f2d;
+  --sage:#8f9b79;
+  --link:#8a4e4b;
+  --hover:#3a342d;
+  --alt:#f4f2ef;       /* light band */
   --card:#ffffff;
-  --border:#d9d2c9;     /* stronger divider */
+  --border:#d9d2c9;    /* separator */
   --muted:#666462;
 
   --radius:14px;
@@ -56,11 +56,12 @@ a:hover{ color:var(--hover); text-decoration:underline }
 /* Layout */
 .wrap{ max-width:1140px; margin:0 auto; padding:0 20px }
 
-/* Nav (matches stronger header) */
+/* Nav — more top space above logo (doubled) */
 .nav{
   position:sticky; top:0; z-index:10;
   display:flex; align-items:center; justify-content:space-between;
-  padding:14px 0; background:#fff;
+  padding:28px 0 14px;              /* increased top padding from 14px → 28px */
+  background:#fff;
   border-bottom:1px solid var(--border);
 }
 .nav-left{ display:flex; align-items:center; gap:10px }
@@ -71,7 +72,7 @@ a:hover{ color:var(--hover); text-decoration:underline }
 .nav-link{ color:var(--ink); font-weight:700; text-decoration:none; padding:6px 2px }
 .nav-link:hover{ color:var(--hover); text-decoration:underline }
 
-/* Bands (section separators like usgeocoder.com) */
+/* Bands */
 .band{ width:100%; }
 .band--white{ background:#fff }
 .band--alt{ background:var(--alt) }
@@ -102,7 +103,7 @@ a:hover{ color:var(--hover); text-decoration:underline }
   margin:14px auto 18px; width:min(120px,20%);
 }
 
-/* Waitlist (single row like main CTA rows) */
+/* Waitlist (one row) */
 .waitlist-row{
   display:grid; grid-template-columns: 1fr 2fr auto;
   gap:12px; align-items:center; margin-top:18px;
@@ -121,7 +122,7 @@ a:hover{ color:var(--hover); text-decoration:underline }
   .waitlist-row .btn{ grid-column: span 2; }
 }
 
-/* Cards & grids */
+/* Generic cards (still used elsewhere) */
 .cards{ display:grid; gap:18px; margin-top:18px }
 .cards.two{ grid-template-columns:repeat(2,minmax(0,1fr)) }
 .cards.three{ grid-template-columns:repeat(3,minmax(0,1fr)) }
@@ -137,28 +138,59 @@ a:hover{ color:var(--hover); text-decoration:underline }
 .card-title{ color:var(--hover); margin-bottom:6px; font-weight:400 }
 .card-text{ color:var(--ink) }
 
-/* Steps row */
+/* ========== HOW IT WORKS (flat columns with vertical separators) ========== */
 .steps{
-  display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; margin-top:10px;
+  display:grid; grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:0;                     /* no gaps so separators are continuous */
+  margin-top:10px;
+  align-items:stretch;
 }
-@media (max-width:980px){ .steps{ grid-template-columns:repeat(2,minmax(0,1fr)) } }
-@media (max-width:640px){ .steps{ grid-template-columns:1fr } }
+.steps .card{
+  background:transparent;    /* inherit band color */
+  border:none; box-shadow:none;
+  padding:20px 22px;
+}
+.steps .card + .card{
+  border-left:1px solid var(--border);   /* vertical separator */
+}
+/* Mobile behavior */
+@media (max-width:980px){
+  .steps{ grid-template-columns:1fr }
+  .steps .card + .card{ border-left:none; border-top:1px solid var(--border) }
+}
 .step-label{
   display:inline-block; margin-bottom:6px;
   background:var(--sage); color:#fff; font-weight:700;
   padding:4px 10px; border-radius:999px; font-size:13px;
 }
 
-/* Lines */
+/* Lines (samples) */
 .lines{ list-style:none; margin:10px 0 0; padding:0 }
 .lines li{
   background:#faf9f8; border:1px solid var(--border);
   border-radius:12px; padding:10px 12px; margin:8px 0; color:var(--ink)
 }
 
-/* Pricing / Plans (center contents) */
-.pricing .card.plan{ text-align:center }
+/* ========== PLANS (flat columns with vertical separators) ========== */
+.pricing{
+  display:grid; grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:0; margin-top:10px;
+}
+.pricing .card.plan{
+  background:transparent;    /* same as band background */
+  border:none; box-shadow:none;
+  padding:22px;
+  text-align:center;
+}
+.pricing .card.plan + .card.plan{
+  border-left:1px solid var(--border);   /* vertical separator */
+}
 .price{ font-weight:700; color:var(--hover); font-size:20px; margin:6px 0 }
+/* Mobile behavior */
+@media (max-width:980px){
+  .pricing{ grid-template-columns:1fr }
+  .pricing .card.plan + .card.plan{ border-left:none; border-top:1px solid var(--border) }
+}
 
 /* FAQ */
 .faq{
