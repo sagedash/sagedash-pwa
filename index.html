@@ -3,12 +3,32 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+
   <title>Sagedash — Bond Closer. Rise Together.</title>
+  <meta name="description" content="Sagedash gives parents three short, loving lines they can say right now—tailored to their teen." />
   <link rel="icon" href="logo.png" />
+  <link rel="canonical" href="https://sagedash.netlify.app/" />
+
+  <!-- Fonts & CSS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+
+  <!-- Social cards -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sagedash" />
+  <meta property="og:title" content="Sagedash — Bond Closer. Rise Together." />
+  <meta property="og:description" content="Three short, loving lines—tailored to your teen." />
+  <meta property="og:image" content="https://sagedash.netlify.app/logo.png" />
+  <meta property="og:url" content="https://sagedash.netlify.app/" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Sagedash — Bond Closer. Rise Together." />
+  <meta name="twitter:description" content="Three short, loving lines—tailored to your teen." />
+  <meta name="twitter:image" content="https://sagedash.netlify.app/logo.png" />
+
+  <!-- PWA color (optional) -->
+  <meta name="theme-color" content="#9ca58a" />
 </head>
 <body>
   <div class="wrap">
@@ -16,10 +36,16 @@
     <!-- NAV -->
     <nav class="nav">
       <div class="nav-left">
-        <img src="logo.png" alt="Sagedash" class="logo"/>
-        <span class="brand">Sagedash</span>
+        <a href="/"><img src="logo.png" alt="Sagedash logo" class="logo" /></a>
       </div>
-      <div class="nav-right">Bond Closer. Rise Together.</div>
+      <!-- Right-side nav links (simple inline style so you don't have to touch CSS) -->
+      <div class="nav-right" style="display:flex;gap:16px;align-items:center;">
+        <a href="/" class="nav-link">Home</a>
+        <a href="pricing.html" class="nav-link">Pricing</a>
+        <a href="support.html" class="nav-link">Support</a>
+        <a href="privacy.html" class="nav-link">Privacy</a>
+        <a href="terms.html" class="nav-link">Terms</a>
+      </div>
     </nav>
 
     <!-- HERO -->
@@ -30,8 +56,12 @@
       <div class="hero-actions">
         <a class="btn btn-dark" href="#samples">Try 10 free moments</a>
 
-        <!-- Waitlist (Buttondown) -->
-        <form action="https://buttondown.email/api/emails/subscribe" method="post" class="waitlist">
+        <!-- Waitlist (Buttondown) — opens in new tab so you keep visitors on your page -->
+        <form action="https://buttondown.email/api/emails/subscribe"
+              method="post"
+              class="waitlist"
+              target="_blank"
+              rel="noopener noreferrer">
           <input type="hidden" name="origin" value="sagedash.app" />
           <input type="email" name="email" required placeholder="you@email.com" />
           <button class="btn btn-sage" type="submit">Join the waitlist</button>
@@ -60,7 +90,7 @@
       </div>
     </section>
 
-    <!-- SAMPLE LINES (static preview for now) -->
+    <!-- SAMPLE LINES -->
     <section id="samples" class="section">
       <h2>Sample lines</h2>
       <div class="cards three">
@@ -135,12 +165,15 @@
     <!-- FOOTER -->
     <footer class="footer">
       <div>
-        <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · <a href="/support">Support</a>
+        <a href="privacy.html">Privacy</a> ·
+        <a href="terms.html">Terms</a> ·
+        <a href="support.html">Support</a>
       </div>
       <div>© <span id="y"></span> Sagedash</div>
     </footer>
 
   </div>
+
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
   </script>
