@@ -3,171 +3,142 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-
   <title>Sagedash — Bond Closer. Rise Together.</title>
-  <meta name="description" content="Sagedash gives parents three short, loving lines they can say right now—tailored to their teen." />
-  <link rel="icon" href="/logo.png" />
-  <link rel="canonical" href="/" />
-
-  <!-- Fonts & CSS (Merriweather + Open Sans) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css" />
-
-  <!-- Social cards (relative image, no og:url) -->
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Sagedash" />
-  <meta property="og:title" content="Sagedash — Bond Closer. Rise Together." />
-  <meta property="og:description" content="Three short, loving lines—tailored to your teen." />
-  <meta property="og:image" content="/logo.png" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Sagedash — Bond Closer. Rise Together." />
-  <meta name="twitter:description" content="Three short, loving lines—tailored to your teen." />
-  <meta name="twitter:image" content="/logo.png" />
-
   <meta name="theme-color" content="#9ca58a" />
+  <link rel="manifest" href="/app/manifest.json" />
+  <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
   <div class="wrap">
-
-    <!-- NAV -->
+    <!-- Top nav -->
     <nav class="nav">
       <div class="nav-left">
-        <a href="/"><img src="/logo.png" alt="Sagedash logo" class="logo" /></a>
+        <a href="/"><img src="/logo.png" class="logo" alt="Sagedash"></a>
       </div>
-      <div class="nav-right" style="display:flex;gap:16px;align-items:center;">
+      <div class="nav-right">
         <a href="/" class="nav-link">Home</a>
         <a href="/about.html" class="nav-link">About</a>
         <a href="/pricing.html" class="nav-link">Pricing</a>
         <a href="/support.html" class="nav-link">Support</a>
-        <a href="https://blog.usgeocoder.com/" class="nav-link">Blog</a>
+        <a href="/blog.html" class="nav-link">Blog</a>
       </div>
     </nav>
 
-    <!-- HERO -->
-    <header class="hero">
-      <h1>Expert parenting coach for teen communication</h1>
-      <p class="sub">Get three short, loving lines you can say right now—tailored to your teen.</p>
+    <!-- Hero -->
+    <section class="section hero">
+      <h1 class="hero-title no-bold center">Expert parenting coach for teen communication</h1>
+      <p class="sub center">Your voice, tuned to your teen, in seconds — for closer bonds and calmer homes.</p>
 
-      <div class="hero-actions">
-        <a class="btn btn-dark" href="#samples">Try 10 free moments</a>
-
-        <form action="https://buttondown.email/api/emails/subscribe"
-              method="post"
-              class="waitlist"
-              target="_blank"
-              rel="noopener noreferrer">
-          <input type="hidden" name="origin" value="sagedash.app" />
-          <input type="email" name="email" required placeholder="you@email.com" />
-          <button class="btn btn-sage" type="submit">Join the waitlist</button>
-        </form>
+      <!-- ONE ROW: badge · email · button -->
+      <div class="waitlist-row">
+        <span class="badge">Try 10 free moments</span>
+        <input aria-label="Email" type="email" placeholder="you@email.com" />
+        <button class="btn btn-sage">Join the waitlist</button>
       </div>
+    </section>
 
-      <p class="disclaimer">Private. Not therapy. We never sell your data.</p>
-    </header>
-
-    <!-- HOW IT WORKS -->
-    <section class="section">
-      <h2>How it works</h2>
-      <div class="cards">
-        <div class="card">
-          <div class="card-title">Pick a moment</div>
-          <div class="card-text">Homework, screens, friends, motivation and more.</div>
+    <!-- How it works (centered heading, 3 boxes in one row, Step labels) -->
+    <section class="section" id="how">
+      <h2 class="section-title center no-bold">How it works</h2>
+      <div class="steps">
+        <div class="card center">
+          <div class="step-label">Step 1</div>
+          <div class="card-title no-bold">Set quick profiles</div>
+          <p class="card-text">60-second parent & teen profiles so Sagey learns tone, vibe, and slang.</p>
         </div>
-        <div class="card">
-          <div class="card-title">See 3 short lines</div>
-          <div class="card-text">Empathy first. Parent-voiced. Teen-tuned.</div>
+        <div class="card center">
+          <div class="step-label">Step 2</div>
+          <div class="card-title no-bold">Pick a moment</div>
+          <p class="card-text">Choose from 100 moments or describe your situation in your own words.</p>
         </div>
-        <div class="card">
-          <div class="card-title">Use & refine</div>
-          <div class="card-text">Copy, tweak tone, and keep the bond warm.</div>
+        <div class="card center">
+          <div class="step-label">Step 3</div>
+          <div class="card-title no-bold">Get your lines</div>
+          <p class="card-text">Three short, caring lines that sound like you — ready to send or say.</p>
         </div>
       </div>
     </section>
 
-    <!-- SAMPLE LINES (icon cards via CSS) -->
-    <section id="samples" class="section">
-      <h2>Sample lines</h2>
+    <!-- Sample lines (centered heading, centered card titles) -->
+    <section class="section" id="samples">
+      <h2 class="section-title center no-bold">Sample lines</h2>
+      <p class="muted center">Three examples from the “Hint” library. Each shows the 3-line pattern.</p>
+
       <div class="cards three">
         <div class="card">
-          <div class="card-title">Tough grade today</div>
+          <div class="card-title center no-bold">Tough grade today</div>
           <ul class="lines">
-            <li>Ah, that’s rough—I’m here.</li>
-            <li>You’re capable; this is one bump.</li>
-            <li>Want quiet time or talk it through?</li>
+            <li>Oof, that stings — I’m here.</li>
+            <li>You’re capable; one score won’t define you.</li>
+            <li>Want quiet time, a hug, or a tiny plan?</li>
           </ul>
         </div>
         <div class="card">
-          <div class="card-title">Friend drama</div>
+          <div class="card-title center no-bold">Friend drama</div>
           <ul class="lines">
-            <li>That’s tough—I get it.</li>
-            <li>Your feelings make sense.</li>
-            <li>Vent, distract, or plan a text?</li>
+            <li>That really hurt, I can tell.</li>
+            <li>Your feelings make total sense.</li>
+            <li>Want to vent, distract, or draft a text?</li>
           </ul>
         </div>
         <div class="card">
-          <div class="card-title">Screen time balance</div>
+          <div class="card-title center no-bold">Screen time balance</div>
           <ul class="lines">
-            <li>We both want balance.</li>
-            <li>Your health matters to me.</li>
-            <li>You choose the schedule; I’ll back it.</li>
+            <li>Totally get wanting more time.</li>
+            <li>Let’s make this fair and doable.</li>
+            <li>Want to try a timer or trade?</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- PRICING TEASER -->
-    <section class="section">
-      <h2>Plans</h2>
-      <p class="muted">Start free. Upgrade anytime.</p>
-      <div class="cards three">
-        <div class="card">
-          <div class="card-title">Hint</div>
+    <!-- Plans (center everything in each plan box) -->
+    <section class="section" id="plans">
+      <h2 class="section-title center no-bold">Plans</h2>
+      <div class="cards three pricing">
+        <div class="card plan">
+          <div class="card-title no-bold">Hint</div>
           <div class="price">Free</div>
-          <div class="card-text">100 moments, 3 lines each</div>
+          <p class="card-text">100 moments • 3 lines each</p>
+          <p class="card-text">Personality-aware (no AI)</p>
+          <button class="btn">Start free</button>
         </div>
-        <div class="card">
-          <div class="card-title">Core</div>
-          <div class="price">$8 solo / $12 family</div>
-          <div class="card-text">AI-tailored 3 lines (2 refinements)</div>
+        <div class="card plan">
+          <div class="card-title no-bold">Core</div>
+          <div class="price">$8 solo • $12 family</div>
+          <p class="card-text">Custom 3-line advice</p>
+          <p class="card-text">2 refinements</p>
+          <button class="btn btn-sage">Upgrade to Core</button>
         </div>
-        <div class="card">
-          <div class="card-title">Soul</div>
-          <div class="price">$13 solo / $19 family</div>
-          <div class="card-text">Free-style chat · 1,000 sends/mo</div>
+        <div class="card plan">
+          <div class="card-title no-bold">Soul</div>
+          <div class="price">$13 solo • $19 family</div>
+          <p class="card-text">Free-style chat with Sagey</p>
+          <p class="card-text">1,000 sends / month</p>
+          <button class="btn btn-dark">Go Soul</button>
         </div>
       </div>
-      <p class="disclaimer">Fair use: Soul includes 1,000 sends/month. Resets monthly.</p>
     </section>
 
-    <!-- FAQ -->
-    <section class="section narrow">
-      <h2>FAQ</h2>
+    <!-- FAQ (centered heading) -->
+    <section class="section narrow" id="faq">
+      <h2 class="section-title center no-bold">FAQ</h2>
       <details class="faq">
-        <summary>How do you personalize the lines?</summary>
-        <p>We blend your profile (voice, love language) with your teen’s vibe (outgoing/quiet/mixed), plus context. Empathy first—always.</p>
+        <summary>How are the “3 lines” written?</summary>
+        <p>They follow a simple pattern: 1) Acknowledge + mirror, 2) Validate + encourage, 3) Choice + hope.</p>
       </details>
       <details class="faq">
-        <summary>Is this therapy?</summary>
-        <p>No. Sagedash offers supportive communication guidance. For crises, please seek professional help.</p>
-      </details>
-      <details class="faq">
-        <summary>What about privacy?</summary>
-        <p>Your profile is private and used only to tailor suggestions. We never sell your data.</p>
+        <summary>What’s the difference between Hint, Core, and Soul?</summary>
+        <p>Hint uses curated lines by personality. Core generates tailored 3-line advice. Soul is free-style chat with monthly send limits.</p>
       </details>
     </section>
 
-    <!-- FOOTER -->
     <footer class="footer">
-      <div>
-        <a href="/privacy.html">Privacy</a> ·
-        <a href="/terms.html">Terms</a>
-      </div>
+      <div><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></div>
       <div>© <span id="y"></span> Sagedash</div>
     </footer>
-
   </div>
+
   <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
