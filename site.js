@@ -1,9 +1,11 @@
 // site.js — loads header/footer partials with graceful fallback
 
+const LOGO_SRC = 'logo.png'; // <-- change this if your logo file has a different name
+
 const FALLBACK_HEADER = `
 <nav class="nav">
   <div class="nav-left">
-    <a href="/"><img src="/logo.png" class="logo" alt="SageDash"></a>
+    <a href="/"><img src="${LOGO_SRC}" class="logo" alt="SageDash"></a>
   </div>
   <div class="nav-right">
     <a href="/" class="nav-link">Home</a>
@@ -25,14 +27,11 @@ async function inject(el, url, fallback) {
   if (!el) return;
   try {
     const res = await fetch(url, { cache: 'no-store' });
-    if (!res.ok) {
-      el.innerHTML = fallback; // use fallback on 404/500
-      return;
-    }
+    if (!res.ok) { el.innerHTML = fallback; return; }
     const html = await res.text();
     el.innerHTML = html;
   } catch {
-    el.innerHTML = fallback;   // use fallback on network error
+    el.innerHTML = fallback;
   }
 }
 
@@ -55,10 +54,8 @@ function highlightActive(headerRoot) {
   await inject(headerHost, '/partials/header.html', FALLBACK_HEADER);
   await inject(footerHost, '/partials/footer.html', FALLBACK_FOOTER);
 
-  // Set year (works for both partial and fallback)
-  const yearEl = document.querySelector('#footer #y, footer #y');
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
+  const y = document.querySelector('#footer #y, footer #y');
+  if (y) y.textContent = new Date().getFullYear();
 
-  // Highlight active nav link
   highlightActive(headerHost);
 })();
