@@ -9,19 +9,7 @@
 </head>
 <body>
   <div class="wrap">
-    <nav class="nav">
-      <div class="nav-left">
-        <a href="/"><img src="/logo.png" class="logo" alt="SageDash"></a>
-      </div>
-      <div class="nav-right">
-        <a href="/" class="nav-link">Home</a>
-        <a href="/about.html" class="nav-link">About</a>
-        <a href="/how-it-works.html" class="nav-link">How It Works</a>
-        <a href="/pricing.html" class="nav-link">Pricing</a>
-        <a href="/support.html" class="nav-link">Support</a>
-        <a href="/blog.html" class="nav-link">Blog</a>
-      </div>
-    </nav>
+    <div id="header"></div>
 
     <section class="band band--white">
       <div class="section narrow center">
@@ -60,11 +48,8 @@
       </div>
     </section>
 
-    <footer class="footer">
-      <div><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></div>
-      <div>© <span id="y"></span> SageDash</div>
-    </footer>
+    <div id="footer"></div>
   </div>
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+  <script src="/site.js"></script>
 </body>
 </html>
