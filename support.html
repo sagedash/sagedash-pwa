@@ -4,58 +4,68 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Support — Sagedash</title>
-  <meta name="description" content="Get help with Sagedash: contact support, billing, or feedback." />
-  <link rel="icon" href="/logo.png" />
-  <link rel="canonical" href="/support.html" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="manifest" href="/app/manifest.json" />
   <link rel="stylesheet" href="/styles.css" />
-
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Sagedash" />
-  <meta property="og:title" content="Support — Sagedash" />
-  <meta property="og:description" content="Get help with Sagedash: contact support, billing, or feedback." />
-  <meta property="og:image" content="/logo.png" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Support — Sagedash" />
-  <meta name="twitter:description" content="Get help with Sagedash: contact support, billing, or feedback." />
-  <meta name="twitter:image" content="/logo.png" />
-
-  <meta name="theme-color" content="#9ca58a" />
 </head>
 <body>
   <div class="wrap">
     <nav class="nav">
-      <div class="nav-left"><a href="/"><img src="/logo.png" alt="Sagedash logo" class="logo" /></a></div>
-      <div class="nav-right" style="display:flex;gap:16px;align-items:center;">
+      <div class="nav-left">
+        <a href="/"><img src="/logo.png" class="logo" alt="Sagedash"></a>
+      </div>
+      <div class="nav-right">
         <a href="/" class="nav-link">Home</a>
         <a href="/about.html" class="nav-link">About</a>
         <a href="/pricing.html" class="nav-link">Pricing</a>
         <a href="/support.html" class="nav-link">Support</a>
-        <a href="https://blog.usgeocoder.com/" class="nav-link">Blog</a>
+        <a href="/blog.html" class="nav-link">Blog</a>
       </div>
     </nav>
 
-    <section class="section narrow">
-      <h1>Support</h1>
-      <p>Questions, billing, or feedback? Email <a href="mailto:support@sagedash.app">support@sagedash.app</a>. We typically reply within 1–2 business days.</p>
+    <section class="band band--white">
+      <div class="section narrow">
+        <h1 class="page-title center no-bold">We’re here to help</h1>
+        <p class="lead center">Questions, feedback, or a quick bug report—send it our way.</p>
+      </div>
+    </section>
 
-      <h2>Common topics</h2>
-      <ul class="lines">
-        <li>Waitlist & launch timing</li>
-        <li>Billing & plans (Hint, Core, Soul)</li>
-        <li>Account/profile updates</li>
-        <li>Privacy & data requests</li>
-        <li>Bug reports or feature ideas</li>
-      </ul>
+    <section class="band band--alt">
+      <div class="section">
+        <h2 class="section-title center no-bold">Contact us</h2>
+        <div class="divider"></div>
+
+        <!-- Simple Netlify form (works on Netlify with no backend) -->
+        <form name="support" method="POST" data-netlify="true" class="section narrow">
+          <input type="hidden" name="form-name" value="support">
+          <p>
+            <label for="email">Email</label><br/>
+            <input id="email" name="email" type="email" placeholder="you@email.com" required>
+          </p>
+          <p>
+            <label for="type">Issue type</label><br/>
+            <select id="type" name="type" required>
+              <option value="">Choose…</option>
+              <option>Billing</option>
+              <option>Technical issue</option>
+              <option>Account/Profile</option>
+              <option>Feedback</option>
+              <option>Other</option>
+            </select>
+          </p>
+          <p>
+            <label for="msg">Message</label><br/>
+            <textarea id="msg" name="message" rows="6" placeholder="Tell us what’s going on…" required></textarea>
+          </p>
+          <p class="center">
+            <button class="btn btn-sage" type="submit">Send to Sagedash Support</button>
+          </p>
+          <p class="muted center">Prefer email? Write to <a href="mailto:support@sagedash.app">support@sagedash.app</a>.</p>
+        </form>
+      </div>
     </section>
 
     <footer class="footer">
-      <div>
-        <a href="/privacy.html">Privacy</a> ·
-        <a href="/terms.html">Terms</a>
-      </div>
+      <div><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></div>
       <div>© <span id="y"></span> Sagedash</div>
     </footer>
   </div>
