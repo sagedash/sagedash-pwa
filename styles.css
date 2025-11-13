@@ -43,7 +43,7 @@ a:hover{ color:var(--hover); text-decoration:underline }
 
 .btn{
   display:inline-block; border:1px solid var(--border);
-  background:#efeae3; color:var(--hover);
+  background:#efeae3; color:#3a342d;
   padding:11px 16px; border-radius:12px; font-weight:700;
   box-shadow:var(--shadow-s); cursor:pointer; transition:transform .15s ease, filter .15s ease;
 }
@@ -120,11 +120,16 @@ a:hover{ color:var(--hover); text-decoration:underline }
   display:inline-block; padding:8px 12px; border-radius:999px;
   background:#fff; border:1px solid var(--border); color:var(--hover); font-weight:700;
 }
+/* ✅ Taller input matches button height */
 .waitlist-row input{
-  width:100%; padding:12px 14px; border:1px solid var(--border);
-  border-radius:10px; background:#fff; color:#2f2f2d; font:inherit
+  width:100%;
+  padding:14px 16px;                 /* increased */
+  border:1px solid var(--border);
+  border-radius:14px;                 /* matches button radius */
+  background:#fff; color:#2f2f2d; font:inherit;
+  min-height:46px;                    /* matches visual height of CTA */
 }
-/* ✅ Match waitlist button to plan buttons */
+/* Match waitlist button to plan buttons */
 .waitlist-row .btn{
   font-size:clamp(16px,2.4vw,18px);
   padding:12px 20px;
@@ -188,6 +193,13 @@ a:hover{ color:var(--hover); text-decoration:underline }
 .lines li{
   background:#faf9f8; border:1px solid var(--border);
   border-radius:12px; padding:10px 12px; margin:8px 0; color:var(--ink)
+}
+
+/* ✅ Sample lines titles: match price style (bold, size, color) */
+#samples .card .card-title{
+  font-size:20px;
+  font-weight:700 !important;
+  color:var(--hover);
 }
 
 /* ========== PLANS (flat columns with vertical separators) ========== */
