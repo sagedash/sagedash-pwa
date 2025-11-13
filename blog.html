@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Blog — Sagedash</title>
+  <title>Blog — SageDash</title>
   <link rel="manifest" href="/app/manifest.json" />
   <link rel="stylesheet" href="/styles.css" />
 </head>
@@ -11,7 +11,7 @@
   <div class="wrap">
     <nav class="nav">
       <div class="nav-left">
-        <a href="/"><img src="/logo.png" class="logo" alt="Sagedash"></a>
+        <a href="/"><img src="/logo.png" class="logo" alt="SageDash"></a>
       </div>
       <div class="nav-right">
         <a href="/" class="nav-link">Home</a>
@@ -24,35 +24,47 @@
 
     <section class="band band--white">
       <div class="section narrow">
-        <h1 class="page-title center no-bold">Sagedash Blog</h1>
+        <h1 class="page-title center no-bold">SageDash Blog</h1>
         <p class="lead center">Short, practical notes on talking with teens—rooted in warmth and clarity.</p>
       </div>
     </section>
 
     <section class="band band--alt">
       <div class="section">
-        <div class="cards two">
-          <!-- Post card -->
-          <article class="card">
-            <div class="card-title no-bold"><a href="/blog/post-how-to-start-hard-talk.html">How to start a hard talk after a bad grade</a></div>
-            <p class="muted">Nov 2025 • 3 min read</p>
-            <p>Lead with empathy, keep it short, and offer a choice. Here’s a 3-line template you can use tonight…</p>
-            <p><a href="/blog/post-how-to-start-hard-talk.html">Read more →</a></p>
-          </article>
-          <!-- Post card -->
-          <article class="card">
-            <div class="card-title no-bold"><a href="/blog/post-screen-time-truce.html">A simple screen-time truce that sticks</a></div>
-            <p class="muted">Nov 2025 • 4 min read</p>
-            <p>When everyone’s calm, set a tiny rule you can actually keep. Here’s a one-week script…</p>
-            <p><a href="/blog/post-screen-time-truce.html">Read more →</a></p>
-          </article>
+        <div class="grid-2col">
+          <!-- Main column: cards -->
+          <div>
+            <article class="card">
+              <div class="card-title no-bold"><a href="/blog/post-how-to-start-hard-talk.html">How to start a hard talk after a bad grade</a></div>
+              <p class="muted">Nov 2025 • 3 min read</p>
+              <p>Lead with empathy, keep it short, and offer a choice. Here’s a 3-line template you can use tonight…</p>
+              <p><a href="/blog/post-how-to-start-hard-talk.html">Read more →</a></p>
+            </article>
+
+            <article class="card">
+              <div class="card-title no-bold"><a href="/blog/post-screen-time-truce.html">A simple screen-time truce that sticks</a></div>
+              <p class="muted">Nov 2025 • 4 min read</p>
+              <p>When everyone’s calm, set a tiny rule you can actually keep. Here’s a one-week script…</p>
+              <p><a href="/blog/post-screen-time-truce.html">Read more →</a></p>
+            </article>
+          </div>
+
+          <!-- Sidebar: list of titles -->
+          <aside class="side-list">
+            <h3>Posts</h3>
+            <ul>
+              <li><a href="/blog/post-how-to-start-hard-talk.html">How to start a hard talk after a bad grade</a></li>
+              <li><a href="/blog/post-screen-time-truce.html">A simple screen-time truce that sticks</a></li>
+              <!-- Add more as you write -->
+            </ul>
+          </aside>
         </div>
       </div>
     </section>
 
     <footer class="footer">
       <div><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></div>
-      <div>© <span id="y"></span> Sagedash</div>
+      <div>© <span id="y"></span> SageDash</div>
     </footer>
   </div>
   <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
