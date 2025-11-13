@@ -6,26 +6,25 @@
 
   <title>Pricing — Sagedash</title>
   <meta name="description" content="Plans for Sagedash: start free with Hint, then unlock AI-tailored lines with Core or full chat with Soul." />
-  <link rel="icon" href="logo.png" />
-  <link rel="canonical" href="https://sagedash.netlify.app/pricing.html" />
+  <link rel="icon" href="/logo.png" />
+  <link rel="canonical" href="/pricing.html" />
 
   <!-- Fonts & CSS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css" />
 
   <!-- Social cards -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Sagedash" />
   <meta property="og:title" content="Pricing — Sagedash" />
   <meta property="og:description" content="Start free. Upgrade anytime. Hint, Core, and Soul plans for parent–teen communication." />
-  <meta property="og:image" content="https://sagedash.netlify.app/logo.png" />
-  <meta property="og:url" content="https://sagedash.netlify.app/pricing.html" />
+  <meta property="og:image" content="/logo.png" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Pricing — Sagedash" />
   <meta name="twitter:description" content="Start free. Upgrade anytime. Hint, Core, and Soul plans for parent–teen communication." />
-  <meta name="twitter:image" content="https://sagedash.netlify.app/logo.png" />
+  <meta name="twitter:image" content="/logo.png" />
 
   <meta name="theme-color" content="#9ca58a" />
 </head>
@@ -35,14 +34,14 @@
     <!-- NAV -->
     <nav class="nav">
       <div class="nav-left">
-        <a href="/"><img src="logo.png" alt="Sagedash logo" class="logo" /></a>
+        <a href="/"><img src="/logo.png" alt="Sagedash logo" class="logo" /></a>
       </div>
       <div class="nav-right" style="display:flex;gap:16px;align-items:center;">
         <a href="/" class="nav-link">Home</a>
-        <a href="pricing.html" class="nav-link">Pricing</a>
-        <a href="support.html" class="nav-link">Support</a>
-        <a href="privacy.html" class="nav-link">Privacy</a>
-        <a href="terms.html" class="nav-link">Terms</a>
+        <a href="/about.html" class="nav-link">About</a>
+        <a href="/pricing.html" class="nav-link">Pricing</a>
+        <a href="/support.html" class="nav-link">Support</a>
+        <a href="https://blog.usgeocoder.com/" class="nav-link">Blog</a>
       </div>
     </nav>
 
@@ -55,7 +54,6 @@
     <!-- PLANS -->
     <section class="section">
       <div class="cards three">
-        <!-- Hint -->
         <div class="card">
           <div class="card-title">Hint</div>
           <div class="price">Free</div>
@@ -71,7 +69,6 @@
           </div>
         </div>
 
-        <!-- Core -->
         <div class="card">
           <div class="card-title">Core</div>
           <div class="price">$8 solo / $12 family</div>
@@ -87,7 +84,6 @@
           </div>
         </div>
 
-        <!-- Soul -->
         <div class="card">
           <div class="card-title">Soul</div>
           <div class="price">$13 solo / $19 family</div>
@@ -148,41 +144,16 @@
       </form>
     </section>
 
-    <!-- FAQ MINI -->
-    <section class="section narrow">
-      <h2>FAQ</h2>
-      <details class="faq">
-        <summary>Is Hint really free?</summary>
-        <p>Yes. Create an account to access 100 moments with 3 short lines each.</p>
-      </details>
-      <details class="faq">
-        <summary>What’s a “send” in Soul?</summary>
-        <p>One “send” is each message you send to Sagey in the chat. Soul includes 1,000 sends/month.</p>
-      </details>
-      <details class="faq">
-        <summary>What’s the difference between Solo and Family?</summary>
-        <p>Solo supports 1 parent (up to 5 teens). Family supports 2 parents (up to 5 teens).</p>
-      </details>
-      <details class="faq">
-        <summary>Can I cancel anytime?</summary>
-        <p>Yes. Plans are month-to-month; you can cancel anytime in your account.</p>
-      </details>
-    </section>
-
     <!-- FOOTER -->
     <footer class="footer">
       <div>
-        <a href="privacy.html">Privacy</a> ·
-        <a href="terms.html">Terms</a> ·
-        <a href="support.html">Support</a>
+        <a href="/privacy.html">Privacy</a> ·
+        <a href="/terms.html">Terms</a>
       </div>
       <div>© <span id="y"></span> Sagedash</div>
     </footer>
 
   </div>
-
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
