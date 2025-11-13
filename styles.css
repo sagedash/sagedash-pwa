@@ -1,5 +1,5 @@
 /* ============================================
-   Sagedash — PT Sans + banded layout (refined)
+   SageDash — PT Sans + banded layout (refined)
    ============================================ */
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap');
 
@@ -56,7 +56,7 @@ a:hover{ color:var(--hover); text-decoration:underline }
 /* Layout */
 .wrap{ max-width:1140px; margin:0 auto; padding:0 20px }
 
-/* Nav — more top space above logo (doubled earlier) */
+/* Nav */
 .nav{
   position:sticky; top:0; z-index:10;
   display:flex; align-items:center; justify-content:space-between;
@@ -110,7 +110,7 @@ a:hover{ color:var(--hover); text-decoration:underline }
   margin:14px auto 18px; width:min(120px,20%);
 }
 
-/* Waitlist (one row) */
+/* Waitlist row */
 .waitlist-row{
   display:grid; grid-template-columns: 1fr 2fr auto;
   gap:12px; align-items:center; margin-top:18px;
@@ -120,14 +120,14 @@ a:hover{ color:var(--hover); text-decoration:underline }
   display:inline-block; padding:8px 12px; border-radius:999px;
   background:#fff; border:1px solid var(--border); color:var(--hover); font-weight:700;
 }
-/* ✅ Taller input matches button height */
+/* Taller input matches button height */
 .waitlist-row input{
   width:100%;
-  padding:14px 16px;                 /* increased */
+  padding:14px 16px;
   border:1px solid var(--border);
-  border-radius:14px;                 /* matches button radius */
+  border-radius:14px;
   background:#fff; color:#2f2f2d; font:inherit;
-  min-height:46px;                    /* matches visual height of CTA */
+  min-height:46px;
 }
 /* Match waitlist button to plan buttons */
 .waitlist-row .btn{
@@ -141,7 +141,7 @@ a:hover{ color:var(--hover); text-decoration:underline }
   .waitlist-row .btn{ grid-column: span 2; }
 }
 
-/* Generic cards (still used elsewhere) */
+/* Generic cards */
 .cards{ display:grid; gap:18px; margin-top:18px }
 .cards.two{ grid-template-columns:repeat(2,minmax(0,1fr)) }
 .cards.three{ grid-template-columns:repeat(3,minmax(0,1fr)) }
@@ -157,7 +157,7 @@ a:hover{ color:var(--hover); text-decoration:underline }
 .card-title{ color:var(--hover); margin-bottom:6px; font-weight:400 }
 .card-text{ color:var(--ink) }
 
-/* ========== HOW IT WORKS (flat columns with vertical separators) ========== */
+/* HOW IT WORKS */
 .steps{
   display:grid; grid-template-columns:repeat(3,minmax(0,1fr));
   gap:0; margin-top:10px; align-items:stretch;
@@ -167,7 +167,7 @@ a:hover{ color:var(--hover); text-decoration:underline }
 }
 .steps .card + .card{ border-left:1px solid var(--border) }
 
-/* Step labels larger (button-like) */
+/* Step label (button-like) */
 .step-label{
   display:inline-block; margin-bottom:8px;
   background:var(--sage); color:#fff; font-weight:700;
@@ -176,7 +176,7 @@ a:hover{ color:var(--hover); text-decoration:underline }
   letter-spacing:.2px;
 }
 
-/* Step titles (all same size, not bold) */
+/* Step titles (same size, not bold) */
 .steps .card .card-title{
   font-size:clamp(20px,2.8vw,26px);
   font-weight:400 !important;
@@ -188,21 +188,20 @@ a:hover{ color:var(--hover); text-decoration:underline }
   .steps .card + .card{ border-left:none; border-top:1px solid var(--border) }
 }
 
-/* Lines (samples) */
+/* Sample lines */
 .lines{ list-style:none; margin:10px 0 0; padding:0 }
 .lines li{
   background:#faf9f8; border:1px solid var(--border);
   border-radius:12px; padding:10px 12px; margin:8px 0; color:var(--ink)
 }
-
-/* ✅ Sample lines titles: match price style (bold, size, color) */
+/* Sample lines titles: bold like price */
 #samples .card .card-title{
   font-size:20px;
   font-weight:700 !important;
   color:var(--hover);
 }
 
-/* ========== PLANS (flat columns with vertical separators) ========== */
+/* PLANS */
 .pricing{
   display:grid; grid-template-columns:repeat(3,minmax(0,1fr));
   gap:0; margin-top:10px;
@@ -212,13 +211,13 @@ a:hover{ color:var(--hover); text-decoration:underline }
 }
 .pricing .card.plan + .card.plan{ border-left:1px solid var(--border) }
 
-/* Plan names: slightly larger, still under "Plans" (30px max) */
+/* Plan names */
 .pricing .card.plan .card-title{
   font-size:clamp(21px,3vw,29px);
   font-weight:400 !important;
 }
 
-/* Pricing buttons larger (only in Plans) */
+/* Pricing buttons larger */
 .pricing .card.plan .btn{
   font-size:clamp(16px,2.4vw,18px);
   padding:12px 20px;
@@ -233,6 +232,41 @@ a:hover{ color:var(--hover); text-decoration:underline }
   .pricing{ grid-template-columns:1fr }
   .pricing .card.plan + .card.plan{ border-left:none; border-top:1px solid var(--border) }
 }
+
+/* Forms (Support etc.) */
+.form label{ font-weight:700; color:var(--ink) }
+.form .control{
+  width:100%;
+  padding:14px 16px;
+  border:1px solid var(--border);
+  border-radius:14px;
+  background:#fff; color:#2f2f2d; font:inherit;
+  min-height:46px;
+}
+.form textarea.control{
+  min-height:140px; line-height:1.5; resize:vertical;
+}
+.form .actions{ margin-top:10px; text-align:left } /* left-align submit */
+
+/* Blog layout */
+.grid-2col{
+  display:grid; grid-template-columns: 2fr 1fr; gap:22px;
+}
+@media (max-width:980px){
+  .grid-2col{ grid-template-columns:1fr }
+}
+.side-list{
+  background:#fff; border:1px solid var(--border); border-radius:var(--radius);
+  padding:14px; box-shadow:var(--shadow-s);
+}
+.side-list h3{
+  margin:0 0 8px; font-weight:400; color:var(--hover); font-size:18px;
+}
+.side-list ul{ list-style:none; margin:0; padding:0 }
+.side-list li{ padding:8px 0; border-bottom:1px solid var(--border) }
+.side-list li:last-child{ border-bottom:none }
+.side-list a{ text-decoration:none }
+.side-list a:hover{ text-decoration:underline }
 
 /* FAQ */
 .faq{
