@@ -1,141 +1,143 @@
-/* ---- Fonts ----
-   Match blog H4: serif heading style using Merriweather
-   (loaded via Google Fonts here so you don't have to edit HTML)
-*/
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap');
+/* ==============================
+   Sagedash — Clean PT Sans Theme
+   ============================== */
 
-/* ---- Color tokens (your palette) ---- */
+/* Load PT Sans (headings + body) */
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap');
+
+/* ---- Theme tokens ---- */
 :root{
-  --bg: #f3f1ef;         /* Soft beige */
-  --text: #3e3e3c;       /* Deep charcoal */
-  --sage: #9ca58a;       /* Sage green (buttons) */
-  --link: #945e5b;       /* Warm terracotta (links) */
-  --hover: #433931;      /* Rich brown (hover) */
-  --card: #ffffff;
-  --border: #e6e2de;
+  --bg:#f3f1ef;        /* Soft beige */
+  --ink:#3e3e3c;       /* Deep charcoal */
+  --sage:#9ca58a;      /* Sage green */
+  --link:#945e5b;      /* Terracotta links */
+  --hover:#433931;     /* Rich brown */
+  --card:#ffffff;
+  --border:#e6e2de;    /* soft border */
+  --muted:#6a6866;
+
+  --radius:14px;
+  --radius-lg:18px;
+
+  --shadow-s:0 1px 2px rgba(17,24,39,.06);
+  --shadow-m:0 10px 24px rgba(17,24,39,.10);
 }
 
 /* ---- Base ---- */
-*{ box-sizing: border-box; }
-html, body{
-  margin:0; padding:0;
-  background: var(--bg);
-  color: var(--text);
-  font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
-  text-rendering: optimizeLegibility;
+*{ box-sizing:border-box }
+html,body{ height:100% }
+body{
+  margin:0;
+  font-family:"PT Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-size:16px; line-height:1.6;
+  color:var(--ink); background:var(--bg);
+  -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
 }
 
-/* Headings: use Merriweather to match blog H4 */
-h1, h2, h3, h4, .hero-title, .section h1 {
-  font-family: "Merriweather", Georgia, "Times New Roman", serif;
-  color: var(--hover);
-  margin: 0 0 0.5rem;
-  line-height: 1.25;
+/* ---- Typography ---- */
+h1,h2,h3,h4{
+  font-family:"PT Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-weight:700; color:var(--hover); margin:0 0 .5rem; line-height:1.25;
 }
-h1{ font-size: clamp(28px, 4vw, 42px); font-weight:700; }
-h2{ font-size: clamp(22px, 3vw, 32px); font-weight:700; }
-h3{ font-size: clamp(18px, 2.5vw, 24px); font-weight:700; }
-h4{ font-size: clamp(16px, 2vw, 20px); font-weight:700; }
+h1{ font-size:clamp(28px,4vw,40px) }
+h2{ font-size:clamp(22px,3vw,30px) }
+h3{ font-size:clamp(18px,2.4vw,22px) }
+h4{ font-size:clamp(16px,2vw,19px) }
+
+p{ margin:.6rem 0 }
+.muted{ color:var(--muted); }
 
 /* ---- Links & buttons ---- */
-a{ color: var(--link); text-decoration: none; }
-a:hover{ color: var(--hover); text-decoration: underline; }
+a{ color:var(--link); text-decoration:none }
+a:hover{ color:var(--hover); text-decoration:underline }
 
 .btn{
-  background: #e9e6e1;
-  color: var(--hover);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 10px 14px;
-  font-weight: 600;
-  cursor: pointer;
+  display:inline-block; border:1px solid var(--border);
+  background:#ece8e3; color:var(--hover);
+  padding:10px 14px; border-radius:12px; font-weight:700;
+  box-shadow:var(--shadow-s); cursor:pointer; transition:transform .15s ease, filter .15s ease;
 }
-.btn:hover{ background: #e2ded9; }
+.btn:hover{ filter:brightness(0.97); transform:translateY(-1px) }
+.btn:focus-visible{ outline:3px solid rgba(148,94,91,.35); outline-offset:2px }
 
-.btn-sage{
-  background: var(--sage);
-  color: #fff;
-  border: none;
-}
-.btn-sage:hover{ filter: brightness(0.92); }
-
-.btn-dark{
-  background: var(--hover);
-  color: #fff;
-  border: none;
-}
+.btn-sage{ background:var(--sage); color:#fff; border:none }
+.btn-sage:hover{ filter:brightness(0.94) }
+.btn-dark{ background:var(--hover); color:#fff; border:none }
 
 /* ---- Layout ---- */
-.wrap{ max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+.wrap{ max-width:1100px; margin:0 auto; padding:0 20px }
 
+/* Nav (simple, tidy) */
 .nav{
+  position:sticky; top:0; z-index:10;
   display:flex; align-items:center; justify-content:space-between;
-  gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--border);
+  padding:14px 0; background:rgba(243,241,239,.92);
+  backdrop-filter:saturate(115%) blur(6px);
+  border-bottom:1px solid var(--border);
 }
-.logo{ width:265px; height:60px; object-fit: contain; }
-.nav-right a{ margin-left:16px; font-weight:600; color: var(--text); }
-.nav-right a:hover{ color: var(--hover); }
+.nav-left{ display:flex; align-items:center; gap:10px }
+.logo{ width:265px; height:60px; object-fit:contain; object-position:left center; display:block }
+@media (max-width:640px){ .logo{ width:200px; height:45px } }
 
-.section{ padding: 40px 0; }
-.section.narrow{ max-width: 760px; margin: 0 auto; }
+.nav-right{ display:flex; align-items:center; gap:18px }
+.nav-link{ color:var(--ink); font-weight:700; text-decoration:none; padding:6px 2px }
+.nav-link:hover{ color:var(--hover); text-decoration:underline }
 
+/* Sections */
+.section{ padding:44px 0 }
+.section.narrow{ max-width:760px; margin:0 auto }
+
+/* Hero */
 .hero{
-  background: linear-gradient(180deg, rgba(156,165,138,0.10) 0%, rgba(156,165,138,0.00) 100%);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 26px 22px;
+  background:linear-gradient(180deg, rgba(156,165,138,.12) 0%, rgba(156,165,138,0) 100%);
+  border:1px solid var(--border); border-radius:var(--radius-lg);
+  padding:28px 22px; box-shadow:var(--shadow-s);
+  text-align:center;
 }
-.hero p{ margin: 8px 0 0; }
+.hero .sub{ max-width:720px; margin:8px auto 0; color:#585654 }
 
-/* ---- Cards ---- */
+/* Cards & grids */
+.cards{ display:grid; gap:18px }
+.cards.two{ grid-template-columns:repeat(2,minmax(0,1fr)) }
+.cards.three{ grid-template-columns:repeat(3,minmax(0,1fr)) }
+@media (max-width:900px){ .cards.three{ grid-template-columns:repeat(2,minmax(0,1fr)) } }
+@media (max-width:640px){ .cards.two,.cards.three{ grid-template-columns:1fr } }
+
 .card{
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 16px;
-  margin: 18px 0;
-  box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+  background:var(--card); border:1px solid var(--border);
+  border-radius:var(--radius); padding:18px;
+  box-shadow:var(--shadow-s); transition:transform .15s ease, box-shadow .15s ease;
 }
-.card-title{
-  font-family: "Merriweather", Georgia, "Times New Roman", serif;
-  font-size: 20px; font-weight: 700; color: var(--hover); margin-bottom: 6px;
-}
-.card-text{ color: var(--text); }
+.card:hover{ transform:translateY(-2px); box-shadow:var(--shadow-m) }
+.card-title{ font-weight:700; color:var(--hover); margin-bottom:6px }
+.card-text{ color:var(--ink) }
 
-/* ---- Forms ---- */
-input, select, textarea{
-  width:100%;
-  padding:10px 12px;
-  border:1px solid var(--border);
-  border-radius:10px;
-  background:#fff;
-  color:var(--text);
-  font: inherit;
-}
-input:focus, select:focus, textarea:focus{
-  outline:2px solid var(--sage);
-  outline-offset: 2px;
-}
-textarea{ resize: vertical; }
+/* Price highlight */
+.price{ font-weight:700; color:var(--hover); font-size:20px; margin:6px 0 }
 
-/* ---- Lists (lines output) ---- */
-.lines{
-  list-style: none; padding-left: 0; margin: 10px 0 0;
-}
+/* Lines output */
+.lines{ list-style:none; margin:10px 0 0; padding:0 }
 .lines li{
-  background:#faf9f8;
-  border:1px solid var(--border);
-  border-radius:10px;
-  padding:10px 12px;
-  margin:8px 0;
+  background:#faf9f8; border:1px solid var(--border);
+  border-radius:12px; padding:10px 12px; margin:8px 0; color:var(--ink)
 }
 
-/* ---- Footer ---- */
+/* Forms */
+input, select, textarea{
+  width:100%; padding:10px 12px; border:1px solid var(--border);
+  border-radius:12px; background:#fff; color:var(--ink); font:inherit
+}
+textarea{ resize:vertical }
+input:focus, select:focus, textarea:focus{
+  outline:2px solid var(--sage); outline-offset:2px
+}
+
+/* Footer */
 .footer{
   border-top:1px solid var(--border);
-  color:#6a6866;
-  display:flex; align-items:center; justify-content:space-between;
-  padding:18px 0; margin-top: 30px;
+  color:var(--muted); font-size:14px;
+  padding:22px 0; margin-top:24px;
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
 }
-.footer a{ color:#6a6866; }
-.footer a:hover{ color: var(--hover); }
+.footer a{ color:inherit }
+.footer a:hover{ color:var(--hover) }
