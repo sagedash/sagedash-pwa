@@ -60,7 +60,7 @@ a:hover{ color:var(--hover); text-decoration:underline }
 .nav{
   position:sticky; top:0; z-index:10;
   display:flex; align-items:center; justify-content:space-between;
-  padding:28px 0 14px;              /* increased top padding from 14px → 28px */
+  padding:28px 0 14px;              /* increased top padding */
   background:#fff;
   border-bottom:1px solid var(--border);
 }
@@ -153,11 +153,25 @@ a:hover{ color:var(--hover); text-decoration:underline }
 .steps .card + .card{
   border-left:1px solid var(--border);   /* vertical separator */
 }
+/* Step titles:
+   - Step 1: larger + bold
+   - Step 2 & 3: bumped up to same size, not bold (clean hierarchy) */
+.steps .card:first-child .card-title{
+  font-size:clamp(20px,2.8vw,26px);
+  font-weight:700 !important;
+}
+.steps .card:nth-child(2) .card-title,
+.steps .card:nth-child(3) .card-title{
+  font-size:clamp(20px,2.8vw,26px);
+  font-weight:400 !important;
+}
 /* Mobile behavior */
 @media (max-width:980px){
   .steps{ grid-template-columns:1fr }
   .steps .card + .card{ border-left:none; border-top:1px solid var(--border) }
 }
+
+/* Step pill */
 .step-label{
   display:inline-block; margin-bottom:6px;
   background:var(--sage); color:#fff; font-weight:700;
@@ -184,6 +198,11 @@ a:hover{ color:var(--hover); text-decoration:underline }
 }
 .pricing .card.plan + .card.plan{
   border-left:1px solid var(--border);   /* vertical separator */
+}
+/* Plan names: slightly larger, still under "Plans" (30px max) */
+.pricing .card.plan .card-title{
+  font-size:clamp(21px,3vw,29px);
+  font-weight:400 !important;
 }
 .price{ font-weight:700; color:var(--hover); font-size:20px; margin:6px 0 }
 /* Mobile behavior */
