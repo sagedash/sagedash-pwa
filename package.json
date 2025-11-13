@@ -1,0 +1,8 @@
+{
+  "name": "sagedash-pwa",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "echo 'Build complete' && mkdir -p dist && cp *.html dist/ 2>/dev/null || cp index.html dist/"
+  }
+}
