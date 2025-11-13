@@ -1,104 +1,192 @@
+/* =========================
+   Sagedash — Global Styles
+   ========================= */
+
+/* ===== Theme ===== */
 :root{
-  /* Palette */
-  --bg:#f3f1ef;          /* Soft beige (Background) */
-  --ink:#3e3e3c;         /* Deep charcoal (Main text) */
-  --sage:#9ca58a;        /* Sage green (Buttons) */
-  --link:#945e5b;        /* Warm terracotta (Links) */
-  --hover:#433931;       /* Rich brown (Hover) */
-  --border:#d8d2cc;      /* Soft border to match beige */
+  --bg:#f3f1ef;          /* Soft beige */
+  --ink:#3e3e3c;         /* Deep charcoal */
+  --sage:#9ca58a;        /* Sage green */
+  --link:#945e5b;        /* Terracotta links */
+  --hover:#433931;       /* Rich brown hover */
+  --border:#d8d2cc;      /* Soft border */
+  --muted:#6b7280;       /* Muted text */
+
+  --radius:16px;
+  --radius-lg:20px;
+
+  --shadow-s:0 1px 2px rgba(17,24,39,.06);
+  --shadow-m:0 8px 24px rgba(17,24,39,.08);
+  --shadow-l:0 20px 45px rgba(17,24,39,.12);
 }
 
 *{ box-sizing:border-box }
-
+html,body{ height:100% }
 body{
   margin:0;
-  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  /* Blog-style pair: headings = Merriweather, body = Open Sans (loaded in HTML) */
+  font-family:"Open Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   background:var(--bg);
   color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
 }
+h1,h2,h3{ font-family:"Merriweather", Georgia, "Times New Roman", serif; font-weight:700 }
+p{ line-height:1.6 }
 
+/* Layout */
 .wrap{ max-width:1120px; margin:0 auto; padding:0 24px }
 
-/* NAV */
-.nav{ display:flex; justify-content:space-between; align-items:center; padding:16px 0 }
+/* ===== Nav (sticky, subtle glass) ===== */
+.nav{
+  position:sticky; top:0; z-index:40;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:14px 0;
+  background:rgba(243,241,239,.85);
+  backdrop-filter:saturate(120%) blur(6px);
+  border-bottom:1px solid var(--border);
+}
 .nav-left{ display:flex; align-items:center; gap:10px }
 
 /* Logo: 265x60 with mobile fallback */
 .logo{
   width:265px; height:60px;
   object-fit:contain; object-position:left center;
-  display:block; border-radius:0;
+  display:block;
 }
 @media (max-width:640px){
   .logo{ width:200px; height:45px }
 }
 
-/* LINKS */
+/* Top links */
+.nav-right{ display:flex; gap:18px; align-items:center }
+.nav-link{
+  color:var(--link); text-decoration:none; font-weight:700; position:relative;
+}
+.nav-link::after{
+  content:""; position:absolute; left:0; right:0; bottom:-6px; height:2px;
+  background:currentColor; transform:scaleX(0); transform-origin:left;
+  transition:transform .2s ease;
+}
+.nav-link:hover{ color:var(--hover) }
+.nav-link:hover::after{ transform:scaleX(1) }
+.nav-link:focus-visible{
+  outline:3px solid rgba(148,94,91,.35); outline-offset:3px; border-radius:6px;
+}
+
+/* ===== Typography & links ===== */
 a{ color:var(--link); text-decoration:none }
-a:hover{ color:var(--hover); text-decoration:underline }
+a:hover{ color:var(--hover) }
 
-/* HERO */
-.hero{ text-align:center; padding:56px 0 }
-.hero h1{ font-size:36px; line-height:1.2; margin:0; color:var(--hover) } /* confident headline */
+h1,h2{ margin:0; line-height:1.2 }
+.section h2{
+  text-align:center; font-size:26px; color:var(--ink);
+  position:relative; display:inline-block; margin:0 auto;
+}
+.section h2::after{
+  content:""; display:block; width:56px; height:4px; border-radius:999px;
+  background:var(--sage); margin:10px auto 0;
+}
+
+.muted{ text-align:center; color:var(--muted); margin-top:8px }
+
+/* ===== Hero ===== */
+.hero{
+  text-align:center; padding:64px 0;
+}
+.hero h1{ font-size:40px; color:var(--hover) }
 .hero .sub{ margin:12px auto 0; max-width:720px; font-size:18px; color:#5a5956 }
-.hero-actions{ margin:24px 0; display:flex; gap:12px; justify-content:center; flex-wrap:wrap }
-.disclaimer{ color:#6b7280; font-size:12px }
-
-/* BUTTONS */
-.btn{
-  display:inline-block; padding:12px 16px; border-radius:12px;
-  text-decoration:none; font-weight:600; border:0; cursor:pointer;
-}
-.btn-dark{ background:var(--hover); color:var(--bg) }         /* dark, high-contrast */
-.btn-sage{ background:var(--sage); color:var(--ink) }         /* sage with dark text */
-.btn:hover, .btn:focus{ background:var(--hover); color:var(--bg) }
-
-/* WAITLIST FORM */
-.waitlist{ display:flex; gap:8px }
-.waitlist input{
-  padding:12px 14px; border-radius:12px;
-  border:1px solid var(--border); min-width:220px;
-  background:#fff; color:var(--ink)
-}
-
-/* SECTIONS & CARDS */
-.section{ padding:40px 0 }
-.section h2{ text-align:center; font-size:24px; margin:0; color:var(--ink) }
-.muted{ text-align:center; color:#6b7280; margin-top:8px }
-
-.cards{ display:grid; gap:16px; margin-top:24px }
-.cards.three{ grid-template-columns:repeat(3,minmax(0,1fr)) }
-@media (max-width:900px){ .cards.three{ grid-template-columns:1fr } }
-
-.card{
-  background:#fff; border:1px solid var(--border);
-  border-radius:16px; padding:20px
-}
-.card-title{ font-weight:600; margin-bottom:6px; color:var(--ink) }
-.card-text{ color:#5a5956 }
-.price{ font-size:18px; font-weight:700; margin:8px 0; color:var(--hover) }
-
-.lines{ list-style:none; padding:0; margin:8px 0 0 }
-.lines li{
-  border:1px solid var(--border); border-radius:12px;
-  padding:8px 10px; margin:6px 0; color:var(--ink)
-}
-
-/* FAQ & FOOTER */
-.narrow{ max-width:720px; margin:0 auto }
-.faq{
-  background:#fff; border:1px solid var(--border);
-  border-radius:16px; padding:14px 18px
-}
-.faq + .faq{ margin-top:10px }
-.faq summary{ cursor:pointer; font-weight:600; color:var(--ink) }
-
-.footer{ text-align:center; color:#6b7280; font-size:14px; padding:40px 0 }
-.footer a{ color:inherit }
-
-/* Mobile text tweaks */
 @media (max-width:640px){
   .hero{ padding:40px 0 }
   .hero h1{ font-size:28px }
   .hero .sub{ font-size:16px }
 }
+
+.hero-actions{ margin:26px 0; display:flex; gap:12px; justify-content:center; flex-wrap:wrap }
+.disclaimer{ color:var(--muted); font-size:12px }
+
+/* ===== Buttons ===== */
+.btn{
+  display:inline-block; padding:12px 16px; border-radius:12px;
+  font-weight:700; border:0; cursor:pointer; transition:all .16s ease;
+  box-shadow:var(--shadow-s);
+}
+.btn:focus-visible{ outline:3px solid rgba(148,94,91,.35); outline-offset:2px }
+.btn-dark{ background:var(--hover); color:var(--bg) }
+.btn-dark:hover{ transform:translateY(-1px); box-shadow:var(--shadow-m) }
+.btn-sage{ background:var(--sage); color:var(--ink) }
+.btn-sage:hover{ background:var(--hover); color:var(--bg); transform:translateY(-1px); box-shadow:var(--shadow-m) }
+
+/* ===== Forms ===== */
+.waitlist{ display:flex; gap:8px; flex-wrap:wrap }
+.waitlist input{
+  padding:12px 14px; border-radius:12px; border:1px solid var(--border);
+  min-width:240px; background:#fff; color:var(--ink); box-shadow:var(--shadow-s);
+}
+.waitlist input:focus{
+  border-color:var(--link);
+  outline:2px solid rgba(148,94,91,.25); outline-offset:2px
+}
+
+/* ===== Sections & cards ===== */
+.section{ padding:44px 0 }
+.cards{ display:grid; gap:18px; margin-top:24px }
+.cards.three{ grid-template-columns:repeat(auto-fit,minmax(260px,1fr)) }
+
+.card{
+  background:#fff; border:1px solid var(--border);
+  border-radius:var(--radius); padding:20px;
+  box-shadow:var(--shadow-s);
+  transition:transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+}
+.card:hover{ transform:translateY(-2px); box-shadow:var(--shadow-m); border-color:transparent }
+
+.card-title{ font-weight:700; margin-bottom:6px; color:var(--ink); font-family:"Merriweather", Georgia, serif }
+.card-text{ color:#5a5956 }
+.price{ font-size:20px; font-weight:800; margin:8px 0; color:var(--hover) }
+
+/* Lines list as neat pills */
+.lines{ list-style:none; padding:0; margin:8px 0 0 }
+.lines li{
+  background:#fff; border:1px solid var(--border);
+  border-radius:12px; padding:10px 12px; margin:6px 0; color:var(--ink);
+  box-shadow:var(--shadow-s);
+}
+
+/* ===== Icon cards for "Sample lines" (CSS-only SVGs) ===== */
+#samples .card{ position:relative; padding-top:56px }
+#samples .card::before{
+  content:""; position:absolute; left:20px; top:-22px;
+  width:52px; height:52px; border-radius:50%;
+  background:#fff; border:3px solid var(--sage);
+  box-shadow:var(--shadow-m);
+  background-repeat:no-repeat; background-position:center; background-size:28px 28px;
+}
+/* 1) Tough grade: clipboard/check */
+#samples .cards .card:nth-child(1)::before{
+  background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="%23433931" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6a2 2 0 0 1 2 2v1h1a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h1V5a2 2 0 0 1 2-2z"/><path d="M9 5h6"/><path d="M9 14l2 2 4-4"/></svg>');
+}
+/* 2) Friend drama: chat bubbles */
+#samples .cards .card:nth-child(2)::before{
+  background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="%23433931" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a4 4 0 0 1-4 4H7l-4 4v-4a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4"/><path d="M15 11h6v6l-3-3-3 3z" opacity=".2"/></svg>');
+}
+/* 3) Screen time: clock */
+#samples .cards .card:nth-child(3)::before{
+  background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="%23433931" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>');
+}
+
+/* ===== FAQ ===== */
+.narrow{ max-width:720px; margin:0 auto }
+.faq{
+  background:#fff; border:1px solid var(--border);
+  border-radius:var(--radius); padding:14px 18px; box-shadow:var(--shadow-s)
+}
+.faq + .faq{ margin-top:10px }
+.faq summary{ cursor:pointer; font-weight:700; color:var(--ink) }
+
+/* ===== Footer ===== */
+.footer{
+  text-align:center; color:var(--muted); font-size:14px; padding:40px 0;
+  border-top:1px solid var(--border); margin-top:20px;
+}
+.footer a{ color:inherit }
