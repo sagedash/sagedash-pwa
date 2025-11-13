@@ -1,5 +1,5 @@
 /* ============================================
-   SageDash — PT Sans + banded layout (refined)
+   SageDash — PT Sans + clean banded layout
    ============================================ */
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap');
 
@@ -8,11 +8,11 @@
   --bg:#ffffff;
   --ink:#2f2f2d;
   --sage:#8f9b79;
-  --link:#8a4e4b;
+  --link:#945e5b;       /* warm terracotta (links + active nav) */
   --hover:#3a342d;
-  --alt:#f4f2ef;       /* light band */
+  --alt:#f4f2ef;        /* light band */
   --card:#ffffff;
-  --border:#d9d2c9;    /* separator */
+  --border:#d9d2c9;     /* separator */
   --muted:#666462;
 
   --radius:14px;
@@ -56,7 +56,7 @@ a:hover{ color:var(--hover); text-decoration:underline }
 /* Layout */
 .wrap{ max-width:1140px; margin:0 auto; padding:0 20px }
 
-/* Nav */
+/* Nav (partial) */
 .nav{
   position:sticky; top:0; z-index:10;
   display:flex; align-items:center; justify-content:space-between;
@@ -66,24 +66,24 @@ a:hover{ color:var(--hover); text-decoration:underline }
 }
 .nav-left{ display:flex; align-items:center; gap:10px }
 
-/* Logo 183 × 80 */
+/* Logo 229×100 */
 .logo{
-  width:183px; height:80px;
+  width:229px; height:100px;
   object-fit:contain; object-position:left center; display:block
 }
 @media (max-width:640px){
-  .logo{ width:160px; height:70px }
+  .logo{ width:190px; height:84px }
 }
 
 .nav-right{ display:flex; align-items:center; gap:18px }
 .nav-link{ color:var(--ink); font-weight:700; text-decoration:none; padding:6px 2px }
 .nav-link:hover{ color:var(--hover); text-decoration:underline }
+.nav-link.active{ color:var(--link); text-decoration:underline }
 
-/* Bands */
+/* Bands & sections */
 .band{ width:100%; }
 .band--white{ background:#fff }
 .band--alt{ background:var(--alt) }
-
 .section{ padding:48px 0 }
 .section.narrow{ max-width:820px; margin:0 auto }
 
@@ -99,6 +99,13 @@ a:hover{ color:var(--hover); text-decoration:underline }
   color:#55524f;
   margin:6px auto 0;
 }
+.slogan{
+  margin:8px 0 4px;
+  color:var(--hover);
+  font-weight:400;
+  font-size:clamp(24px,4vw,34px);
+  line-height:1.2;
+}
 .section-title{
   font-size:clamp(22px,3vw,30px);
   color:var(--hover);
@@ -110,10 +117,16 @@ a:hover{ color:var(--hover); text-decoration:underline }
   margin:14px auto 18px; width:min(120px,20%);
 }
 
-/* Hero countdown */
-.launch-line{ margin-top:10px; color:var(--hover); font-weight:700 }
+/* Hero countown */
+.launch-line{
+  margin-top:14px;
+  color:var(--hover);
+  font-weight:400;
+  font-size:clamp(32px,5vw,46px);
+  line-height:1.15;
+}
 .countdown{
-  margin:10px auto 0;
+  margin:12px auto 0;
   display:flex; justify-content:center; align-items:center; gap:12px;
   flex-wrap:wrap;
 }
@@ -124,7 +137,7 @@ a:hover{ color:var(--hover); text-decoration:underline }
 .timebox .num{ font-size:22px; font-weight:700; color:var(--hover); display:block; line-height:1.1 }
 .timebox .lab{ font-size:12px; color:var(--muted) }
 
-/* Inline form row */
+/* Inline form */
 .inline-form{
   display:grid; grid-template-columns: 2fr auto; gap:12px; align-items:center;
   margin-top:14px; padding:14px; border:1px solid var(--border); border-radius:12px; background:#fff;
@@ -137,7 +150,7 @@ a:hover{ color:var(--hover); text-decoration:underline }
   .inline-form{ grid-template-columns:1fr }
 }
 
-/* Generic cards */
+/* Cards */
 .cards{ display:grid; gap:18px; margin-top:18px }
 .cards.two{ grid-template-columns:repeat(2,minmax(0,1fr)) }
 .cards.three{ grid-template-columns:repeat(3,minmax(0,1fr)) }
@@ -153,7 +166,7 @@ a:hover{ color:var(--hover); text-decoration:underline }
 .card-title{ color:var(--hover); margin-bottom:6px; font-weight:400 }
 .card-text{ color:var(--ink) }
 
-/* HOW IT WORKS (moved to page) */
+/* How it works */
 .steps{
   display:grid; grid-template-columns:repeat(3,minmax(0,1fr));
   gap:0; margin-top:10px; align-items:stretch;
@@ -171,12 +184,8 @@ a:hover{ color:var(--hover); text-decoration:underline }
   font-size:clamp(20px,2.8vw,26px);
   font-weight:400 !important; text-align:center;
 }
-@media (max-width:980px){
-  .steps{ grid-template-columns:1fr }
-  .steps .card + .card{ border-left:none; border-top:1px solid var(--border) }
-}
 
-/* Sample lines */
+/* Samples */
 .lines{ list-style:none; margin:10px 0 0; padding:0 }
 .lines li{
   background:#faf9f8; border:1px solid var(--border);
@@ -186,7 +195,7 @@ a:hover{ color:var(--hover); text-decoration:underline }
   font-size:20px; font-weight:700 !important; color:var(--hover);
 }
 
-/* PLANS */
+/* Pricing */
 .pricing{
   display:grid; grid-template-columns:repeat(3,minmax(0,1fr));
   gap:0; margin-top:10px;
@@ -216,7 +225,7 @@ a:hover{ color:var(--hover); text-decoration:underline }
 .form textarea.control{ min-height:140px; line-height:1.5; resize:vertical; }
 .form .actions{ margin-top:10px; text-align:left }
 
-/* Blog layout */
+/* Blog */
 .grid-2col{ display:grid; grid-template-columns: 2fr 1fr; gap:22px; }
 @media (max-width:980px){ .grid-2col{ grid-template-columns:1fr } }
 .post-grid{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
@@ -235,14 +244,7 @@ a:hover{ color:var(--hover); text-decoration:underline }
 .blog-side-list li{ padding:8px 0; border-bottom:1px solid var(--border) }
 .blog-side-list li:last-child{ border-bottom:none }
 
-/* FAQ */
-.faq{
-  background:#fff; border:1px solid var(--border);
-  border-radius:var(--radius); padding:14px 18px; box-shadow:var(--shadow-s); margin:10px 0;
-}
-.faq summary{ cursor:pointer; font-weight:700; color:var(--ink) }
-
-/* Footer */
+/* Footer (partial) */
 .footer{
   border-top:1px solid var(--border);
   color:#6d6b69; font-size:14px;
