@@ -9,25 +9,19 @@
 </head>
 <body>
   <div class="wrap">
-    <nav class="nav">
-      <div class="nav-left">
-        <a href="/"><img src="/logo.png" class="logo" alt="SageDash"></a>
-      </div>
-      <div class="nav-right">
-        <a href="/" class="nav-link">Home</a>
-        <a href="/about.html" class="nav-link">About</a>
-        <a href="/how-it-works.html" class="nav-link">How It Works</a>
-        <a href="/pricing.html" class="nav-link">Pricing</a>
-        <a href="/support.html" class="nav-link">Support</a>
-        <a href="/blog.html" class="nav-link">Blog</a>
-      </div>
-    </nav>
+    <div id="header"></div>
 
+    <!-- Title + lead (About-style) -->
+    <section class="band band--white">
+      <div class="section narrow center">
+        <h1 class="page-title no-bold">How it works</h1>
+        <p class="lead">Three quick steps turn tough moments into warm, short, right-now words—personalized to your family.</p>
+      </div>
+    </section>
+
+    <!-- Steps band -->
     <section class="band band--alt">
       <div class="section">
-        <h1 class="section-title center no-bold">How it works</h1>
-        <div class="divider"></div>
-
         <div class="steps">
           <div class="card">
             <span class="step-label">Step 1</span>
@@ -48,6 +42,7 @@
       </div>
     </section>
 
+    <!-- Samples band -->
     <section class="band band--white" id="samples">
       <div class="section">
         <h2 class="section-title center no-bold">Sample lines</h2>
@@ -82,11 +77,8 @@
       </div>
     </section>
 
-    <footer class="footer">
-      <div><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></div>
-      <div>© <span id="y"></span> SageDash</div>
-    </footer>
+    <div id="footer"></div>
   </div>
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+  <script src="/site.js"></script>
 </body>
 </html>
