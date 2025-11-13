@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Support — Sagedash</title>
+  <title>Support — SageDash</title>
   <link rel="manifest" href="/app/manifest.json" />
   <link rel="stylesheet" href="/styles.css" />
 </head>
@@ -11,7 +11,7 @@
   <div class="wrap">
     <nav class="nav">
       <div class="nav-left">
-        <a href="/"><img src="/logo.png" class="logo" alt="Sagedash"></a>
+        <a href="/"><img src="/logo.png" class="logo" alt="SageDash"></a>
       </div>
       <div class="nav-right">
         <a href="/" class="nav-link">Home</a>
@@ -34,39 +34,39 @@
         <h2 class="section-title center no-bold">Contact us</h2>
         <div class="divider"></div>
 
-        <!-- Simple Netlify form (works on Netlify with no backend) -->
-        <form name="support" method="POST" data-netlify="true" class="section narrow">
+        <!-- Netlify form -->
+        <form name="support" method="POST" data-netlify="true" class="section narrow form">
           <input type="hidden" name="form-name" value="support">
           <p>
             <label for="email">Email</label><br/>
-            <input id="email" name="email" type="email" placeholder="you@email.com" required>
+            <input id="email" name="email" type="email" class="control" placeholder="you@email.com" required>
           </p>
           <p>
             <label for="type">Issue type</label><br/>
-            <select id="type" name="type" required>
+            <select id="type" name="type" class="control" required>
               <option value="">Choose…</option>
               <option>Billing</option>
               <option>Technical issue</option>
-              <option>Account/Profile</option>
+              <option>Account / Profile</option>
               <option>Feedback</option>
               <option>Other</option>
             </select>
           </p>
           <p>
             <label for="msg">Message</label><br/>
-            <textarea id="msg" name="message" rows="6" placeholder="Tell us what’s going on…" required></textarea>
+            <textarea id="msg" name="message" class="control" rows="8" placeholder="Tell us what’s going on…" required></textarea>
           </p>
-          <p class="center">
-            <button class="btn btn-sage" type="submit">Send to Sagedash Support</button>
-          </p>
-          <p class="muted center">Prefer email? Write to <a href="mailto:support@sagedash.app">support@sagedash.app</a>.</p>
+          <div class="actions">
+            <button class="btn btn-sage" type="submit">Send to SageDash Support</button>
+          </div>
+          <p class="muted">Prefer email? Write to <a href="mailto:support@sagedash.app">support@sagedash.app</a>.</p>
         </form>
       </div>
     </section>
 
     <footer class="footer">
       <div><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></div>
-      <div>© <span id="y"></span> Sagedash</div>
+      <div>© <span id="y"></span> SageDash</div>
     </footer>
   </div>
   <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
