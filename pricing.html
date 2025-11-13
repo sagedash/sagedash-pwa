@@ -3,156 +3,77 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-
   <title>Pricing — Sagedash</title>
-  <meta name="description" content="Plans for Sagedash: start free with Hint, then unlock AI-tailored lines with Core or full chat with Soul." />
-  <link rel="icon" href="/logo.png" />
-  <link rel="canonical" href="/pricing.html" />
-
-  <!-- Fonts & CSS -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="manifest" href="/app/manifest.json" />
   <link rel="stylesheet" href="/styles.css" />
-
-  <!-- Social cards -->
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Sagedash" />
-  <meta property="og:title" content="Pricing — Sagedash" />
-  <meta property="og:description" content="Start free. Upgrade anytime. Hint, Core, and Soul plans for parent–teen communication." />
-  <meta property="og:image" content="/logo.png" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Pricing — Sagedash" />
-  <meta name="twitter:description" content="Start free. Upgrade anytime. Hint, Core, and Soul plans for parent–teen communication." />
-  <meta name="twitter:image" content="/logo.png" />
-
-  <meta name="theme-color" content="#9ca58a" />
 </head>
 <body>
   <div class="wrap">
-
-    <!-- NAV -->
     <nav class="nav">
       <div class="nav-left">
-        <a href="/"><img src="/logo.png" alt="Sagedash logo" class="logo" /></a>
+        <a href="/"><img src="/logo.png" class="logo" alt="Sagedash"></a>
       </div>
-      <div class="nav-right" style="display:flex;gap:16px;align-items:center;">
+      <div class="nav-right">
         <a href="/" class="nav-link">Home</a>
         <a href="/about.html" class="nav-link">About</a>
         <a href="/pricing.html" class="nav-link">Pricing</a>
         <a href="/support.html" class="nav-link">Support</a>
-        <a href="https://blog.usgeocoder.com/" class="nav-link">Blog</a>
+        <a href="/blog.html" class="nav-link">Blog</a>
       </div>
     </nav>
 
-    <!-- PRICING HEADER -->
-    <section class="section narrow" style="text-align:center">
-      <h1>Plans</h1>
-      <p class="muted" style="margin-top:6px">Start free. Upgrade anytime.</p>
-    </section>
+    <section class="band band--alt">
+      <div class="section">
+        <h1 class="section-title center no-bold">Plans</h1>
+        <div class="divider"></div>
 
-    <!-- PLANS -->
-    <section class="section">
-      <div class="cards three">
-        <div class="card">
-          <div class="card-title">Hint</div>
-          <div class="price">Free</div>
-          <div class="card-text">
-            <ul class="lines">
-              <li>100 moments (account required)</li>
-              <li>3 short, loving lines per moment</li>
-              <li>Empathy-first, parent-voiced</li>
-            </ul>
+        <div class="cards three pricing">
+          <div class="card plan">
+            <div class="card-title no-bold">Hint</div>
+            <div class="price">Free</div>
+            <p class="card-text">100 moments • 3 lines each</p>
+            <p class="card-text">Personality-aware (no AI)</p>
+            <button class="btn">Start free</button>
           </div>
-          <div style="margin-top:12px;">
-            <a class="btn btn-sage" href="#join">Join the waitlist</a>
-          </div>
-        </div>
 
-        <div class="card">
-          <div class="card-title">Core</div>
-          <div class="price">$8 solo / $12 family</div>
-          <div class="card-text">
-            <ul class="lines">
-              <li>AI-tailored 3 lines (2 refinements)</li>
-              <li>Uses your voice + teen’s vibe</li>
-              <li>Copy, tweak tone, save favorites</li>
-            </ul>
+          <div class="card plan">
+            <div class="card-title no-bold">Core</div>
+            <div class="price">$8 solo • $12 family</div>
+            <p class="card-text">Custom 3-line advice</p>
+            <p class="card-text">2 refinements</p>
+            <button class="btn btn-sage">Upgrade to Core</button>
           </div>
-          <div style="margin-top:12px;">
-            <a class="btn btn-dark" href="#join">Get started</a>
-          </div>
-        </div>
 
-        <div class="card">
-          <div class="card-title">Soul</div>
-          <div class="price">$13 solo / $19 family</div>
-          <div class="card-text">
-            <ul class="lines">
-              <li>Free-style chat with Sagey</li>
-              <li>Fair use: 1,000 sends/month</li>
-              <li>Deep guidance for any moment</li>
-            </ul>
-          </div>
-          <div style="margin-top:12px;">
-            <a class="btn btn-dark" href="#join">Get started</a>
+          <div class="card plan">
+            <div class="card-title no-bold">Soul</div>
+            <div class="price">$13 solo • $19 family</div>
+            <p class="card-text">Free-style chat with Sagey</p>
+            <p class="card-text">1,000 sends / month</p>
+            <button class="btn btn-dark">Go Soul</button>
           </div>
         </div>
       </div>
-
-      <p class="disclaimer" style="text-align:center;margin-top:12px">
-        Solo: 1 parent (up to 5 teens). Family: 2 parents (up to 5 teens). Prices in USD. Cancel anytime.
-      </p>
     </section>
 
-    <!-- WHAT YOU GET -->
-    <section class="section">
-      <h2>What you get</h2>
-      <div class="cards">
-        <div class="card">
-          <div class="card-title">Personalized lines</div>
-          <div class="card-text">Empathy first, tuned to your teen & your voice.</div>
-        </div>
-        <div class="card">
-          <div class="card-title">Simple & caring</div>
-          <div class="card-text">3 short lines you can say right now—no scripts, just warmth.</div>
-        </div>
-        <div class="card">
-          <div class="card-title">Privacy-minded</div>
-          <div class="card-text">Your profile is private and used only to tailor suggestions. We never sell your data.</div>
-        </div>
-        <div class="card">
-          <div class="card-title">Fair-use policy</div>
-          <div class="card-text">Soul includes 1,000 sends/month (soft warning at ~80%). Resets monthly.</div>
-        </div>
+    <section class="band band--white" id="faq">
+      <div class="section narrow">
+        <h2 class="section-title center no-bold">FAQ</h2>
+        <div class="divider"></div>
+        <details class="faq">
+          <summary>What’s included in the free Hint plan?</summary>
+          <p>100 moments, each with three ready-to-use lines, tuned by personality.</p>
+        </details>
+        <details class="faq">
+          <summary>What’s the difference between Core and Soul?</summary>
+          <p>Core creates tailored 3-line advice with 2 refinements. Soul is unlimited back-and-forth chat (within monthly send limits).</p>
+        </details>
       </div>
     </section>
 
-    <!-- JOIN / WAITLIST -->
-    <section id="join" class="section narrow" style="text-align:center">
-      <h2>Join the waitlist</h2>
-      <p class="muted">We’ll email you when Core & Soul unlock.</p>
-      <form action="https://buttondown.email/api/emails/subscribe"
-            method="post"
-            class="waitlist"
-            style="justify-content:center;margin-top:12px"
-            target="_blank"
-            rel="noopener noreferrer">
-        <input type="hidden" name="origin" value="sagedash.app" />
-        <input type="email" name="email" required placeholder="you@email.com" />
-        <button class="btn btn-sage" type="submit">Join</button>
-      </form>
-    </section>
-
-    <!-- FOOTER -->
     <footer class="footer">
-      <div>
-        <a href="/privacy.html">Privacy</a> ·
-        <a href="/terms.html">Terms</a>
-      </div>
+      <div><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></div>
       <div>© <span id="y"></span> Sagedash</div>
     </footer>
-
   </div>
   <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
