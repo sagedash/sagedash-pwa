@@ -1,62 +1,26 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Terms of Service — SageDash</title>
-  <link rel="manifest" href="/app/manifest.json" />
-  <link rel="stylesheet" href="/styles.css" />
+  <meta charset="utf-8">
+  <title>Terms — SageDash</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-  <div class="wrap">
-    <div id="header"></div>
+  <div id="site-header"></div>
 
-    <section class="band band--white">
-      <div class="section narrow">
-        <h1 class="page-title no-bold center">Terms of Service</h1>
-        <p class="lead center">Plain-English terms for using SageDash.</p>
-        <div class="divider"></div>
+  <main class="container page">
+    <h1>Terms</h1>
+    <p class="lead">By using SageDash, you agree not to scrape, reverse-engineer, or attempt to extract proprietary prompts or rules. SageDash content is for educational purposes and is not medical or therapy advice.</p>
+    <p>Subscriptions end at the close of the current billing period when canceled. No partial refunds.</p>
+  </main>
 
-        <h3 class="no-bold">1) Agreement</h3>
-        <p>By using SageDash, you agree to these terms. If you don’t agree, please don’t use the service.</p>
+  <div id="site-footer"></div>
 
-        <h3 class="no-bold">2) Service & guidance</h3>
-        <p>SageDash provides suggested language for parent-teen communication. We don’t provide medical, psychological, legal, or crisis advice. For emergencies, call local services immediately.</p>
-
-        <h3 class="no-bold">3) Accounts</h3>
-        <p>You’re responsible for your account and keeping your password safe. Don’t share your login with others outside your family plan.</p>
-
-        <h3 class="no-bold">4) Payments</h3>
-        <p>Paid plans auto-renew monthly or annually until canceled. Prices may change with notice. Refunds are handled case-by-case where required by law.</p>
-
-        <h3 class="no-bold">5) Acceptable use</h3>
-        <ul>
-          <li>No illegal activity, abuse, harassment, or content that endangers minors.</li>
-          <li>No reverse engineering, scraping, or interfering with our systems.</li>
-          <li>Respect fair-use limits posted for your plan.</li>
-        </ul>
-
-        <h3 class="no-bold">6) AI features</h3>
-        <p>AI outputs may be inaccurate or incomplete. Use your judgment before acting on any suggestion.</        p>
-
-        <h3 class="no-bold">7) Termination</h3>
-        <p>We may suspend or terminate accounts that violate these terms or harm the service or others.</p>
-
-        <h3 class="no-bold">8) Liability</h3>
-        <p>SageDash is provided “as is.” To the extent allowed by law, we disclaim warranties and limit liability to amounts you paid in the last 12 months.</p>
-
-        <h3 class="no-bold">9) Changes</h3>
-        <p>We may update these terms. We’ll post the new version with an updated date.</p>
-
-        <h3 class="no-bold">10) Contact</h3>
-        <p>Questions: <a href="/support.html">Support</a>.</p>
-
-        <p class="muted">Last updated: November 13, 2025</p>
-      </div>
-    </section>
-
-    <div id="footer"></div>
-  </div>
-  <script src="/site.js"></script>
+  <script>
+    fetch('/header.html').then(r=>r.text()).then(t=>{ document.getElementById('site-header').innerHTML=t; });
+    fetch('/footer.html').then(r=>r.text()).then(t=>{ document.getElementById('site-footer').innerHTML=t; });
+  </script>
 </body>
 </html>
