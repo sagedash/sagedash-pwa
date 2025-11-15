@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>SageDash Core Demo</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    .wrap{max-width:800px;margin:40px auto;padding:24px;background:#fff;border-radius:14px;box-shadow:0 6px 24px rgba(0,0,0,.06)}
+    h1{font-size:28px;margin:0 0 8px}
+    p.lead{margin:0 0 20px;color:#6b6b69}
+    label{display:block;margin:14px 0 6px}
+    input,select,button{width:100%;padding:12px;border:1px solid #ddd;border-radius:10px}
+    button{cursor:pointer;background:#9ca58a;border:none;font-weight:700}
+    button:hover{background:#433931;color:#fff}
+    .out{margin-top:18px;padding:14px;background:#f7f5f3;border:1px solid #e6e0da;border-radius:12px;white-space:pre-wrap}
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main class="container">
+    <div class="wrap">
+      <h1>SageDash Core Demo</h1>
+      <p class="lead">Generate 3 cozy lines via your Netlify Function.</p>
+
+      <label>Cozy phrase for teen</label>
+      <input id="cozy" placeholder="buddy, kiddo, champ…">
+
+      <label>Teen personality</label>
+      <select id="persona">
+        <option value="Mixed">Mixed</option>
+        <option value="Outgoing">Outgoing</option>
+        <option value="Quiet" selected>Quiet</option>
+      </select>
+
+      <label>Moment title</label>
+      <input id="moment" placeholder="Tough grade today">
+
+      <button id="go" style="margin-top:16px">Generate 3 lines</button>
+      <div id="out" class="out" style="display:none"></div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script>
+    fetch('/header.html').then(r=>r.text()).then(t=>{ document.getElementById('site-header').innerHTML=t; });
+    fetch('/footer.html').then(r=>r.text()).then(t=>{ document.getElementById('site-footer').innerHTML=t; });
+
+    const $ = id => document.getElementById(id);
+    $('go').onclick = async () => {
+      $('out').style.display='block';
+      $('out').textContent = 'Thinking…';
+      try{
+        const res = await fetch('/.netlify/functions/generate-core',{
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({
+            parentProfile:{ cozyPhrase: $('cozy').value || 'kiddo' },
+            teenProfile:{ personality: $('persona').value || 'Mixed' },
+            moment:{ title: $('moment').value || 'Tough grade today' }
+          })
+        });
+        if(!res.ok){ throw new Error('HTTP '+res.status); }
+        const data = await res.json();
+        $('out').textContent = (data.lines||[]).join('\n') + '\n\nversion: ' + data.version;
+      }catch(e){
+        $('out').textContent = 'Error: ' + (e.message||e);
+      }
+    };
+  </script>
+</body>
+</html>
