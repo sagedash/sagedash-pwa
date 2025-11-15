@@ -1,10 +1,10 @@
 {
   "name": "sagedash-pwa",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "private": true,
   "engines": { "node": ">=18" },
   "scripts": {
     "prebuild": "node scripts/scan-leaks.mjs",
-    "build": "echo 'Build complete' && mkdir -p dist && cp -R *.html assets style.css dist/ 2>/dev/null || true"
+    "build": "echo 'Build complete' && mkdir -p dist && cp -R *.html assets style.css manifest.json dist/ 2>/dev/null || true"
   }
 }
