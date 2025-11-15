@@ -1,0 +1,9 @@
+{
+  "name": "SageDash",
+  "short_name": "SageDash",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f3f1ef",
+  "theme_color": "#9ca58a",
+  "icons": []
+}
