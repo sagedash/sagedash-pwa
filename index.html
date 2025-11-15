@@ -1,59 +1,55 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>SageDash — Bond Closer. Rise Together.</title>
-  <link rel="manifest" href="/app/manifest.json" />
-  <link rel="stylesheet" href="/styles.css" />
+  <meta charset="utf-8">
+  <title>SageDash — Expert Parenting Coach for Teen Communication</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-  <div class="wrap">
-    <div id="header"></div>
+  <div id="site-header"></div>
 
-    <section class="band band--white">
-      <div class="section narrow center">
-        <h1 class="page-title no-bold">Expert Parenting Coach for Teen Communication</h1>
-        <p class="slogan">Bond Closer. Rise Together.</p>
-        <p class="lead">Short, warm lines you can use right now—personalized to you and your teen.</p>
+  <main class="container hero">
+    <h1 class="hero-title">Expert Parenting Coach for Teen Communication</h1>
+    <p class="hero-tag">Bond Closer. <strong>Rise Together.</strong></p>
 
-        <p class="launch-line">Launch Date: December 1, 2025</p>
+    <div class="launch">
+      <div class="launch-date">Launch Date: December 1, 2025</div>
+      <div id="countdown" class="countdown">Loading…</div>
+    </div>
 
-        <div id="clock" class="countdown" aria-live="polite">
-          <div class="timebox"><span class="num" id="d">–</span><span class="lab">Days</span></div>
-          <div class="timebox"><span class="num" id="h">–</span><span class="lab">Hours</span></div>
-          <div class="timebox"><span class="num" id="m">–</span><span class="lab">Minutes</span></div>
-          <div class="timebox"><span class="num" id="s">–</span><span class="lab">Seconds</span></div>
-        </div>
+    <form class="beta-form" name="beta" method="POST" data-netlify="true">
+      <input type="hidden" name="form-name" value="beta">
+      <label class="inline-label">Request Beta Access</label>
+      <input name="email" type="email" required placeholder="you@example.com" aria-label="Email">
+      <button type="submit" class="btn">Request Invite</button>
+    </form>
+  </main>
 
-        <!-- Beta invite form (Netlify) -->
-        <form name="beta" method="POST" data-netlify="true" class="inline-form" style="max-width:720px;margin:16px auto 0;">
-          <input type="hidden" name="form-name" value="beta">
-          <input type="email" name="email" placeholder="Enter your email to request beta access" required />
-          <button class="btn btn-sage" type="submit">Request beta invite</button>
-        </form>
-      </div>
-    </section>
-
-    <div id="footer"></div>
-  </div>
+  <div id="site-footer"></div>
 
   <script>
-    // Countdown to Dec 1, 2025 00:00 America/Los_Angeles (PST = UTC-8)
-    const target = new Date('2025-12-01T00:00:00-08:00').getTime();
-    const els = { d: document.getElementById('d'), h: document.getElementById('h'), m: document.getElementById('m'), s: document.getElementById('s') };
-    const pad = n => String(n).padStart(2,'0');
-    function tick(){
-      const now = Date.now();
-      let diff = Math.max(0, target - now);
-      const d = Math.floor(diff / (1000*60*60*24)); diff -= d*(1000*60*60*24);
-      const h = Math.floor(diff / (1000*60*60));     diff -= h*(1000*60*60);
-      const m = Math.floor(diff / (1000*60));        diff -= m*(1000*60);
-      const s = Math.floor(diff / 1000);
-      els.d.textContent = d; els.h.textContent = pad(h); els.m.textContent = pad(m); els.s.textContent = pad(s);
-    }
-    tick(); setInterval(tick, 1000);
+    // Load header/footer
+    fetch('/header.html').then(r=>r.text()).then(t=>{ document.getElementById('site-header').innerHTML=t; });
+    fetch('/footer.html').then(r=>r.text()).then(t=>{ document.getElementById('site-footer').innerHTML=t; });
+
+    // Simple countdown
+    (function(){
+      const out = document.getElementById('countdown');
+      const target = new Date('2025-12-01T00:00:00-08:00').getTime();
+      function tick(){
+        const now = Date.now();
+        const d = Math.max(0, target - now);
+        const days = Math.floor(d / (1000*60*60*24));
+        const hours = Math.floor((d % (1000*60*60*24)) / (1000*60*60));
+        const mins = Math.floor((d % (1000*60*60)) / (1000*60));
+        const secs = Math.floor((d % (1000*60)) / 1000);
+        out.textContent = `${days}d ${hours}h ${mins}m ${secs}s`;
+      }
+      tick();
+      setInterval(tick, 1000);
+    })();
   </script>
-  <script src="/site.js"></script>
 </body>
 </html>
