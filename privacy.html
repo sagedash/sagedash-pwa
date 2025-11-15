@@ -1,62 +1,33 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Privacy Policy — SageDash</title>
-  <link rel="manifest" href="/app/manifest.json" />
-  <link rel="stylesheet" href="/styles.css" />
+  <meta charset="utf-8">
+  <title>Privacy — SageDash</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-  <div class="wrap">
-    <div id="header"></div>
+  <div id="site-header"></div>
 
-    <section class="band band--white">
-      <div class="section narrow">
-        <h1 class="page-title no-bold center">Privacy Policy</h1>
-        <p class="lead center">We respect your family’s privacy. This summary explains what we collect and why.</p>
-        <div class="divider"></div>
+  <main class="container page">
+    <h1>Privacy</h1>
+    <p class="lead">We respect your privacy. SageDash provides educational guidance for parent–teen communication and does not offer medical or therapy advice.</p>
+    <p>Key points:</p>
+    <ul class="bullets">
+      <li>No provider training on your personal data.</li>
+      <li>Profile data is kept until you delete it.</li>
+      <li>Chat history is kept 12 months (pinned up to 36 months).</li>
+      <li>Referral and payout records kept indefinitely for lifetime payouts.</li>
+      <li>Billing documents kept 7 years.</li>
+    </ul>
+  </main>
 
-        <h3 class="no-bold">Overview</h3>
-        <p>SageDash provides tools to help parents communicate with teens. We collect only the data needed to deliver our service, improve it responsibly, and meet legal requirements.</p>
+  <div id="site-footer"></div>
 
-        <h3 class="no-bold">Data we collect</h3>
-        <ul>
-          <li><strong>Account data:</strong> email, password (hashed), subscription status.</li>
-          <li><strong>Profiles (optional):</strong> parent/teen preferences to personalize lines.</li>
-          <li><strong>Usage:</strong> pages visited, actions taken (e.g., “selected line”), device info.</li>
-          <li><strong>Support:</strong> messages you send us.</li>
-        </ul>
-
-        <h3 class="no-bold">How we use data</h3>
-        <ul>
-          <li>Provide and personalize the service (e.g., tailored lines).</li>
-          <li>Maintain security, prevent abuse, and troubleshoot issues.</li>
-          <li>Measure performance and improve features.</li>
-          <li>Send service emails (e.g., receipts, critical updates). You can opt out of non-essential emails.</li>
-        </ul>
-
-        <h3 class="no-bold">Sharing</h3>
-        <p>We do <strong>not</strong> sell your personal data. We share with processors that help us run the service (e.g., hosting, payments), under contracts that limit use to our instructions.</p>
-
-        <h3 class="no-bold">AI features</h3>
-        <p>When enabled, text you submit may be processed by AI providers to generate responses. We use reputable vendors and restrict training on your content unless you opt in.</p>
-
-        <h3 class="no-bold">Retention</h3>
-        <p>We keep data while you have an account and for a reasonable period after to comply with law, prevent abuse, and support accounting. You can request deletion at any time.</p>
-
-        <h3 class="no-bold">Children</h3>
-        <p>SageDash is for parents/guardians. We do not knowingly collect personal data directly from children.</p>
-
-        <h3 class="no-bold">Contact</h3>
-        <p>Questions or requests: <a href="/support.html">Support</a>.</p>
-
-        <p class="muted">Last updated: November 13, 2025</p>
-      </div>
-    </section>
-
-    <div id="footer"></div>
-  </div>
-  <script src="/site.js"></script>
+  <script>
+    fetch('/header.html').then(r=>r.text()).then(t=>{ document.getElementById('site-header').innerHTML=t; });
+    fetch('/footer.html').then(r=>r.text()).then(t=>{ document.getElementById('site-footer').innerHTML=t; });
+  </script>
 </body>
 </html>
