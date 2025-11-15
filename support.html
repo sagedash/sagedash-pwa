@@ -1,72 +1,36 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8">
   <title>Support — SageDash</title>
-  <link rel="manifest" href="/app/manifest.json" />
-  <link rel="stylesheet" href="/styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-  <div class="wrap">
-    <div id="header"></div>
+  <div id="site-header"></div>
 
-    <section class="band band--white">
-      <div class="section narrow">
-        <h1 class="page-title no-bold center">Support</h1>
-        <p class="lead center">Questions, feedback, or a bug to report? We’re here to help.</p>
-        <div class="divider"></div>
+  <main class="container page">
+    <h1>Support</h1>
+    <p class="lead">Questions or feedback? We’re here to help.</p>
 
-        <!-- Netlify form -->
-        <form name="support" method="POST" data-netlify="true" class="form" style="max-width:760px;margin:0 auto;">
-          <input type="hidden" name="form-name" value="support">
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
-            <div>
-              <label for="name">Your name</label><br/>
-              <input id="name" name="name" type="text" class="control" required />
-            </div>
-            <div>
-              <label for="email">Email</label><br/>
-              <input id="email" name="email" type="email" class="control" required />
-            </div>
-          </div>
+    <form class="support-form" name="support" method="POST" data-netlify="true">
+      <input type="hidden" name="form-name" value="support">
+      <label>Your email</label>
+      <input type="email" name="email" required placeholder="you@example.com">
+      <label>Subject</label>
+      <input type="text" name="subject" required placeholder="What do you need help with?">
+      <label>Message</label>
+      <textarea name="message" rows="6" required placeholder="Tell us more…"></textarea>
+      <button type="submit" class="btn">Send to SageDash Support</button>
+    </form>
+  </main>
 
-          <div style="margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:14px">
-            <div>
-              <label for="topic">Topic</label><br/>
-              <select id="topic" name="topic" class="control" required>
-                <option value="general">General question</option>
-                <option value="billing">Billing</option>
-                <option value="bug">Bug report</option>
-                <option value="feature">Feature request</option>
-                <option value="affiliates">Affiliates</option>
-              </select>
-            </div>
-            <div>
-              <label for="order">Subscription email (optional)</label><br/>
-              <input id="order" name="subscription_email" type="email" class="control" placeholder="If subscribed, enter account email" />
-            </div>
-          </div>
+  <div id="site-footer"></div>
 
-          <div style="margin-top:12px">
-            <label for="subject">Subject</label><br/>
-            <input id="subject" name="subject" type="text" class="control" required />
-          </div>
-
-          <div style="margin-top:12px">
-            <label for="msg">Message</label><br/>
-            <textarea id="msg" name="message" class="control" required placeholder="How can we help?"></textarea>
-          </div>
-
-          <div class="actions">
-            <button type="submit" class="btn btn-sage">Send to SageDash Support</button>
-          </div>
-        </form>
-      </div>
-    </section>
-
-    <div id="footer"></div>
-  </div>
-  <script src="/site.js"></script>
+  <script>
+    fetch('/header.html').then(r=>r.text()).then(t=>{ document.getElementById('site-header').innerHTML=t; });
+    fetch('/footer.html').then(r=>r.text()).then(t=>{ document.getElementById('site-footer').innerHTML=t; });
+  </script>
 </body>
 </html>
