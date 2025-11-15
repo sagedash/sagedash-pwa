@@ -1,55 +1,58 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8">
   <title>Pricing — SageDash</title>
-  <link rel="manifest" href="/app/manifest.json" />
-  <link rel="stylesheet" href="/styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-  <div class="wrap">
-    <div id="header"></div>
+  <div id="site-header"></div>
 
-    <section class="band band--white">
-      <div class="section narrow center">
-        <h1 class="page-title no-bold">Plans & Pricing</h1>
-        <p class="lead">Start free with 100 moments. Upgrade when you want personalized lines or free-style chat with Sage.</p>
+  <main class="container page">
+    <h1>Pricing</h1>
+    <p class="lead">Start free. Upgrade when you want tailored lines or free-style chat.</p>
+
+    <div class="plans">
+      <div class="plan">
+        <h3>Hint</h3>
+        <p class="price">Free</p>
+        <ul class="bullets">
+          <li>100 moments</li>
+          <li>3 lines each (prewritten)</li>
+          <li>Daily favorites + quote</li>
+        </ul>
+        <a class="btn ghost" href="/how-it-works.html">Start Free</a>
       </div>
-    </section>
-
-    <section class="band band--alt">
-      <div class="section">
-        <div class="cards three pricing">
-          <div class="card plan">
-            <div class="card-title no-bold">Hint</div>
-            <div class="price">Free</div>
-            <p class="card-text">100 moments • 3 lines each</p>
-            <p class="card-text">Personality-aware (no AI)</p>
-            <button class="btn">Start free</button>
-          </div>
-
-          <div class="card plan">
-            <div class="card-title no-bold">Core</div>
-            <div class="price">$8 solo • $12 family</div>
-            <p class="card-text">Custom 3-line advice</p>
-            <p class="card-text">2 refinements with Sage</p>
-            <button class="btn btn-sage">Ask Sage</button>
-          </div>
-
-          <div class="card plan">
-            <div class="card-title no-bold">Soul</div>
-            <div class="price">$13 solo • $19 family</div>
-            <p class="card-text">Free-style chat with Sage</p>
-            <p class="card-text">1,000 sends / month</p>
-            <button class="btn btn-dark">Chat with Sage</button>
-          </div>
-        </div>
+      <div class="plan">
+        <h3>Core</h3>
+        <p class="price">$8 solo · $12 family</p>
+        <ul class="bullets">
+          <li>Tailored 3 lines</li>
+          <li>2 refinement turns</li>
+          <li>Progressive profiling</li>
+        </ul>
+        <a class="btn" href="/how-it-works.html">Get Core</a>
       </div>
-    </section>
+      <div class="plan">
+        <h3>Soul</h3>
+        <p class="price">$13 solo · $19 family</p>
+        <ul class="bullets">
+          <li>Free-style chat with Sage</li>
+          <li>Fair-use: 1,000 sends/mo</li>
+          <li>On-topic parenting focus</li>
+        </ul>
+        <a class="btn" href="/how-it-works.html">Get Soul</a>
+      </div>
+    </div>
+  </main>
 
-    <div id="footer"></div>
-  </div>
-  <script src="/site.js"></script>
+  <div id="site-footer"></div>
+
+  <script>
+    fetch('/header.html').then(r=>r.text()).then(t=>{ document.getElementById('site-header').innerHTML=t; });
+    fetch('/footer.html').then(r=>r.text()).then(t=>{ document.getElementById('site-footer').innerHTML=t; });
+  </script>
 </body>
 </html>
