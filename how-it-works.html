@@ -1,81 +1,78 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8">
   <title>How It Works — SageDash</title>
-  <link rel="manifest" href="/app/manifest.json" />
-  <link rel="stylesheet" href="/styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-  <div class="wrap">
-    <div id="header"></div>
+  <div id="site-header"></div>
 
-    <section class="band band--white">
-      <div class="section narrow center">
-        <h1 class="page-title page-title-lg no-bold">How It Works</h1>
-        <p class="lead">Set a quick profile, pick the moment, get three short lines in seconds.</p>
+  <main class="container page">
+    <h1>How It Works</h1>
+    <p class="lead">Three steps to calmer, closer conversations.</p>
+
+    <section class="panel steps">
+      <div class="step">
+        <div class="step-label">Step 1</div>
+        <h3>Set quick profiles</h3>
+        <p>Answer a few questions about you and your teen.</p>
+      </div>
+      <div class="divider"></div>
+      <div class="step">
+        <div class="step-label">Step 2</div>
+        <h3>Pick the moment</h3>
+        <p>Choose from 100 common moments—or type your own.</p>
+      </div>
+      <div class="divider"></div>
+      <div class="step">
+        <div class="step-label">Step 3</div>
+        <h3>Get 3 lines in seconds</h3>
+        <p>Short, warm lines tailored to your family.</p>
       </div>
     </section>
 
-    <section class="band band--alt">
-      <div class="section">
-        <div class="steps">
-          <div class="card">
-            <span class="step-label">Step 1</span>
-            <h3 class="card-title no-bold center">Set quick profiles</h3>
-            <p class="card-text center">Tell Sage a bit about you and your teen so the lines sound like you—tuned to them.</p>
-          </div>
-          <div class="card">
-            <span class="step-label">Step 2</span>
-            <h3 class="card-title no-bold center">Pick the moment</h3>
-            <p class="card-text center">Bad grade, friend drama, screen time standoff—choose what’s happening right now.</p>
-          </div>
-          <div class="card">
-            <span class="step-label">Step 3</span>
-            <h3 class="card-title no-bold center">Get 3 lines in seconds</h3>
-            <p class="card-text center">Use as-is or tweak. Empathy first, no blame, a hopeful next step—every time.</p>
-          </div>
+    <section class="panel">
+      <h2>Plans</h2>
+      <div class="plans">
+        <div class="plan">
+          <h3>Hint</h3>
+          <p class="price">Free</p>
+          <ul class="bullets">
+            <li>100 moments</li>
+            <li>3 lines each (prewritten)</li>
+            <li>Daily favorites + quote</li>
+          </ul>
+        </div>
+        <div class="plan">
+          <h3>Core</h3>
+          <p class="price">$8 solo · $12 family</p>
+          <ul class="bullets">
+            <li>Tailored 3 lines</li>
+            <li>2 refinement turns</li>
+            <li>Progressive profiling</li>
+          </ul>
+        </div>
+        <div class="plan">
+          <h3>Soul</h3>
+          <p class="price">$13 solo · $19 family</p>
+          <ul class="bullets">
+            <li>Free-style chat with Sage</li>
+            <li>Fair-use: 1,000 sends/mo</li>
+            <li>On-topic parenting focus</li>
+          </ul>
         </div>
       </div>
     </section>
+  </main>
 
-    <section class="band band--white" id="samples">
-      <div class="section">
-        <h2 class="section-title center">Sample lines</h2>
-        <div class="divider"></div>
+  <div id="site-footer"></div>
 
-        <div class="cards three">
-          <div class="card">
-            <h3 class="card-title no-bold center">Tough grade today</h3>
-            <ul class="lines">
-              <li>Oh, that stings. I know you worked hard.</li>
-              <li>One test doesn’t define you—your effort does.</li>
-              <li>Want a hug, a walk, or quiet time?</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3 class="card-title no-bold center">Friend drama</h3>
-            <ul class="lines">
-              <li>That sounds heavy. I’m really sorry, love.</li>
-              <li>Your feelings make sense—this stuff is hard.</li>
-              <li>Want to vent, plan, or just chill?</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3 class="card-title no-bold center">Screen time balance</h3>
-            <ul class="lines">
-              <li>I get it—screens are tempting, especially today.</li>
-              <li>Let’s find a rhythm that helps you feel good.</li>
-              <li>Want to set a timer or try a swap?</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div id="footer"></div>
-  </div>
-  <script src="/site.js"></script>
+  <script>
+    fetch('/header.html').then(r=>r.text()).then(t=>{ document.getElementById('site-header').innerHTML=t; });
+    fetch('/footer.html').then(r=>r.text()).then(t=>{ document.getElementById('site-footer').innerHTML=t; });
+  </script>
 </body>
 </html>
