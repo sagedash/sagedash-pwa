@@ -1,69 +1,61 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8">
   <title>Blog — SageDash</title>
-  <link rel="manifest" href="/app/manifest.json" />
-  <link rel="stylesheet" href="/styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-  <div class="wrap">
-    <div id="header"></div>
+  <div id="site-header"></div>
 
-    <section class="band band--white">
-      <div class="section narrow center">
-        <h1 class="page-title page-title-lg no-bold">Blog</h1>
-        <p class="lead">Short reads on teen communication—empathy first, never blame.</p>
-      </div>
-    </section>
+  <main class="container page">
+    <h1>Blog</h1>
+    <p class="lead">Short reads for calmer, closer conversations.</p>
 
-    <section class="band band--white">
-      <div class="section">
-        <div class="grid-2col">
-          <!-- Left: Post previews -->
-          <div>
-            <div class="post-grid">
-              <article class="post-card">
-                <h3 class="post-title">How to start a hard talk after a bad grade</h3>
-                <p>Open with feelings, not fixes. Try: “That stings. I know you tried.” Then ask, “Hug or quiet first?”</p>
-              </article>
-              <article class="post-card">
-                <h3 class="post-title">Screens vs. sleep: a 3-line reset</h3>
-                <p>“I get it—late-night scrolls are strong. Your body deserves rest. Timer together?”</p>
-              </article>
-              <article class="post-card">
-                <h3 class="post-title">When your teen shuts down</h3>
-                <p>Respect the pause. Offer presence without pressure: “I’m nearby if you want me.”</p>
-              </article>
-              <article class="post-card">
-                <h3 class="post-title">Celebrating wins without pressure</h3>
-                <p>Spot effort, not outcome: “I loved your focus today—so proud of you.”</p>
-              </article>
-              <article class="post-card">
-                <h3 class="post-title">Friend drama without taking sides</h3>
-                <p>Mirror first, plan later. “That sounds heavy. Want to vent or brainstorm?”</p>
-              </article>
-            </div>
-          </div>
+    <div class="blog-grid">
+      <article class="post-card">
+        <h3 class="post-title"><a href="#">How to start a hard talk after a bad grade</a></h3>
+        <p class="post-excerpt">Open with empathy, then offer a choice. Here’s a 3-line template…</p>
+      </article>
+      <article class="post-card">
+        <h3 class="post-title"><a href="#">Screen time limits without a fight</a></h3>
+        <p class="post-excerpt">Shift to collaborative problem-solving. Try these openings…</p>
+      </article>
+      <article class="post-card">
+        <h3 class="post-title"><a href="#">When a friend drama hits</a></h3>
+        <p class="post-excerpt">Validate first, then invite next steps your teen can own…</p>
+      </article>
+      <article class="post-card">
+        <h3 class="post-title"><a href="#">Confidence after a tough practice</a></h3>
+        <p class="post-excerpt">Coach the effort, not just outcomes—three quick lines…</p>
+      </article>
+      <article class="post-card">
+        <h3 class="post-title"><a href="#">Celebrating small wins builds big trust</a></h3>
+        <p class="post-excerpt">Simple ways to notice, name, and nurture momentum…</p>
+      </article>
+    </div>
+  </main>
 
-          <!-- Right: Post titles list -->
-          <aside>
-            <h3 class="blog-side-title">Posts</h3>
-            <ul class="blog-side-list">
-              <li><a href="#">How to start a hard talk after a bad grade</a></li>
-              <li><a href="#">Screens vs. sleep: a 3-line reset</a></li>
-              <li><a href="#">When your teen shuts down</a></li>
-              <li><a href="#">Celebrating wins without pressure</a></li>
-              <li><a href="#">Friend drama without taking sides</a></li>
-            </ul>
-          </aside>
-        </div>
-      </div>
-    </section>
+  <aside class="container blog-sidebar">
+    <div class="sidebar-box">
+      <h4 class="sidebar-title">Posts</h4>
+      <ul class="post-list">
+        <li><a href="#">How to start a hard talk after a bad grade</a></li>
+        <li><a href="#">Screen time limits without a fight</a></li>
+        <li><a href="#">When a friend drama hits</a></li>
+        <li><a href="#">Confidence after a tough practice</a></li>
+        <li><a href="#">Celebrating small wins builds big trust</a></li>
+      </ul>
+    </div>
+  </aside>
 
-    <div id="footer"></div>
-  </div>
-  <script src="/site.js"></script>
+  <div id="site-footer"></div>
+
+  <script>
+    fetch('/header.html').then(r=>r.text()).then(t=>{ document.getElementById('site-header').innerHTML=t; });
+    fetch('/footer.html').then(r=>r.text()).then(t=>{ document.getElementById('site-footer').innerHTML=t; });
+  </script>
 </body>
 </html>
