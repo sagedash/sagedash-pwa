@@ -1,47 +1,39 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8">
   <title>About — SageDash</title>
-  <link rel="manifest" href="/app/manifest.json" />
-  <link rel="stylesheet" href="/styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-  <div class="wrap">
-    <div id="header"></div>
+  <div id="site-header"></div>
 
-    <section class="band band--white">
-      <div class="section narrow center">
-        <h1 class="page-title page-title-lg no-bold">About SageDash</h1>
-        <p class="lead">We help parents turn tricky teen moments into short, warm words—fast.</p>
-      </div>
+  <main class="container page">
+    <h1>About SageDash</h1>
+    <p class="lead">SageDash helps parents turn everyday moments into short, warm, parent-sounding lines that land with their teen—fast.</p>
+
+    <section class="panel">
+      <h2>Our Promise</h2>
+      <ul class="bullets">
+        <li>Empathy first; never shame.</li>
+        <li>Short, huggable lines tailored to your family.</li>
+        <li>Educational guidance—not medical or therapy advice.</li>
+      </ul>
     </section>
 
-    <section class="band band--alt">
-      <div class="section narrow">
-        <h2 class="section-title center">Why SageDash exists</h2>
-        <div class="divider"></div>
-        <p>Parents often know what they feel—but not exactly what to say. In the seconds that matter, words can freeze. SageDash gives you three cozy lines you can say or text right now—always empathy first, never blame—so the conversation can start, not stall.</p>
-      </div>
+    <section class="panel">
+      <h2>Why Sage</h2>
+      <p>Teen years are intense. Sage helps you stay calm, compassionate, and effective—so conversations become connection.</p>
     </section>
+  </main>
 
-    <section class="band band--white">
-      <div class="section narrow">
-        <h2 class="section-title center">Our Promise</h2>
-        <div class="divider"></div>
-        <ul class="lines">
-          <li><strong>Empathy first.</strong> We mirror feelings before advice—because feeling seen opens the door.</li>
-          <li><strong>No blame, ever.</strong> We avoid “shoulds” and shame. Curiosity beats criticism.</li>
-          <li><strong>Short & huggable.</strong> Three lines. Under 15 words each. Easy to say or text.</li>
-          <li><strong>Your voice, tuned to your teen.</strong> Lines match your vibe and your teen’s personality.</li>
-          <li><strong>Privacy by design.</strong> Profiles are private. You choose what to share. Read our <a href="/privacy.html">Privacy Policy</a>.</li>
-        </ul>
-      </div>
-    </section>
+  <div id="site-footer"></div>
 
-    <div id="footer"></div>
-  </div>
-  <script src="/site.js"></script>
+  <script>
+    fetch('/header.html').then(r=>r.text()).then(t=>{ document.getElementById('site-header').innerHTML=t; });
+    fetch('/footer.html').then(r=>r.text()).then(t=>{ document.getElementById('site-footer').innerHTML=t; });
+  </script>
 </body>
 </html>
