@@ -1,33 +1,51 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Privacy — SageDash</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="manifest" href="/manifest.json">
-  <link rel="stylesheet" href="/style.css">
+  <link rel="manifest" href="/app/manifest.json" />
+  <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
-  <div id="site-header"></div>
+  <div class="wrap">
+    <div id="header"></div>
 
-  <main class="container page">
-    <h1>Privacy</h1>
-    <p class="lead">We respect your privacy. SageDash provides educational guidance for parent–teen communication and does not offer medical or therapy advice.</p>
-    <p>Key points:</p>
-    <ul class="bullets">
-      <li>No provider training on your personal data.</li>
-      <li>Profile data is kept until you delete it.</li>
-      <li>Chat history is kept 12 months (pinned up to 36 months).</li>
-      <li>Referral and payout records kept indefinitely for lifetime payouts.</li>
-      <li>Billing documents kept 7 years.</li>
-    </ul>
-  </main>
+    <section class="band band--white">
+      <div class="section narrow">
+        <h1 class="page-title center no-bold">Privacy</h1>
+        <p class="lead center">We protect families. Your data is yours.</p>
+      </div>
+    </section>
 
-  <div id="site-footer"></div>
+    <section class="band band--alt">
+      <div class="section narrow">
+        <h2 class="section-title no-bold">Overview</h2>
+        <div class="divider"></div>
+        <p>We collect only what’s needed to deliver personalized, warm guidance: your account details, your parent/teen profiles, and your app usage. Sensitive health or therapy information is never required.</p>
 
-  <script>
-    fetch('/header.html').then(r=>r.text()).then(t=>{ document.getElementById('site-header').innerHTML=t; });
-    fetch('/footer.html').then(r=>r.text()).then(t=>{ document.getElementById('site-footer').innerHTML=t; });
-  </script>
+        <h2 class="section-title no-bold">What we store</h2>
+        <div class="divider"></div>
+        <ul class="lines">
+          <li>Account & subscription info</li>
+          <li>Parent & teen profiles (you control what you share)</li>
+          <li>Core/Soul chats (12 months by default); pinned chats up to 36 months</li>
+          <li>Aggregated usage analytics (de-identified)</li>
+        </ul>
+
+        <h2 class="section-title no-bold">Your choices</h2>
+        <div class="divider"></div>
+        <ul class="lines">
+          <li>Download or delete your data from Settings</li>
+          <li>Opt out of any research/feature previews</li>
+          <li>No provider model training on your data</li>
+        </ul>
+      </div>
+    </section>
+
+    <div id="footer"></div>
+  </div>
+  <script src="/site.js"></script>
+  <script>document.getElementById('y')?.append(new Date().getFullYear());</script>
 </body>
 </html>

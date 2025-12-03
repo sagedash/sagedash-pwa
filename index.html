@@ -1,54 +1,287 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>SageDash — Expert Parenting Coach for Teen Communication</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="manifest" href="/manifest.json">
-  <link rel="stylesheet" href="/style.css">
+  <link rel="manifest" href="/app/manifest.json" />
+  <link rel="stylesheet" href="/styles.css" />
+  <style>
+    /* Simple modal for beta confirmation */
+    .modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .modal--visible {
+      display: flex;
+    }
+    .modal__backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.35);
+    }
+    .modal__content {
+      position: relative;
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 20px 22px 18px;
+      max-width: 360px;
+      width: calc(100% - 40px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+      text-align: center;
+      z-index: 1001;
+    }
+    .modal__title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 0 0 0.4rem;
+    }
+    .modal__body {
+      font-size: 0.9rem;
+      margin: 0 0 0.9rem;
+      color: #444;
+    }
+    .modal__close-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      border: none;
+      padding: 0.45rem 1.1rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+      background: #8a4e4b;
+      color: #fff;
+    }
+    .beta-status {
+      font-size: 0.8rem;
+      margin-top: 0.35rem;
+      min-height: 1em;
+    }
+    .beta-status--error {
+      color: #b00020;
+    }
+    .beta-status--success {
+      color: #3b7a3b;
+    }
+  </style>
 </head>
-<body>
-  <div id="site-header"></div>
+<body class="home">
+  <div class="wrap">
+    <!-- injected header -->
+    <div id="header"></div>
 
-  <main class="container hero">
-    <h1 class="hero-title">Expert Parenting Coach for Teen Communication</h1>
-    <p class="hero-tag">Bond Closer. <strong>Rise Together.</strong></p>
+    <!-- Hero -->
+    <section class="band band--white">
+      <div class="section narrow">
+        <h1 class="page-title center no-bold">Expert Parenting Coach for Teen Communication</h1>
+        <p class="lead center" style="font-weight:700;">Bond Closer. Rise Together.</p>
+        <p class="lead center">
+          Personalized parenting advice that fits your voice, your teen, and the moment you’re in.
+        </p>
 
-    <div class="launch">
-      <div class="launch-date">Launch Date: December 1, 2025</div>
-      <div id="countdown" class="countdown">Loading…</div>
+        <div class="launch-spacer-top"></div>
+
+        <h2 class="launch-title center no-bold">
+          Launch Date: January 1, 2026
+        </h2>
+
+        <div style="padding:0 24px; box-sizing:border-box;">
+          <div id="countdown" class="countdown center" aria-live="polite"></div>
+        </div>  
+
+        <div class="launch-spacer-bottom"></div>
+
+        <div class="waitlist-row" style="max-width:720px;margin:0 auto;">
+          <span class="badge">Request beta invite</span>
+          <input
+            type="email"
+            id="betaEmail"
+            placeholder="Enter your email address"
+            aria-label="Email address"
+          />
+          <button class="btn" id="betaBtn" type="button">Request Invite</button>
+        </div>
+        <p id="betaStatus" class="beta-status" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <!-- Simple navigation to key pages -->
+    <section class="band band--alt">
+      <div class="section narrow" style="padding:40px 24px;">
+        <h2 class="section-title center no-bold">See SageDash In Action</h2>
+        <div class="divider"></div>
+        <p class="lead center" style="max-width:620px;margin:6px auto 14px;">
+          Explore how SageDash helps in real moments, then try it out for yourself.
+        </p>
+        <div class="center" style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:0 8px;">
+          <a href="/how-it-works.html" class="btn">How SageDash works</a>
+          <a href="/demo.html" class="btn">Try a quick demo</a>
+          <a href="/pricing.html" class="btn">View plans &amp; pricing</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- injected footer -->
+    <div id="footer"></div>
+  </div>
+
+  <!-- Beta confirmation modal -->
+  <div id="betaModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal__backdrop"></div>
+    <div class="modal__content">
+      <h3 class="modal__title">You're on the beta list 🎉</h3>
+      <p class="modal__body">
+        Thanks for raising your hand. We’ll email you at <span id="betaModalEmail"></span> as we open early access.
+      </p>
+      <button type="button" id="betaModalClose" class="modal__close-btn">
+        Close
+      </button>
     </div>
+  </div>
 
-    <form class="beta-form" name="beta" method="POST" data-netlify="true">
-      <input type="hidden" name="form-name" value="beta">
-      <label class="inline-label">Request Beta Access</label>
-      <input name="email" type="email" required placeholder="you@example.com" aria-label="Email">
-      <button type="submit" class="btn">Request Invite</button>
-    </form>
-  </main>
-
-  <div id="site-footer"></div>
-
+  <script src="/site.js"></script>
   <script>
-    // Load header/footer
-    fetch('/header.html').then(r=>r.text()).then(t=>{ document.getElementById('site-header').innerHTML=t; });
-    fetch('/footer.html').then(r=>r.text()).then(t=>{ document.getElementById('site-footer').innerHTML=t; });
-
-    // Simple countdown
+    // countdown
     (function(){
-      const out = document.getElementById('countdown');
-      const target = new Date('2025-12-01T00:00:00-08:00').getTime();
-      function tick(){
+      // Target: Jan 1, 2026 00:00:00 PT (America/Los_Angeles)
+      const target = new Date('2026-01-01T00:00:00-08:00').getTime();
+      const el = document.getElementById('countdown');
+      const unitBox = (num, label) =>
+        '<div class="cd-box"><div class="cd-num">' + num + '</div><div class="cd-label">' + label + '</div></div>';
+
+      function render() {
         const now = Date.now();
-        const d = Math.max(0, target - now);
-        const days = Math.floor(d / (1000*60*60*24));
-        const hours = Math.floor((d % (1000*60*60*24)) / (1000*60*60));
-        const mins = Math.floor((d % (1000*60*60)) / (1000*60));
-        const secs = Math.floor((d % (1000*60)) / 1000);
-        out.textContent = `${days}d ${hours}h ${mins}m ${secs}s`;
+        let diff = Math.max(0, target - now);
+
+        let d = Math.floor(diff / (1000 * 60 * 60 * 24));
+        diff -= d * (1000 * 60 * 60 * 24);
+        let h = Math.floor(diff / (1000 * 60 * 60));
+        diff -= h * (1000 * 60 * 60);
+        let m = Math.floor(diff / (1000 * 60));
+        diff -= m * (1000 * 60);
+        let s = Math.floor(diff / 1000);
+
+        el.innerHTML =
+          '<div class="cd-row">' +
+            unitBox(d, 'Days') +
+            unitBox(h, 'Hours') +
+            unitBox(m, 'Minutes') +
+            unitBox(s, 'Seconds') +
+          '</div>';
       }
-      tick();
-      setInterval(tick, 1000);
+
+      render();
+      setInterval(render, 1000);
+    })();
+
+    // Beta request -> Apps Script + modal (no-cors)
+    (function() {
+      const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyrACl2ba5H3h2dt5-n6xE1z28UQcniuDFF4N8S7yLapd6IcQKEOtZutQe26eqyMguSSA/exec";
+      const emailInput = document.getElementById('betaEmail');
+      const btn = document.getElementById('betaBtn');
+      const statusEl = document.getElementById('betaStatus');
+
+      const modal = document.getElementById('betaModal');
+      const modalEmail = document.getElementById('betaModalEmail');
+      const modalClose = document.getElementById('betaModalClose');
+
+      function openModal(email) {
+        if (modalEmail) {
+          modalEmail.textContent = email || "";
+        }
+        modal.classList.add('modal--visible');
+        modal.setAttribute('aria-hidden', 'false');
+      }
+
+      function closeModal() {
+        modal.classList.remove('modal--visible');
+        modal.setAttribute('aria-hidden', 'true');
+      }
+
+      if (modalClose) {
+        modalClose.addEventListener('click', closeModal);
+      }
+      if (modal) {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) {
+            closeModal();
+          }
+        });
+      }
+
+      function setStatus(msg, isError) {
+        if (!statusEl) return;
+        statusEl.textContent = msg || "";
+        statusEl.classList.remove('beta-status--error', 'beta-status--success');
+        if (!msg) return;
+        statusEl.classList.add(isError ? 'beta-status--error' : 'beta-status--success');
+      }
+
+      async function submitBeta() {
+        const email = (emailInput.value || "").trim();
+        setStatus("", false);
+
+        if (!email) {
+          setStatus("Please enter your email address.", true);
+          return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = "Sending…";
+
+        try {
+          const payload = {
+            type: "beta",
+            email: email,
+            source: "homepage-beta",
+            page: window.location.href,
+            userAgent: navigator.userAgent || ""
+          };
+
+          // NO-CORS: fire-and-forget; we assume success if no network error
+          await fetch(SCRIPT_URL, {
+            method: "POST",
+            mode: "no-cors",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(payload)
+          });
+
+          emailInput.value = "";
+          setStatus("", false);
+          openModal(email);
+        } catch (err) {
+          console.error("Beta request error:", err);
+          setStatus("Oops – something went wrong. Please try again.", true);
+        } finally {
+          btn.disabled = false;
+          btn.textContent = "Request Invite";
+        }
+      }
+
+      if (btn) {
+        btn.addEventListener('click', submitBeta);
+      }
+      if (emailInput) {
+        emailInput.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            submitBeta();
+          }
+        });
+      }
+    })();
+
+    // footer year
+    (function() {
+      const y = document.getElementById('y');
+      if (y) y.textContent = new Date().getFullYear();
     })();
   </script>
 </body>

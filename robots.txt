@@ -1,0 +1,5 @@
+# SageDash robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://www.sagedash.app/sitemap.xml

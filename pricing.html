@@ -1,58 +1,114 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Pricing — SageDash</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="manifest" href="/manifest.json">
-  <link rel="stylesheet" href="/style.css">
+  <link rel="manifest" href="/app/manifest.json" />
+  <link rel="stylesheet" href="/styles.css" />
 </head>
-<body>
-  <div id="site-header"></div>
+<body class="pricing-page">
+  <div class="wrap">
+    <!-- injected header -->
+    <div id="header"></div>
 
-  <main class="container page">
-    <h1>Pricing</h1>
-    <p class="lead">Start free. Upgrade when you want tailored lines or free-style chat.</p>
-
-    <div class="plans">
-      <div class="plan">
-        <h3>Hint</h3>
-        <p class="price">Free</p>
-        <ul class="bullets">
-          <li>100 moments</li>
-          <li>3 lines each (prewritten)</li>
-          <li>Daily favorites + quote</li>
-        </ul>
-        <a class="btn ghost" href="/how-it-works.html">Start Free</a>
+    <!-- Title + lead -->
+    <section class="band band--white">
+      <div class="section narrow">
+        <h1 class="page-title center no-bold">Pricing</h1>
+        <p class="lead center">Simple plans for how much support you want.</p>
       </div>
-      <div class="plan">
-        <h3>Core</h3>
-        <p class="price">$8 solo · $12 family</p>
-        <ul class="bullets">
-          <li>Tailored 3 lines</li>
-          <li>2 refinement turns</li>
-          <li>Progressive profiling</li>
-        </ul>
-        <a class="btn" href="/how-it-works.html">Get Core</a>
-      </div>
-      <div class="plan">
-        <h3>Soul</h3>
-        <p class="price">$13 solo · $19 family</p>
-        <ul class="bullets">
-          <li>Free-style chat with Sage</li>
-          <li>Fair-use: 1,000 sends/mo</li>
-          <li>On-topic parenting focus</li>
-        </ul>
-        <a class="btn" href="/how-it-works.html">Get Soul</a>
-      </div>
-    </div>
-  </main>
+    </section>
 
-  <div id="site-footer"></div>
+    <!-- Plans -->
+    <section class="band band--alt">
+      <div class="section">
+        <div class="pricing">
+          <!-- Hint -->
+          <div class="card plan center">
+            <div class="card-title no-bold">Hint</div>
+            <div class="divider"></div>
+            <p class="price">Free</p>
+            <ul class="lines">
+              <li>3-line advice for 100 moments</li>
+              <li>Dashes, badges, affiliate rewards</li>
+              <li>Daily in-app parenting quote</li>
+              <li>Community favorites feed</li>
+            </ul>
+            <div class="plan-cta">
+              <button class="btn" type="button">Start Free</button>
+            </div>
+          </div>
 
+          <!-- Core -->
+          <div class="card plan center">
+            <div class="card-title no-bold">Core</div>
+            <div class="divider"></div>
+            <p class="price">$8 / solo · $12 / family</p>
+            <ul class="lines">
+              <li>All Hint content included</li>
+              <li>Parent–teen profiling</li>
+              <li>Tailored 3-line advice</li>
+              <li>2 refinement tweaks per moment</li>
+            </ul>
+            <div class="plan-cta">
+              <button class="btn" type="button">Try Core</button>
+            </div>
+          </div>
+
+          <!-- Soul -->
+          <div class="card plan center">
+            <div class="card-title no-bold">Soul</div>
+            <div class="divider"></div>
+            <p class="price">$13 / solo · $19 / family</p>
+            <ul class="lines">
+              <li>All Core &amp; Hint features</li>
+              <li>Free-style, more tailored advice</li>
+              <li>Up to 1000 advices / month</li>
+              <li>More in-sync support over time</li>
+            </ul>
+            <div class="plan-cta">
+              <button class="btn" type="button">Get Soul</button>
+            </div>
+          </div>
+        </div>
+
+        <p class="muted center" style="margin-top:16px;">
+          Family = two parents, up to five teens. Prices in USD. Fair-use caps help keep service fast for everyone.
+        </p>
+      </div>
+    </section>
+
+    <!-- SageMaster Free Forever section -->
+    <section class="band band--white">
+      <div class="section narrow">
+        <h2 class="section-title center no-bold">
+          <strong>Free Forever</strong><br />
+          For SageMaster Members
+        </h2>
+        <div class="divider"></div>
+        <p class="lead center">
+          Reach <a href="/how-it-works.html#dashes-badges">SageMaster</a> status with
+          1000 <a href="/how-it-works.html#dashes-badges">Dashes</a> and 30 used days of the app.
+          Use Soul free as long as your account stays active.
+        </p>
+        <p class="muted center" style="margin-top:8px;">
+          SageMaster also unlocks our highest affiliate share and early access to new features.
+        </p>
+      </div>
+    </section>
+
+    <!-- injected footer -->
+    <div id="footer"></div>
+  </div>
+
+  <script src="/site.js"></script>
   <script>
-    fetch('/header.html').then(r=>r.text()).then(t=>{ document.getElementById('site-header').innerHTML=t; });
-    fetch('/footer.html').then(r=>r.text()).then(t=>{ document.getElementById('site-footer').innerHTML=t; });
+    // Ensure footer year gets set if site.js hasn't yet
+    (function() {
+      const y = document.getElementById('y');
+      if (y) y.textContent = new Date().getFullYear();
+    })();
   </script>
 </body>
 </html>

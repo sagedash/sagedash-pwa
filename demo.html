@@ -1,75 +1,248 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>SageDash Core Demo</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="manifest" href="/manifest.json">
-  <link rel="stylesheet" href="/style.css">
-  <style>
-    .wrap{max-width:800px;margin:40px auto;padding:24px;background:#fff;border-radius:14px;box-shadow:0 6px 24px rgba(0,0,0,.06)}
-    h1{font-size:28px;margin:0 0 8px}
-    p.lead{margin:0 0 20px;color:#6b6b69}
-    label{display:block;margin:14px 0 6px}
-    input,select,button{width:100%;padding:12px;border:1px solid #ddd;border-radius:10px}
-    button{cursor:pointer;background:#9ca58a;border:none;font-weight:700}
-    button:hover{background:#433931;color:#fff}
-    .out{margin-top:18px;padding:14px;background:#f7f5f3;border:1px solid #e6e0da;border-radius:12px;white-space:pre-wrap}
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Demo — SageDash</title>
+  <link rel="manifest" href="/app/manifest.json" />
+  <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
-  <div id="site-header"></div>
+  <div class="wrap">
+    <!-- injected header -->
+    <div id="header"></div>
 
-  <main class="container">
-    <div class="wrap">
-      <h1>SageDash Core Demo</h1>
-      <p class="lead">Generate 3 cozy lines via your Netlify Function.</p>
+    <section class="band band--white">
+      <div class="section narrow">
+        <h1 class="page-title center no-bold">Try a Quick Preview</h1>
 
-      <label>Cozy phrase for teen</label>
-      <input id="cozy" placeholder="buddy, kiddo, champ…">
+        <p class="lead center"
+           style="font-size:clamp(15px,2vw,18px);line-height:1.5;margin:10px auto 0;max-width:80%;">
+          Pick a moment and teen vibe, then tap <strong>Ask&nbsp;Sage</strong>—your expert parenting coach—for three short, cozy lines.
+        </p>
 
-      <label>Teen personality</label>
-      <select id="persona">
-        <option value="Mixed">Mixed</option>
-        <option value="Outgoing">Outgoing</option>
-        <option value="Quiet" selected>Quiet</option>
-      </select>
+        <div class="card" style="max-width:760px;margin:16px auto;">
+          <div class="form demo-form">
 
-      <label>Moment title</label>
-      <input id="moment" placeholder="Tough grade today">
+            <!-- Moment -->
+            <div class="demo-field">
+              <span class="demo-label"><strong>Moment</strong></span>
+              <p class="demo-help">Choose what’s closest to what’s going on today.</p>
+              <div class="demo-options" data-group="moment">
+                <button type="button" class="demo-chip active" data-value="tough_grade">Tough grade today</button>
+                <button type="button" class="demo-chip" data-value="friend_drama">Friend drama</button>
+                <button type="button" class="demo-chip" data-value="screen_balance">Screen time balance</button>
+              </div>
+            </div>
 
-      <button id="go" style="margin-top:16px">Generate 3 lines</button>
-      <div id="out" class="out" style="display:none"></div>
-    </div>
-  </main>
+            <!-- Teen personality -->
+            <div class="demo-field">
+              <span class="demo-label"><strong>Teen personality</strong></span>
+              <p class="demo-help">How they usually show up with you.</p>
+              <div class="demo-options" data-group="persona">
+                <button type="button" class="demo-chip active" data-value="mixed">Mixed</button>
+                <button type="button" class="demo-chip" data-value="outgoing">Outgoing</button>
+                <button type="button" class="demo-chip" data-value="quiet">Quiet</button>
+              </div>
+            </div>
 
-  <div id="site-footer"></div>
+            <!-- Cozy phrase -->
+            <div class="demo-field">
+              <span class="demo-label"><strong>Cozy phrase</strong></span>
+              <p class="demo-help">What you might call your teen in a soft moment.</p>
+              <div class="demo-options" data-group="cozy">
+                <button type="button" class="demo-chip active" data-value="kiddo">kiddo</button>
+                <button type="button" class="demo-chip" data-value="buddy">buddy</button>
+                <button type="button" class="demo-chip" data-value="champ">champ</button>
+                <button type="button" class="demo-chip" data-value="sweetie">sweetie</button>
+                <button type="button" class="demo-chip" data-value="sunshine">sunshine</button>
+                <button type="button" class="demo-chip" data-value="my star">my star</button>
+                <button type="button" class="demo-chip" data-value="sweetheart">sweetheart</button>
+              </div>
+            </div>
+
+            <div style="height:12px"></div>
+
+            <button id="go" class="btn"
+              type="button"
+              style="background:#945e5b;color:#fff;border:none;padding:12px 22px;font-size:18px;border-radius:14px;">
+              Ask Sage
+            </button>
+          </div>
+        </div>
+
+        <h2 id="resultTitle" class="section-title center no-bold"
+            style="display:none;font-size:clamp(20px,2.4vw,24px);margin:8px 0 6px;">
+          Try this start
+        </h2>
+
+        <div id="result" class="section narrow demo-result" style="display:none;padding-top:6px;padding-bottom:6px;">
+          <blockquote class="card-text center" id="l1"
+            style="margin:6px auto;max-width:720px;">—</blockquote>
+          <hr style="border:none;border-top:1px solid var(--border);margin:8px auto;width:min(240px,38%);" />
+          <blockquote class="card-text center" id="l2"
+            style="margin:6px auto;max-width:720px;">—</blockquote>
+          <hr style="border:none;border-top:1px solid var(--border);margin:8px auto;width:min(240px,38%);" />
+          <blockquote class="card-text center" id="l3"
+            style="margin:6px auto 2px;max-width:720px;">—</blockquote>
+        </div>
+
+        <hr id="hrBottom"
+            style="border:none;border-top:1px solid var(--border);margin:6px auto 10px;width:min(120px,20%);display:none" />
+
+        <p id="demoNote" class="muted center" style="display:none;margin-top:6px;">
+          Demo uses a simple rule set. Core/Soul in the app adds personal profiles + AI for tailored advice.
+        </p>
+      </div>
+    </section>
+
+    <!-- injected footer -->
+    <div id="footer"></div>
+  </div>
+
+  <script src="/site.js"></script>
 
   <script>
-    fetch('/header.html').then(r=>r.text()).then(t=>{ document.getElementById('site-header').innerHTML=t; });
-    fetch('/footer.html').then(r=>r.text()).then(t=>{ document.getElementById('site-footer').innerHTML=t; });
+    (function(){
+      const $ = (id) => document.getElementById(id);
 
-    const $ = id => document.getElementById(id);
-    $('go').onclick = async () => {
-      $('out').style.display='block';
-      $('out').textContent = 'Thinking…';
-      try{
-        const res = await fetch('/.netlify/functions/generate-core',{
-          method:'POST',
-          headers:{'Content-Type':'application/json'},
-          body: JSON.stringify({
-            parentProfile:{ cozyPhrase: $('cozy').value || 'kiddo' },
-            teenProfile:{ personality: $('persona').value || 'Mixed' },
-            moment:{ title: $('moment').value || 'Tough grade today' }
-          })
+      // Chip toggle logic
+      function initDemoChips() {
+        const groups = document.querySelectorAll('.demo-options');
+        groups.forEach(group => {
+          group.addEventListener('click', (e) => {
+            const chip = e.target.closest('.demo-chip');
+            if (!chip) return;
+            group.querySelectorAll('.demo-chip').forEach(c => c.classList.remove('active'));
+            chip.classList.add('active');
+          });
         });
-        if(!res.ok){ throw new Error('HTTP '+res.status); }
-        const data = await res.json();
-        $('out').textContent = (data.lines||[]).join('\n') + '\n\nversion: ' + data.version;
-      }catch(e){
-        $('out').textContent = 'Error: ' + (e.message||e);
       }
-    };
+
+      function getSelectedValue(groupName) {
+        const group = document.querySelector(`.demo-options[data-group="${groupName}"]`);
+        const active = group?.querySelector('.demo-chip.active');
+        return active ? active.getAttribute('data-value') : null;
+      }
+
+      // Persona- and moment-aware 3 lines
+      // L1: short mirror (≤20), L2: two short sentences (≤30 total), L3: two choices (≤20)
+      function linesFor(moment, persona, cozy) {
+        const who = cozy || 'kiddo';
+
+        if (!['outgoing','quiet'].includes(persona)) persona = 'mixed';
+
+        let l1 = '';
+        let l2 = '';
+        let l3 = '';
+
+        // --------- LINE 1: Acknowledge + mirror ---------
+        if (persona === 'outgoing') {
+          if (moment === 'tough_grade') {
+            l1 = `“Hey ${who}, I can see that grade really knocked you down after how hard you pushed.”`;
+          } else if (moment === 'friend_drama') {
+            l1 = `“Hey ${who}, this friend drama looks like a lot for your heart to hold.”`;
+          } else { // screen_balance
+            l1 = `“Hey ${who}, I can tell all our screen talks and limits are really getting to you.”`;
+          }
+        } else if (persona === 'quiet') {
+          if (moment === 'tough_grade') {
+            l1 = `“Hey ${who}, I can see that grade sitting heavy on you, even if you’re quiet about it.”`;
+          } else if (moment === 'friend_drama') {
+            l1 = `“Hey ${who}, I notice this friend stuff weighing on you, even without many words.”`;
+          } else { // screen_balance
+            l1 = `“Hey ${who}, I can see the screen rules feel frustrating, even if you’re keeping it inside.”`;
+          }
+        } else { // mixed
+          if (moment === 'tough_grade') {
+            l1 = `“Oh ${who}, that grade really stings after everything you put in — I’m glad you told me.”`;
+          } else if (moment === 'friend_drama') {
+            l1 = `“Oh ${who}, this friend situation clearly hurts — I’m glad you let me in.”`;
+          } else { // screen_balance
+            l1 = `“Oh ${who}, I can tell the back-and-forth over screens has been a lot for you.”`;
+          }
+        }
+
+        // --------- LINE 2: Micro-strategy (two short sentences) ---------
+        if (moment === 'tough_grade') {
+          if (persona === 'outgoing') {
+            l2 = `“When a grade hits hard, take one breath to see what it really changes. It helps you choose a calmer next step.”`;
+          } else if (persona === 'quiet') {
+            l2 = `“When a grade feels heavy, write one thing that helped and one thing that didn’t. It makes the moment feel less overwhelming.”`;
+          } else { // mixed
+            l2 = `“When a grade stings, notice one thing you wish had gone differently. Then choose one small thing to try next time.”`;
+          }
+        } else if (moment === 'friend_drama') {
+          if (persona === 'outgoing') {
+            l2 = `“When drama hits fast, pause long enough to see what you truly want from this friend. That clarity guides your next move.”`;
+          } else if (persona === 'quiet') {
+            l2 = `“When friend stuff feels heavy, write what felt okay and what didn’t. It helps you see what you really need.”`;
+          } else { // mixed
+            l2 = `“With friend conflict, check whether you want repair, space, or clarity. That choice guides what you say or leave unsaid.”`;
+          }
+        } else { // screen_balance
+          if (persona === 'outgoing') {
+            l2 = `“When screens feel like a battle, name one thing you want more of and one limit you can accept. It helps us feel more on the same side.”`;
+          } else if (persona === 'quiet') {
+            l2 = `“If the rules feel too strict, note what helps you and what doesn’t. It makes our next talk calmer and clearer.”`;
+          } else { // mixed
+            l2 = `“When screens cause tension, choose one change you’ll try and one limit you hope we’ll respect. It helps the conversation feel fairer.”`;
+          }
+        }
+
+        // --------- LINE 3: Two choices + connection ---------
+        if (persona === 'outgoing') {
+          if (moment === 'tough_grade') {
+            l3 = `“Want to vent for a minute or take a quick walk while we think?”`;
+          } else if (moment === 'friend_drama') {
+            l3 = `“Do you want to rant a little or be silly together for a bit?”`;
+          } else { // screen_balance
+            l3 = `“Should we joke about it a little or try one small tweak together tonight?”`;
+          }
+        } else if (persona === 'quiet') {
+          if (moment === 'tough_grade') {
+            l3 = `“Would you rather have quiet time alone or sit near me while you think?”`;
+          } else if (moment === 'friend_drama') {
+            l3 = `“Would it feel better to journal first or walk in silence while I stay close?”`;
+          } else { // screen_balance
+            l3 = `“Do you want some space now or a calm check-in with me later?”`;
+          }
+        } else { // mixed
+          if (moment === 'tough_grade') {
+            l3 = `“Would it help to grab a snack together or take a short walk outside?”`;
+          } else if (moment === 'friend_drama') {
+            l3 = `“Do you want to watch a short show together or take a quick walk and breathe?”`;
+          } else { // screen_balance
+            l3 = `“Should we leave screens alone tonight or try one tiny experiment we agree on?”`;
+          }
+        }
+
+        return [l1, l2, l3];
+      }
+
+      function initDemo() {
+        initDemoChips();
+
+        $('go').addEventListener('click', () => {
+          const moment  = getSelectedValue('moment')  || 'tough_grade';
+          const persona = getSelectedValue('persona') || 'mixed';
+          const cozy    = getSelectedValue('cozy')    || 'kiddo';
+
+          const [a,b,c] = linesFor(moment, persona, cozy);
+
+          $('resultTitle').style.display = 'block';
+          $('result').style.display = 'block';
+          $('hrBottom').style.display = 'block';
+          $('demoNote').style.display = 'block';
+
+          $('l1').textContent = a;
+          $('l2').textContent = b;
+          $('l3').textContent = c;
+        });
+      }
+
+      document.addEventListener('DOMContentLoaded', initDemo);
+    })();
   </script>
 </body>
 </html>

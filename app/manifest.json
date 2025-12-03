@@ -1,0 +1,13 @@
+{
+  "name": "SageDash",
+  "short_name": "SageDash",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4f2ef",
+  "theme_color": "#8f9b79",
+  "description": "Expert parenting coach for teen communication. Short, warm lines that help you bond closer and rise together.",
+  "scope": "/",
+  "lang": "en-US",
+  "dir": "ltr",
+  "icons": []
+}

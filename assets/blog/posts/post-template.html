@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title><!-- BLOG TITLE --> | SageDash</title>
+  <meta name="description" content="<!-- META DESCRIPTION -->" />
+  <link rel="manifest" href="/app/manifest.json" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+
+<body>
+  <div class="wrap">
+    <div id="header"></div>
+
+    <section class="band band--white">
+      <div class="section narrow" style="padding-top:32px;">
+
+        <p class="muted" style="margin:0 0 8px;text-align:left;">
+          <a href="/blog.html" style="text-decoration:none;color:var(--link);">← Back to all posts</a>
+        </p>
+
+        <!-- Title + subtitle -->
+        <h1 class="page-title blog-title no-bold">
+          <!-- BLOG TITLE -->
+        </h1>
+        <p class="muted" style="margin-top:4px;">
+          <!-- SHORT SEO SUBLINE -->
+        </p>
+        <p class="muted" style="margin:2px 0 0;font-size:14px;">
+          Published: <!-- MONTH DAY, YEAR -->
+        </p>
+
+        <div style="height:8px;"></div>
+
+        <!-- HERO SECTION -->
+        <div style="display:flex;flex-wrap:wrap;gap:28px;align-items:center;margin-bottom:30px;">
+          <div style="flex:0 0 420px;max-width:460px;">
+            <img src="<!-- IMAGE PATH -->"
+                 alt="<!-- IMAGE ALT TEXT -->"
+                 style="display:block;width:100%;height:auto;border-radius:10px;" />
+          </div>
+
+          <div style="flex:1;min-width:240px;text-align:center;">
+            <p style="
+              margin:0 0 10px;
+              font-size:24px;
+              line-height:1.5;
+              font-style:italic;
+              font-family:'Times New Roman', Georgia, 'Times', serif;
+              color:var(--hover);
+            ">
+              “<!-- SHORT FEATURED QUOTE -->”
+            </p>
+            <p style="margin:0;font-size:15px;color:var(--muted);">— Sage</p>
+          </div>
+        </div>
+
+        <!-- ARTICLE -->
+        <article class="blog-article" style="font-size:18px;line-height:1.6;">
+          <!-- ALL PARAGRAPHS, HEADERS, LISTS GO HERE -->
+        </article>
+
+        <!-- CTA -->
+        <hr style="border:none;border-top:1px solid var(--border);margin:32px 0;" />
+        <p class="center muted">
+          Want personalized parenting advice?<br/>
+          Try SageDash’s free preview:
+          <a href="/demo.html">Ask Sage</a>
+        </p>
+
+        <!-- RELATED POSTS -->
+        <hr style="border:none;border-top:1px solid var(--border);margin:32px 24px 20px;" />
+        <div style="text-align:center;margin-bottom:8px;">
+          <h2 class="section-title no-bold" style="font-size:20px;margin:0 0 8px;">Related posts</h2>
+          <ul style="list-style:none;margin:0;padding:0;">
+            <!-- INSERT 3 RELATED LINKS -->
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <div id="footer"></div>
+  </div>
+  <script src="/site.js"></script>
+</body>
+</html>

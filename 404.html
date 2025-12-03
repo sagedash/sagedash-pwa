@@ -3,25 +3,41 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Page Not Found — SageDash</title>
+  <title>404 — SageDash</title>
   <link rel="manifest" href="/app/manifest.json" />
   <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
   <div class="wrap">
+    <!-- injected header -->
     <div id="header"></div>
 
     <section class="band band--white">
-      <div class="section narrow center">
-        <h1 class="page-title no-bold">Oops — page not found</h1>
-        <p class="lead">The page you’re looking for doesn’t exist or moved.</p>
-        <div class="divider"></div>
-        <p><a class="btn btn-sage" href="/">Go to Home</a></p>
+      <div class="section narrow">
+        <h1 class="page-title center no-bold">Oops — page not found</h1>
+        <p class="lead center">The page you’re looking for doesn’t exist or moved.</p>
       </div>
     </section>
 
+    <section class="band band--alt">
+      <div class="section narrow center">
+        <div class="divider"></div>
+        <p>Try one of these:</p>
+        <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-top:10px;">
+          <a class="btn btn-dark" href="/">Home</a>
+          <a class="btn" href="/about.html">About</a>
+          <a class="btn" href="/pricing.html">Pricing</a>
+          <a class="btn" href="/support.html">Support</a>
+          <a class="btn" href="/blog.html">Blog</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- injected footer -->
     <div id="footer"></div>
   </div>
+
   <script src="/site.js"></script>
+  <script>document.getElementById('y')?.append(new Date().getFullYear());</script>
 </body>
 </html>

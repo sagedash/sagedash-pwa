@@ -1,39 +1,140 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>About — SageDash</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="manifest" href="/manifest.json">
-  <link rel="stylesheet" href="/style.css">
+  <link rel="manifest" href="/app/manifest.json" />
+  <link rel="stylesheet" href="/styles.css" />
 </head>
+
 <body>
-  <div id="site-header"></div>
+  <div class="wrap">
+    <!-- injected header -->
+    <div id="header"></div>
 
-  <main class="container page">
-    <h1>About SageDash</h1>
-    <p class="lead">SageDash helps parents turn everyday moments into short, warm, parent-sounding lines that land with their teen—fast.</p>
-
-    <section class="panel">
-      <h2>Our Promise</h2>
-      <ul class="bullets">
-        <li>Empathy first; never shame.</li>
-        <li>Short, huggable lines tailored to your family.</li>
-        <li>Educational guidance—not medical or therapy advice.</li>
-      </ul>
+    <!-- Intro Hero -->
+    <section class="band band--white">
+      <div class="section narrow center">
+        <h1 class="page-title no-bold">About SageDash</h1>
+        <p class="lead center" style="max-width:720px;margin:10px auto 0;">
+          Expert parenting advice for teen communications, one Dash at a time.
+        </p>
+      </div>
     </section>
 
-    <section class="panel">
-      <h2>Why Sage</h2>
-      <p>Teen years are intense. Sage helps you stay calm, compassionate, and effective—so conversations become connection.</p>
+    <!-- Why I built SageDash -->
+    <section class="band band--alt">
+      <div class="section narrow">
+        <h2 class="section-title center no-bold">Why I built SageDash</h2>
+        <div class="divider"></div>
+
+        <p>
+          I still remember pacing outside my son’s bedroom door, heart pounding, trying to find the right words. 
+          He’d had a rough day at school and had shut everyone out. In that moment I would have given anything 
+          for someone who truly understood both of us — someone who could hand me the exact words that would 
+          lighten him up.
+        </p>
+
+        <p>If you’ve ever stood in that same hallway, you’re not alone.</p>
+
+        <p>
+          Parenting teens is the hardest, most important thing most of us will ever do. We love fiercely, 
+          we second-guess constantly, and sometimes we only know years later whether we got it right. 
+          Wouldn’t it be easier if we had a wise, calm expert who actually knew our family — someone who 
+          could coach us in the moment, in our own voice, in a way that lands with our teens?
+        </p>
+
+        <p>
+          That’s why I built SageDash, a space where Sage can help you, me and other parents out there who are searching for the same guidance.
+        </p>
+
+        <p>
+          Sage is your personal parenting coach — an AI-trained parenting expert with decades of adolescent 
+          knowledge and tens of thousands of real-life stories that worked. Answer a few quick questions 
+          about you and your teen, and Sage begins learning your family’s tone and needs.
+        </p>
+
+        <p>
+          Every <a href="/how-it-works.html#plans">Core</a> and 
+          <a href="/how-it-works.html#plans">Soul</a> response is written in your voice, shaped by your 
+          family’s profiles, and lands gently — whether it’s a short opener or a longer conversation.
+        </p>
+
+        <p>
+          My hope is that Sage becomes the quiet ally who helps you turn everyday, tense, and exciting moments 
+          into connection — one conversation, one dash, one stronger bond at a time.
+        </p>
+
+        <div class="center" style="margin-top:18px;">
+          <p style="margin:0;font-weight:700;">Bond Closer. Rise Together.</p>
+          <p style="margin:4px 0 0;">Maggie, Mother of two children</p>
+        </div>
+      </div>
     </section>
-  </main>
 
-  <div id="site-footer"></div>
+    <!-- Codes section -->
+    <section class="band band--white">
+      <div class="section about-codes">
+        <h2 class="section-title center no-bold">SageDash Codes</h2>
+        <div class="divider"></div>
 
-  <script>
-    fetch('/header.html').then(r=>r.text()).then(t=>{ document.getElementById('site-header').innerHTML=t; });
-    fetch('/footer.html').then(r=>r.text()).then(t=>{ document.getElementById('site-footer').innerHTML=t; });
-  </script>
+        <div class="about-layout center">
+          <!-- Column 1 -->
+          <div class="about-col">
+            <div class="about-subtitle">Our approach</div>
+            <ul class="about-lines">
+              <li>Built to bond closer</li>
+              <li>Short, warm, parent-first language</li>
+              <li>Grounded in teen research and stories</li>
+              <li>Coaching that grows with your family</li>
+            </ul>
+          </div>
+
+          <!-- Column 2 -->
+          <div class="about-col">
+            <div class="about-subtitle">What Sage never does</div>
+            <ul class="about-lines">
+              <li>No shame, blame, or criticism</li>
+              <li>No therapy or medical advice</li>
+              <li>No judgment of your parenting</li>
+              <li>No taking sides against the teen</li>
+            </ul>
+          </div>
+
+          <!-- Column 3 -->
+          <div class="about-col">
+            <div class="about-subtitle">Our guiding principles</div>
+            <ul class="about-lines">
+              <li>Start with empathy</li>
+              <li>Validate before guiding</li>
+              <li>Offer gentle choices</li>
+              <li>Always aim for connection</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="center" style="margin-top:26px;">
+          <a href="/how-it-works.html" class="btn"
+             style="background:var(--link);color:#fff;border:none;">
+            See how SageDash works
+          </a>
+          <a href="/pricing.html" class="btn"
+             style="margin-left:10px;background:var(--link);color:#fff;border:none;">
+            View pricing
+          </a>
+          <a href="/demo.html" class="btn"
+             style="margin-left:10px;background:var(--link);color:#fff;border:none;">
+            Test Sage
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- injected footer -->
+    <div id="footer"></div>
+  </div>
+
+  <script src="/site.js"></script>
 </body>
 </html>

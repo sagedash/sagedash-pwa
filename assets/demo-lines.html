@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SageDash Demo Lines</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <style>
+    .demo-wrap{ max-width:820px; margin:0 auto; padding:12px 12px }
+    .picker{ display:flex; flex-direction:column; gap:8px; margin-top:4px }
+    .picker label{ display:block }
+    .muted{ color:var(--muted) }
+
+    /* Bold field labels */
+    .label{ font-weight:700; color:var(--hover) }
+
+    .demo-card{
+      background:#fff; border:1px solid var(--border);
+      border-radius:var(--radius); padding:12px; box-shadow:var(--shadow-s)
+    }
+
+    /* Shorter, tighter controls */
+    .control{
+      width:100%;
+      padding:8px 12px;
+      border:1px solid #eae5de;          /* lighter border */
+      border-radius:12px;
+      background:#fff; color:#2f2f2d; font:inherit;
+      min-height:38px;                    /* shorter field box */
+      line-height:1.25;
+    }
+
+    .btn-big{ font-size:clamp(17px,2.3vw,20px); padding:12px 20px; border-radius:14px }
+    .btn-row{ display:flex; justify-content:center; padding-top:2px }
+    .intro{ text-align:center; margin:4px 0 6px }
+    .try-start{
+      text-align:center; font-weight:700; color:var(--hover);
+      font-size:clamp(20px,2.6vw,26px);   /* enlarged */
+      margin:10px 0 4px; display:none;
+    }
+
+    /* Center all lines + quoted look */
+    .lines{ margin:0; padding:0; text-align:center }
+    .line{
+      color:var(--ink); padding:4px 2px; line-height:1.25; display:block;
+      position:relative; font-style:normal;
+    }
+    .line::before{ content:"“"; margin-right:2px; }
+    .line::after{ content:"”"; margin-left:2px; }
+
+    .sep{ border:0; border-top:1px solid var(--border); margin:6px 0 }
+
+    .hint{ font-size:14px; color:var(--muted); margin-top:8px; text-align:center }
+  </style>
+</head>
+<body class="band--white">
+  <div class="demo-wrap">
+    <p class="intro">Pick a moment and teen vibe, click “Ask Sage” (your expert parenting coach) to get three short cozy lines.</p>
+
+    <div class="demo-card">
+      <div class="picker">
+        <label>
+          <div class="label">Moment</div>
+          <select id="moment" class="control">
+            <option value="grade">Tough grade today</option>
+            <option value="friend">Friend drama</option>
+            <option value="screen">Screen time balance</option>
+          </select>
+        </label>
+
+        <label>
+          <div class="label">Teen personality</div>
+          <select id="teen" class="control">
+            <option value="outgoing">Outgoing</option>
+            <option value="quiet">Quiet</option>
+            <option value="mixed" selected>Mixed</option>
+          </select>
+        </label>
+
+        <label>
+          <div class="label">Cozy phrase</div>
+          <select id="cozy" class="control">
+            <option>Sweetie</option>
+            <option>Kiddo</option>
+            <option selected>Buddy</option>
+            <option>Champ</option>
+            <option>Sunshine</option>
+            <option>My star</option>
+            <option>Sweetheart</option>
+          </select>
+        </label>
+
+        <div class="btn-row">
+          <button id="go" class="btn btn-sage btn-big" type="button" aria-label="Generate suggestions">Ask Sage</button>
+        </div>
+      </div>
+
+      <div id="tryStart" class="try-start">Try this start</div>
+      <div id="out" class="lines"></div>
+
+      <hr class="sep">
+      <div class="hint">Demo uses a simple rule set. Core/Soul in the app adds profiles + AI for tailored lines.</div>
+    </div>
+  </div>
+
+  <script>
+    const RULES = {
+      grade: {
+        outgoing: (c) => [
+          `Hey ${c}, that stings—thanks for telling me.`,
+          `Makes total sense to feel bummed—I’m on your side.`,
+          `Reset plan now or cozy break first?`
+        ],
+        quiet: (c) => [
+          `Oh ${c}, that must feel heavy.`,
+          `It’s okay to be upset—I’m proud of your effort.`,
+          `Quiet hug or sit together a minute?`
+        ],
+        mixed: (c) => [
+          `Hey ${c}, tough hits like this really hurt.`,
+          `Your feelings are valid—we’ll figure it out together.`,
+          `Want a plan for tomorrow or a breather now?`
+        ]
+      },
+      friend: {
+        outgoing: (c) => [
+          `Ugh ${c}, that was rough—thanks for trusting me.`,
+          `Friend stuff gets messy; your feelings matter.`,
+          `Vent it out or text them later? I’m here.`
+        ],
+        quiet: (c) => [
+          `${c}, that’s a lot to carry.`,
+          `I get why you’re upset—you’re not alone in this.`,
+          `Walk together or write it out first?`
+        ],
+        mixed: (c) => [
+          `Oof ${c}, that really threw you.`,
+          `It makes sense to feel off—friendships evolve.`,
+          `Want to talk options or take some quiet?`
+        ]
+      },
+      screen: {
+        outgoing: (c) => [
+          `Hey ${c}, screens are tempting—totally normal.`,
+          `I trust you; we can tune it together.`,
+          `Music break or quick timer and dive back in?`
+        ],
+        quiet: (c) => [
+          `${c}, I know it’s hard to stop.`,
+          `You matter more than any feed—let’s make it gentle.`,
+          `Ten-minute wind-down or swap to audiobook?`
+        ],
+        mixed: (c) => [
+          `${c}, screens pull all of us—no blame here.`,
+          `I get it; balance takes practice.`,
+          `Tiny timer or pair it with a snack break?`
+        ]
+      }
+    };
+
+    function render() {
+      const moment = document.getElementById('moment').value;
+      const teen = document.getElementById('teen').value;
+      const cozy = document.getElementById('cozy').value;
+      const out = document.getElementById('out');
+      const tryStart = document.getElementById('tryStart');
+
+      const maker = (RULES[moment] && RULES[moment][teen]) || (() => [
+        `Oh ${cozy}, thanks for telling me—that’s a lot.`,
+        `Your feelings make sense; I’m with you.`,
+        `Want a hug or a tiny plan for next step?`
+      ]);
+      const lines = maker(cozy);
+
+      tryStart.style.display = 'block';
+      out.innerHTML = lines
+        .map((l, i) => {
+          const sep = i < lines.length - 1 ? '<hr class="sep">' : '';
+          return `<div class="line">${l}</div>${sep}`;
+        })
+        .join('');
+    }
+
+    document.getElementById('go').addEventListener('click', render);
+  </script>
+</body>
+</html>

@@ -1,61 +1,281 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Blog — SageDash</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="manifest" href="/manifest.json">
-  <link rel="stylesheet" href="/style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SageDash Blog — Parent–Teen Communication</title>
+  <meta name="description"
+        content="Short, honest notes on parent–teen communication. Real-life examples, calm language, and simple lines you can use today." />
+  <link rel="manifest" href="/app/manifest.json" />
+  <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
-  <div id="site-header"></div>
+  <div class="wrap">
+    <!-- injected header -->
+    <div id="header"></div>
 
-  <main class="container page">
-    <h1>Blog</h1>
-    <p class="lead">Short reads for calmer, closer conversations.</p>
+    <section class="band band--white">
+      <div class="section" style="max-width:830px;margin:0 auto;padding-top:32px;">
 
-    <div class="blog-grid">
-      <article class="post-card">
-        <h3 class="post-title"><a href="#">How to start a hard talk after a bad grade</a></h3>
-        <p class="post-excerpt">Open with empathy, then offer a choice. Here’s a 3-line template…</p>
-      </article>
-      <article class="post-card">
-        <h3 class="post-title"><a href="#">Screen time limits without a fight</a></h3>
-        <p class="post-excerpt">Shift to collaborative problem-solving. Try these openings…</p>
-      </article>
-      <article class="post-card">
-        <h3 class="post-title"><a href="#">When a friend drama hits</a></h3>
-        <p class="post-excerpt">Validate first, then invite next steps your teen can own…</p>
-      </article>
-      <article class="post-card">
-        <h3 class="post-title"><a href="#">Confidence after a tough practice</a></h3>
-        <p class="post-excerpt">Coach the effort, not just outcomes—three quick lines…</p>
-      </article>
-      <article class="post-card">
-        <h3 class="post-title"><a href="#">Celebrating small wins builds big trust</a></h3>
-        <p class="post-excerpt">Simple ways to notice, name, and nurture momentum…</p>
-      </article>
-    </div>
-  </main>
+        <h1 class="page-title center no-bold">Parent–Teen Conversations Blog</h1>
+        <p class="lead center">
+          Short, honest notes on talking with teens — one real-life moment at a time.
+        </p>
 
-  <aside class="container blog-sidebar">
-    <div class="sidebar-box">
-      <h4 class="sidebar-title">Posts</h4>
-      <ul class="post-list">
-        <li><a href="#">How to start a hard talk after a bad grade</a></li>
-        <li><a href="#">Screen time limits without a fight</a></li>
-        <li><a href="#">When a friend drama hits</a></li>
-        <li><a href="#">Confidence after a tough practice</a></li>
-        <li><a href="#">Celebrating small wins builds big trust</a></li>
-      </ul>
-    </div>
-  </aside>
+        <!-- Category nav -->
+        <p class="blog-cat-nav center">
+          <a href="/blog.html" class="active">All Posts</a> |
+          <a href="/blog-conversations.html">Conversations</a> |
+          <a href="/blog-school.html">School</a> |
+          <a href="/blog-emotions.html">Emotions</a> |
+          <a href="/blog-wins.html">Wins &amp; Motivation</a> |
+          <a href="/blog-friends-social.html">Friends &amp; Social</a>
+        </p>
 
-  <div id="site-footer"></div>
+        <div class="divider"></div>
 
-  <script>
-    fetch('/header.html').then(r=>r.text()).then(t=>{ document.getElementById('site-header').innerHTML=t; });
-    fetch('/footer.html').then(r=>r.text()).then(t=>{ document.getElementById('site-footer').innerHTML=t; });
-  </script>
+        <!-- Masonry blog grid -->
+        <div class="blog-grid">
+
+          <!-- 1. Bad grades -->
+          <article class="blog-card">
+            <a href="/assets/blog/posts/how-to-talk-to-your-teen-about-bad-grades.html">
+              <img src="/assets/blog/images/blog-8.jpg"
+                   alt="Parent and teen looking at schoolwork together" />
+            </a>
+            <div class="blog-card-body">
+              <h2 class="blog-card-title">
+                Talking About Bad Grades Without Crushing Their Confidence
+              </h2>
+              <p class="blog-card-excerpt">
+                Your teen already knows the grade isn’t great. What they don’t know yet is how you’ll respond. Here’s how
+                to stay calm, curious, and connected.
+              </p>
+              <a class="btn"
+                 href="/assets/blog/posts/how-to-talk-to-your-teen-about-bad-grades.html">
+                Read More
+              </a>
+            </div>
+          </article>
+
+          <!-- 2. Shuts down -->
+          <article class="blog-card">
+            <a href="/assets/blog/posts/what-to-say-when-your-teen-shuts-down.html">
+              <img src="/assets/blog/images/blog-5.jpg"
+                   alt="Teen turned away on a couch while parent sits nearby" />
+            </a>
+            <div class="blog-card-body">
+              <h2 class="blog-card-title">
+                What to Say When Your Teen Shuts Down After a Hard Day
+              </h2>
+              <p class="blog-card-excerpt">
+                When your teen goes quiet, pushing for details often backfires. Try low-pressure language that says
+                “I’m here” without forcing a big talk.
+              </p>
+              <a class="btn"
+                 href="/assets/blog/posts/what-to-say-when-your-teen-shuts-down.html">
+                Read More
+              </a>
+            </div>
+          </article>
+
+          <!-- 3. Overwhelmed by homework -->
+          <article class="blog-card">
+            <a href="/assets/blog/posts/what-to-say-when-your-teen-is-overwhelmed-by-homework.html">
+              <img src="/assets/blog/images/blog-6.jpg"
+                   alt="Teen surrounded by books and homework" />
+            </a>
+            <div class="blog-card-body">
+              <h2 class="blog-card-title">
+                What to Say When Your Teen Is Overwhelmed by Homework
+              </h2>
+              <p class="blog-card-excerpt">
+                The pile looks endless, the due dates are stacked, and your teen is frozen. Here’s how to shrink the
+                moment and help them restart.
+              </p>
+              <a class="btn"
+                 href="/assets/blog/posts/what-to-say-when-your-teen-is-overwhelmed-by-homework.html">
+                Read More
+              </a>
+            </div>
+          </article>
+
+          <!-- 4. Real conversations -->
+          <article class="blog-card">
+            <a href="/assets/blog/posts/how-to-start-real-conversations-with-your-teen.html">
+              <img src="/assets/blog/images/blog-1.jpg"
+                   alt="Parent and teen sitting at a table talking" />
+            </a>
+            <div class="blog-card-body">
+              <h2 class="blog-card-title">
+                How to Start Real Conversations With Your Teen
+              </h2>
+              <p class="blog-card-excerpt">
+                One-word answers don’t mean your teen doesn’t care. Try small, low-pressure openings that invite them
+                in instead of putting them on the spot.
+              </p>
+              <a class="btn"
+                 href="/assets/blog/posts/how-to-start-real-conversations-with-your-teen.html">
+                Read More
+              </a>
+            </div>
+          </article>
+
+          <!-- 5. Praise without pressure -->
+          <article class="blog-card">
+            <a href="/assets/blog/posts/how-to-praise-your-teen-without-pressure.html">
+              <img src="/assets/blog/images/blog-3.jpg"
+                   alt="Parent smiling at teen after a small win" />
+            </a>
+            <div class="blog-card-body">
+              <h2 class="blog-card-title">
+                How to Praise Your Teen Without Adding Pressure
+              </h2>
+              <p class="blog-card-excerpt">
+                “I’m so proud of you” can land as “Don’t mess this up.” Try praise that lifts them up without turning
+                every win into a new bar.
+              </p>
+              <a class="btn"
+                 href="/assets/blog/posts/how-to-praise-your-teen-without-pressure.html">
+                Read More
+              </a>
+            </div>
+          </article>
+
+          <!-- 6. Motivation slump -->
+          <article class="blog-card">
+            <a href="/assets/blog/posts/how-to-motivate-your-teen-when-theyve-stopped-trying.html">
+              <img src="/assets/blog/images/blog-2.jpg"
+                   alt="Teen looking discouraged at a desk" />
+            </a>
+            <div class="blog-card-body">
+              <h2 class="blog-card-title">
+                How to Motivate Your Teen When They’ve Stopped Trying
+              </h2>
+              <p class="blog-card-excerpt">
+                Nagging and threats might spark short bursts of effort, but they don’t grow real drive. Here are calmer
+                ways to nudge momentum.
+              </p>
+              <a class="btn"
+                 href="/assets/blog/posts/how-to-motivate-your-teen-when-theyve-stopped-trying.html">
+                Read More
+              </a>
+            </div>
+          </article>
+
+          <!-- 7. Anxiety -->
+          <article class="blog-card">
+            <a href="/assets/blog/posts/helping-your-teen-through-anxiety-without-fixing-everything.html">
+              <img src="/assets/blog/images/blog-7.jpg"
+                   alt="Parent sitting beside anxious teen, offering support" />
+            </a>
+            <div class="blog-card-body">
+              <h2 class="blog-card-title">
+                Helping Your Teen Through Anxiety Without Fixing Everything
+              </h2>
+              <p class="blog-card-excerpt">
+                When anxiety shows up, it’s tempting to jump into problem-solving. Learn how to support without
+                taking over every decision.
+              </p>
+              <a class="btn"
+                 href="/assets/blog/posts/helping-your-teen-through-anxiety-without-fixing-everything.html">
+                Read More
+              </a>
+            </div>
+          </article>
+
+          <!-- 8. Friendship breakups -->
+          <article class="blog-card">
+            <a href="/assets/blog/posts/supporting-your-teen-through-friendship-breakups.html">
+              <img src="/assets/blog/images/blog-9.jpg"
+                   alt="Teen looking out a window, thinking about a friendship" />
+            </a>
+            <div class="blog-card-body">
+              <h2 class="blog-card-title">
+                Supporting Your Teen Through Friendship Breakups
+              </h2>
+              <p class="blog-card-excerpt">
+                When a friendship ends, teens can feel like their whole world shifted. Here’s how to sit with the pain
+                without dismissing or rushing it.
+              </p>
+              <a class="btn"
+                 href="/assets/blog/posts/supporting-your-teen-through-friendship-breakups.html">
+                Read More
+              </a>
+            </div>
+          </article>
+
+          <!-- 9. Feels left out -->
+          <article class="blog-card">
+            <a href="/assets/blog/posts/when-your-teen-feels-left-out.html">
+              <img src="/assets/blog/images/blog-10.jpg"
+                   alt="Teen sitting alone while others are in the background" />
+            </a>
+            <div class="blog-card-body">
+              <h2 class="blog-card-title">
+                When Your Teen Feels Left Out
+              </h2>
+              <p class="blog-card-excerpt">
+                Being excluded cuts deep. Learn language that validates the hurt and gently reminds your teen of their
+                worth and options.
+              </p>
+              <a class="btn"
+                 href="/assets/blog/posts/when-your-teen-feels-left-out.html">
+                Read More
+              </a>
+            </div>
+          </article>
+
+          <!-- 10. Screen time -->
+          <article class="blog-card">
+            <a href="/assets/blog/posts/how-to-talk-to-your-teen-about-screen-time.html">
+              <img src="/assets/blog/images/blog-4.jpg"
+                   alt="Parent and teen discussing phone use at the table" />
+            </a>
+            <div class="blog-card-body">
+              <h2 class="blog-card-title">
+                How to Talk to Your Teen About Screen Time Without a Blowup
+              </h2>
+              <p class="blog-card-excerpt">
+                Every time you bring up phones, it turns into an argument. Here are calmer ways to talk about limits
+                while staying on the same team.
+              </p>
+              <a class="btn"
+                 href="/assets/blog/posts/how-to-talk-to-your-teen-about-screen-time.html">
+                Read More
+              </a>
+            </div>
+          </article>
+
+          <!-- 11. Dating & crushes -->
+          <article class="blog-card">
+            <a href="/assets/blog/posts/talking-about-dating-and-crushes-with-your-teen.html">
+              <img src="/assets/blog/images/blog-11.jpg"
+                   alt="Parent and teen walking and talking outside" />
+            </a>
+            <div class="blog-card-body">
+              <h2 class="blog-card-title">
+                Talking About Dating and Crushes With Your Teen
+              </h2>
+              <p class="blog-card-excerpt">
+                Awkward? Yes. Impossible? No. Use calm, values-based language to talk about dating, boundaries, and
+                feelings without shutting them down.
+              </p>
+              <a class="btn"
+                 href="/assets/blog/posts/talking-about-dating-and-crushes-with-your-teen.html">
+                Read More
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- injected footer -->
+    <div id="footer"></div>
+  </div>
+
+  <script src="/site.js"></script>
 </body>
 </html>

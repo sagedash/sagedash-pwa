@@ -26,45 +26,11 @@ document.addEventListener('DOMContentLoaded', () => {
           <a href="/blog.html" class="nav-link">Blog</a>
           <a href="/demo.html" class="nav-link">Demo</a>
           <a href="/support.html" class="nav-link">Support</a>
+          <a href="/affiliate.html" class="nav-link">Affiliate</a>
         </div>
       </nav>
     `;
   }
-
-  // ----- Wrap nav links into .nav-row on mobile -----
-  const makeMobileRows = () => {
-    const navRight = document.querySelector('.nav-right');
-    if (!navRight) return;
-
-    // Only do this once
-    if (navRight.dataset.rowsBuilt === '1') return;
-
-    const links = Array.from(navRight.querySelectorAll('.nav-link'));
-    if (!links.length) return;
-
-    navRight.innerHTML = '';
-
-    links.forEach(link => {
-      const row = document.createElement('div');
-      row.className = 'nav-row';
-      row.appendChild(link);
-      navRight.appendChild(row);
-    });
-
-    navRight.dataset.rowsBuilt = '1';
-  };
-
-  // If we're on a small screen, build rows right away
-  if (window.matchMedia && window.matchMedia('(max-width: 720px)').matches) {
-    makeMobileRows();
-  }
-
-  // Also listen for resize (e.g., rotate phone)
-  window.addEventListener('resize', () => {
-    if (window.matchMedia && window.matchMedia('(max-width: 720px)').matches) {
-      makeMobileRows();
-    }
-  });
 
   // ----- FOOTER -----
   const footer = document.getElementById('footer');

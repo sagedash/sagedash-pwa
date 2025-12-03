@@ -1,26 +1,47 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Terms — SageDash</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="manifest" href="/manifest.json">
-  <link rel="stylesheet" href="/style.css">
+  <link rel="manifest" href="/app/manifest.json" />
+  <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
-  <div id="site-header"></div>
+  <div class="wrap">
+    <div id="header"></div>
 
-  <main class="container page">
-    <h1>Terms</h1>
-    <p class="lead">By using SageDash, you agree not to scrape, reverse-engineer, or attempt to extract proprietary prompts or rules. SageDash content is for educational purposes and is not medical or therapy advice.</p>
-    <p>Subscriptions end at the close of the current billing period when canceled. No partial refunds.</p>
-  </main>
+    <section class="band band--white">
+      <div class="section narrow">
+        <h1 class="page-title center no-bold">Terms</h1>
+        <p class="lead center">Simple, clear, family-first.</p>
+      </div>
+    </section>
 
-  <div id="site-footer"></div>
+    <section class="band band--alt">
+      <div class="section narrow">
+        <h2 class="section-title no-bold">Key points</h2>
+        <div class="divider"></div>
+        <ul class="lines">
+          <li>Educational guidance for parent–teen communication; not medical or therapy advice.</li>
+          <li>Subscriptions renew monthly/annually until canceled. Cancellation becomes effective at the end of the current billing period; no partial refunds.</li>
+          <li>Fair-use caps for Soul: up to 1000 messages/month. Abuse or non-parenting use may be limited.</li>
+          <li>Affiliate payouts: standard 20%, Master 40% (per program rules). Payout ledger kept indefinitely.</li>
+        </ul>
 
-  <script>
-    fetch('/header.html').then(r=>r.text()).then(t=>{ document.getElementById('site-header').innerHTML=t; });
-    fetch('/footer.html').then(r=>r.text()).then(t=>{ document.getElementById('site-footer').innerHTML=t; });
-  </script>
+        <h2 class="section-title no-bold">Acceptable use</h2>
+        <div class="divider"></div>
+        <p>Be kind. No harassment, exploitation, or unlawful use. We may suspend access for violations.</p>
+
+        <h2 class="section-title no-bold">Privacy</h2>
+        <div class="divider"></div>
+        <p>We respect your privacy and protect your data. See our <a href="/privacy.html">Privacy</a> for details.</p>
+      </div>
+    </section>
+
+    <div id="footer"></div>
+  </div>
+  <script src="/site.js"></script>
+  <script>document.getElementById('y')?.append(new Date().getFullYear());</script>
 </body>
 </html>

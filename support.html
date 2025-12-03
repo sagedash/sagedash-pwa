@@ -1,36 +1,318 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Support — SageDash</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="manifest" href="/manifest.json">
-  <link rel="stylesheet" href="/style.css">
+  <link rel="manifest" href="/app/manifest.json" />
+  <link rel="stylesheet" href="/styles.css" />
+  <style>
+    /* Support status line */
+    .support-status {
+      font-size: 0.8rem;
+      margin-top: 0.35rem;
+      min-height: 1em;
+    }
+    .support-status--error {
+      color: #b00020;
+    }
+
+    /* Simple modal for support confirmation */
+    .modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .modal--visible {
+      display: flex;
+    }
+    .modal__backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.35);
+    }
+    .modal__content {
+      position: relative;
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 20px 22px 18px;
+      max-width: 360px;
+      width: calc(100% - 40px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+      text-align: center;
+      z-index: 1001;
+    }
+    .modal__title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 0 0 0.4rem;
+    }
+    .modal__body {
+      font-size: 0.9rem;
+      margin: 0 0 0.9rem;
+      color: #444;
+    }
+    .modal__close-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      border: none;
+      padding: 0.45rem 1.1rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+      background: #8a4e4b;
+      color: #fff;
+    }
+  </style>
 </head>
 <body>
-  <div id="site-header"></div>
+  <div class="wrap">
+    <!-- injected header -->
+    <div id="header"></div>
 
-  <main class="container page">
-    <h1>Support</h1>
-    <p class="lead">Questions or feedback? We’re here to help.</p>
+    <!-- Title -->
+    <section class="band band--white">
+      <div class="section narrow">
+        <h1 class="page-title center no-bold">SageDash Support</h1>
+        <p class="lead center">
+          Stuck, curious, or noticed something off? Tell us what’s going on and we’ll take a look.
+        </p>
+      </div>
+    </section>
 
-    <form class="support-form" name="support" method="POST" data-netlify="true">
-      <input type="hidden" name="form-name" value="support">
-      <label>Your email</label>
-      <input type="email" name="email" required placeholder="you@example.com">
-      <label>Subject</label>
-      <input type="text" name="subject" required placeholder="What do you need help with?">
-      <label>Message</label>
-      <textarea name="message" rows="6" required placeholder="Tell us more…"></textarea>
-      <button type="submit" class="btn">Send to SageDash Support</button>
-    </form>
-  </main>
+    <!-- Support form -->
+    <section class="band band--alt">
+      <div class="section narrow">
 
-  <div id="site-footer"></div>
+        <form class="form" id="supportForm" action="#" method="post" novalidate>
+          <div style="margin-bottom:14px;">
+            <label for="name">Your name</label>
+            <input id="name" name="name" type="text" class="control" placeholder="First and last name" />
+          </div>
 
+          <div style="margin-bottom:14px;">
+            <label for="email">Email address</label>
+            <input id="email" name="email" type="email" class="control" placeholder="Where we can reply" required />
+          </div>
+
+          <!-- Topic / what do you need help with -->
+          <div style="margin-bottom:14px;">
+            <label for="topic">What do you need help with?</label>
+
+            <!-- Hidden field actually submitted with the form -->
+            <input type="hidden" id="topic" name="topic" value="account" />
+
+            <p class="demo-help" style="margin:4px 0 8px;font-size:14px;">
+              Pick what’s closest. This just helps us route your request.
+            </p>
+
+            <div class="demo-options support-topic-options" data-group="support-topic">
+              <button type="button" class="demo-chip active" data-value="account">
+                Account / login
+              </button>
+              <button type="button" class="demo-chip" data-value="billing">
+                Billing / plan questions
+              </button>
+              <button type="button" class="demo-chip" data-value="bug">
+                Something isn’t working
+              </button>
+              <button type="button" class="demo-chip" data-value="idea">
+                Feature idea / feedback
+              </button>
+              <button type="button" class="demo-chip" data-value="other">
+                Something else
+              </button>
+            </div>
+          </div>
+
+          <div style="margin-bottom:14px;">
+            <label for="message">Tell us what’s happening</label>
+            <textarea id="message" name="message" class="control" placeholder="Share a short description, and any steps that led up to it." required></textarea>
+          </div>
+
+          <p class="muted" style="font-size:14px;margin-top:4px;">
+            Please don’t include sensitive personal or medical details. A short description is enough for us to investigate.
+          </p>
+
+          <div class="actions">
+            <button
+              type="submit"
+              id="supportSubmitBtn"
+              class="btn"
+              style="background:var(--link);color:#fff;border:none;">
+              Send to SageDash Support
+            </button>
+          </div>
+
+          <p id="supportStatus" class="support-status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- injected footer -->
+    <div id="footer"></div>
+  </div>
+
+  <!-- Support confirmation modal -->
+  <div id="supportModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal__backdrop"></div>
+    <div class="modal__content">
+      <h3 class="modal__title">We’ve received your message 💌</h3>
+      <p class="modal__body">
+        Thanks for reaching out. We’ll read what you shared and follow up at
+        <span id="supportModalEmail"></span> if we need more details.
+      </p>
+      <button type="button" id="supportModalClose" class="modal__close-btn">
+        Close
+      </button>
+    </div>
+  </div>
+
+  <script src="/site.js"></script>
+
+  <!-- Sync support topic chips -> hidden input -->
   <script>
-    fetch('/header.html').then(r=>r.text()).then(t=>{ document.getElementById('site-header').innerHTML=t; });
-    fetch('/footer.html').then(r=>r.text()).then(t=>{ document.getElementById('site-footer').innerHTML=t; });
+    document.addEventListener('DOMContentLoaded', () => {
+      const group = document.querySelector('.support-topic-options');
+      const hidden = document.getElementById('topic');
+      if (!group || !hidden) return;
+
+      group.addEventListener('click', (e) => {
+        const chip = e.target.closest('.demo-chip');
+        if (!chip) return;
+
+        // Toggle active state
+        group.querySelectorAll('.demo-chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+
+        // Update hidden field value
+        hidden.value = chip.dataset.value || '';
+      });
+    });
+  </script>
+
+  <!-- Support form -> Apps Script + modal (no-cors) -->
+  <script>
+    (function() {
+      const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyrACl2ba5H3h2dt5-n6xE1z28UQcniuDFF4N8S7yLapd6IcQKEOtZutQe26eqyMguSSA/exec";
+
+      const form = document.getElementById('supportForm');
+      const nameInput = document.getElementById('name');
+      const emailInput = document.getElementById('email');
+      const topicInput = document.getElementById('topic');
+      const messageInput = document.getElementById('message');
+      const submitBtn = document.getElementById('supportSubmitBtn');
+      const statusEl = document.getElementById('supportStatus');
+
+      const modal = document.getElementById('supportModal');
+      const modalEmail = document.getElementById('supportModalEmail');
+      const modalClose = document.getElementById('supportModalClose');
+
+      function setStatus(msg, isError) {
+        if (!statusEl) return;
+        statusEl.textContent = msg || "";
+        statusEl.classList.remove('support-status--error');
+        if (isError && msg) {
+          statusEl.classList.add('support-status--error');
+        }
+      }
+
+      function openModal(email) {
+        if (modalEmail) {
+          modalEmail.textContent = email || "";
+        }
+        modal.classList.add('modal--visible');
+        modal.setAttribute('aria-hidden', 'false');
+      }
+
+      function closeModal() {
+        modal.classList.remove('modal--visible');
+        modal.setAttribute('aria-hidden', 'true');
+      }
+
+      if (modalClose) {
+        modalClose.addEventListener('click', closeModal);
+      }
+      if (modal) {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) {
+            closeModal();
+          }
+        });
+      }
+
+      async function handleSubmit(e) {
+        e.preventDefault();
+        setStatus("", false);
+
+        const name = (nameInput.value || "").trim();
+        const email = (emailInput.value || "").trim();
+        const topic = (topicInput.value || "").trim() || "account";
+        const message = (messageInput.value || "").trim();
+
+        if (!email) {
+          setStatus("Please enter an email address so we can reply.", true);
+          return;
+        }
+        if (!message) {
+          setStatus("Please add a short description so we know what’s happening.", true);
+          return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Sending…";
+
+        try {
+          const payload = {
+            type: "support",
+            name: name,
+            email: email,
+            topic: topic,
+            message: message,
+            page: window.location.href
+          };
+
+          // NO-CORS: fire-and-forget; assume success if no network error
+          await fetch(SCRIPT_URL, {
+            method: "POST",
+            mode: "no-cors",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(payload)
+          });
+
+          // Clear message, keep name/email
+          messageInput.value = "";
+
+          // Reset topic to "account"
+          topicInput.value = "account";
+          const group = document.querySelector('.support-topic-options');
+          if (group) {
+            group.querySelectorAll('.demo-chip').forEach(c => c.classList.remove('active'));
+            const firstChip = group.querySelector('.demo-chip[data-value="account"]');
+            if (firstChip) firstChip.classList.add('active');
+          }
+
+          setStatus("", false);
+          openModal(email);
+        } catch (err) {
+          console.error("Support request error:", err);
+          setStatus("Oops – something went wrong. Please try again.", true);
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Send to SageDash Support";
+        }
+      }
+
+      if (form) {
+        form.addEventListener('submit', handleSubmit);
+      }
+    })();
   </script>
 </body>
 </html>

@@ -1,0 +1,1109 @@
+/* ============================================
+   SageDash — PT Sans + banded layout (v18+nav/blog tweaks)
+   Sections:
+   1. Base & Tokens
+   2. Layout & Nav
+   3. Home
+   4. Pricing
+   5. About
+   6. Steps (generic)
+   7. Footer
+   8. Demo
+   9. Blog
+   10. Support / Forms
+   11. Affiliate
+   12. Home CTA band
+   13. Mobile overrides
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap');
+
+/* ================
+   1. Base & Tokens
+   ================ */
+:root{
+  --bg:#ffffff;
+  --ink:#2f2f2d;
+  --sage:#8f9b79;
+  --link:#945e5b;
+  --hover:#3a342d;
+  --alt:#f4f2ef;
+  --card:#ffffff;
+  --border:#d9d2c9;
+  --border-strong:rgba(58,52,45,.24);
+  --muted:#666462;
+
+  --radius:14px;
+  --radius-lg:18px;
+
+  --shadow-s:0 1px 2px rgba(17,24,39,.06);
+  --shadow-m:0 12px 28px rgba(17,24,39,.10);
+}
+
+*{ box-sizing:border-box }
+html,body{ height:100% }
+
+body{
+  margin:0;
+  font-family:"PT Sans",-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  font-size:16px;
+  line-height:1.7;
+  color:var(--ink);
+  background:var(--bg);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+p{ margin:.6rem 0 }
+.center{ text-align:center }
+.muted{ color:var(--muted) }
+.no-bold{ font-weight:400 !important }
+
+/* Links & buttons */
+a{ color:var(--link); text-decoration:none }
+a:hover{ color:var(--hover); text-decoration:underline }
+
+.btn{
+  display:inline-block;
+  border:1px solid var(--border);
+  background:#efeae3;
+  color:#3a342d;
+  padding:11px 16px;
+  border-radius:12px;
+  font-weight:700;
+  box-shadow:var(--shadow-s);
+  cursor:pointer;
+  transition:transform .15s ease,filter .15s ease;
+}
+.btn:hover{
+  filter:brightness(0.97);
+  transform:translateY(-1px);
+}
+.btn:focus-visible{
+  outline:3px solid rgba(148,94,91,.30);
+  outline-offset:2px;
+}
+.btn-sage{ background:var(--sage); color:#fff; border:none }
+.btn-sage:hover{ filter:brightness(0.93) }
+.btn-dark{ background:var(--hover); color:#fff; border:none }
+
+/* Layout wrapper */
+.wrap{
+  max-width:1140px;
+  margin:0 auto;
+  padding:0 20px;
+}
+
+/* =================
+   2. Layout & Nav
+   ================= */
+.nav{
+  position:sticky;
+  top:0;
+  z-index:10;
+  display:flex;
+  align-items:flex-end; /* align everything to bottom */
+  justify-content:space-between;
+  padding:24px 0 14px;
+  background:#fff;
+  border-bottom:1px solid var(--border);
+}
+
+.nav-left{
+  display:flex;
+  align-items:flex-end; /* bottom-align logo + left area */
+  gap:10px;
+}
+
+.nav-right{
+  display:flex;
+  align-items:flex-end; /* bottom-align the links */
+  gap:20px;
+}
+.logo{
+  height:80px;
+  width:auto;
+  display:block;
+}
+
+/* Right-side links (desktop) */
+.nav-link{
+  color:var(--ink);
+  font-weight:700;
+  font-size:17px;
+  padding:6px 2px;
+}
+.nav-link:hover{ color:var(--hover); text-decoration:underline }
+.nav-link.active{ color:var(--link) }
+
+/* Prevent desktop nav labels from wrapping into multiple lines */
+@media (min-width:721px){
+  .nav-right a,
+  .nav-link{
+    white-space:nowrap;
+  }
+}
+
+/* Mid-width desktop: shrink nav font/gap instead of causing scrollbar */
+@media (min-width:721px) and (max-width:980px){
+  .nav-right{
+    gap:14px;
+  }
+  .nav-right a,
+  .nav-link{
+    font-size:15px;
+  }
+}
+
+/* Mobile nav toggle (checkbox + label) */
+.nav-toggle-checkbox{
+  display:none;
+}
+.nav-toggle{
+  display:none;
+  background:none;
+  border:none;
+  padding:6px;
+  cursor:pointer;
+}
+.nav-toggle span{
+  display:block;
+  width:20px;
+  height:2px;
+  border-radius:999px;
+  background:var(--ink);
+  margin:3px 0;
+}
+
+/* Bands & sections */
+.band{ width:100% }
+.band--white{ background:#fff }
+.band--alt{ background:#f4f2ef }
+
+.section{
+  padding:48px 0;
+}
+.section + .section{
+  border-top:1px solid var(--border-strong);
+}
+.section.narrow{
+  max-width:820px;
+  margin:0 auto;
+}
+
+/* Headings */
+.page-title{
+  font-size:clamp(28px,4vw,40px);
+  color:var(--hover);
+  font-weight:400;
+  margin:0 0 8px;
+}
+.lead{
+  font-size:clamp(16px,2.2vw,19px);
+  color:#55524f;
+  margin:6px auto 0;
+}
+.section-title{
+  font-size:clamp(22px,3vw,30px);
+  color:var(--hover);
+  font-weight:400;
+  margin:0;
+}
+.divider{
+  height:1px;
+  background:var(--border);
+  margin:14px auto 18px;
+  width:min(120px,20%);
+}
+
+/* ==============
+   3. Home hero
+   ============== */
+body.home .page-title{
+  font-size:clamp(26px,3.6vw,36px);
+}
+body.home .launch-title{
+  font-size:clamp(20px,3vw,26px);
+  margin:4px 0 4px;
+}
+body.home .lead{
+  font-size:clamp(15px,2vw,18px);
+}
+
+.launch-spacer-top{ height:22px }
+.launch-spacer-bottom{ height:30px }
+
+/* Countdown */
+.countdown{
+  margin:10px auto 0;
+}
+.cd-row{
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  align-items:center;
+  margin:4px 0 0;
+}
+.cd-box{
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:10px 12px;
+  min-width:86px;
+  background:#fff;
+}
+.cd-num{
+  font-weight:700;
+  font-size:clamp(18px,2.8vw,26px);
+  color:var(--hover);
+}
+.cd-label{
+  font-size:12px;
+  color:#6d6b69;
+  margin-top:2px;
+}
+
+/* Waitlist (3 rows: badge, input, button) */
+.waitlist-row{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:10px;
+  align-items:center;
+  margin-top:18px;
+  padding:14px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  background:#fff;
+  text-align:center;
+}
+.badge{
+  padding:8px 12px;
+  border-radius:999px;
+  background:#fff;
+  border:1px solid var(--border);
+  color:var(--hover);
+  font-weight:700;
+}
+.waitlist-row input{
+  width:100%;
+  padding:14px 16px;
+  border:1px solid var(--border);
+  border-radius:14px;
+  background:#fff;
+  color:#2f2f2d;
+  font:inherit;
+}
+.waitlist-row .btn{
+  font-size:clamp(16px,2.4vw,18px);
+  padding:12px 20px;
+  border-radius:14px;
+  background:var(--link);
+  color:#fff;
+  border:none;
+}
+.waitlist-row .btn:hover{ filter:brightness(0.95) }
+
+/* Generic cards */
+.cards{
+  display:grid;
+  gap:18px;
+  margin-top:18px;
+}
+.cards.two{ grid-template-columns:repeat(2,1fr) }
+.cards.three{ grid-template-columns:repeat(3,1fr) }
+@media(max-width:980px){
+  .cards.three{ grid-template-columns:repeat(2,1fr) }
+}
+@media(max-width:640px){
+  .cards.two,.cards.three{ grid-template-columns:1fr }
+}
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:18px;
+  box-shadow:var(--shadow-s);
+}
+.card-title{
+  color:var(--hover);
+  margin-bottom:6px;
+  font-weight:400;
+}
+.card-text{
+  color:var(--ink);
+}
+
+/* ==========
+   4. Pricing
+   ========== */
+
+.pricing{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  margin-top:10px;
+}
+
+/* Desktop/tablet: vertical separators using only right border (no brackets) */
+.pricing .card.plan{
+  background:transparent;
+  border:none;
+  box-shadow:none;
+  padding:22px;
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+
+  border-right:1px solid var(--border-strong);
+  border-radius:0;
+}
+
+/* No right border on last plan */
+.pricing .card.plan:last-child{
+  border-right:none;
+}
+
+.pricing .card.plan .card-title{
+  font-size:clamp(22px,3.2vw,30px);
+  font-weight:400;
+}
+
+.price{
+  font-weight:700;
+  color:var(--hover);
+  font-size:20px;
+  margin:8px 0;
+}
+.plan-cta{
+  margin-top:auto;
+  padding-top:16px;
+}
+
+.pricing .btn{
+  background:var(--link);
+  color:#fff;
+  border:none;
+}
+.pricing .btn:hover{
+  filter:brightness(0.95);
+}
+
+.pricing .lines{
+  margin:10px auto 0;
+  padding:0;
+  max-width:520px;
+  text-align:left;
+}
+.pricing .lines li{
+  background:transparent;
+  border:none;
+  border-bottom:1px solid var(--border);
+  margin:0;
+  padding:6px 0;
+  border-radius:0;
+}
+.pricing .lines li:last-child{
+  border-bottom:none;
+}
+
+/* ==========
+   5. About
+   ========== */
+.about-layout{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:32px;
+  align-items:flex-start;
+  padding:0 40px;
+  text-align:center;
+}
+.about-col{
+  position:relative;
+  padding:0 28px;
+}
+.about-col:not(:first-child)::before{
+  content:"";
+  position:absolute;
+  top:8%;
+  bottom:8%;
+  left:0;
+  width:1px;
+  background:var(--border-strong);
+  transform:translateX(-16px);
+}
+.about-subtitle{
+  margin:0 0 8px;
+  font-weight:700;
+  color:var(--hover);
+  font-size:19px;
+}
+.about-layout .about-lines{
+  margin:8px 0 0;
+  padding:0;
+  list-style:none;
+}
+.about-layout .about-lines li{
+  background:transparent;
+  border:none;
+  border-bottom:1px solid var(--border);
+  padding:6px 0 8px;
+  margin:0;
+  line-height:1.4;
+}
+.about-layout .about-lines li:last-child{
+  border-bottom:none;
+}
+
+/* =======================
+   6. Steps (generic grid)
+   ======================= */
+/* Used by any page that uses .steps; How It Works uses this. */
+.steps{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:0;
+  margin-top:10px;
+}
+.steps .card{
+  background:transparent;
+  border:none;
+  box-shadow:none;
+  padding:20px 22px;
+  text-align:center;
+}
+.step-label{
+  background:var(--sage);
+  color:#fff;
+  font-weight:700;
+  padding:7px 14px;
+  border-radius:999px;
+  display:block;
+  width:max-content;
+  margin:0 auto 8px;
+}
+.steps .card .card-title{
+  font-size:clamp(20px,2.8vw,26px);
+  text-align:center;
+}
+/* Desktop/tablet: vertical dividers for 3-column steps (vibe / dashes / affiliate) */
+@media (min-width:721px){
+  .steps .card{
+    border-right:1px solid var(--border-strong);
+    border-radius:0;
+  }
+  .steps .card:last-child{
+    border-right:none;
+  }
+}
+
+/* Lines helper (used on Master Perks, Dashes badges, etc.) */
+.lines{
+  list-style:none;
+  margin:10px 0 0;
+  padding:0;
+}
+.lines li{
+  background:#faf9f8;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:10px 12px;
+  margin:8px 0;
+}
+
+/* About page – center “SageDash Codes” block */
+.about-codes{
+  text-align:center;
+}
+
+.codes-lines{
+  max-width:520px;
+  margin:10px auto 0; /* center the list block */
+}
+
+.codes-lines li{
+  text-align:center;   /* center text inside each line */
+}
+
+/* ==========
+   7. Footer
+   ========== */
+.footer{
+  border-top:1px solid var(--border);
+  color:#6d6b69;
+  font-size:14px;
+  padding:22px 0 68px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+}
+.footer a:hover{ color:var(--hover) }
+.footer-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  justify-content:center;
+}
+.footer-note{
+  font-size:13px;
+  max-width:380px;
+}
+
+/* ====================
+   8. Demo (chips/form)
+   ==================== */
+.demo-form{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+.demo-field{
+  margin-bottom:6px;
+}
+.demo-label{
+  display:block;
+  margin-bottom:2px;
+  font-size:15px;
+  color:var(--hover);
+}
+.demo-help{
+  margin:0 0 6px;
+  font-size:14px;
+  color:var(--muted);
+}
+.demo-options{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.demo-chip{
+  border:1px solid var(--border);
+  border-radius:999px;
+  padding:7px 14px;
+  background:#fff;
+  color:var(--ink);
+  font-size:14px;
+  cursor:pointer;
+  transition:background .15s ease,border-color .15s ease,transform .15s ease;
+}
+.demo-chip:hover{
+  transform:translateY(-1px);
+}
+.demo-chip.active{
+  background:var(--sage);
+  color:#fff;
+  border-color:var(--sage);
+}
+
+/* Support page topic chips – slightly larger */
+.support-topic-options .demo-chip{
+  font-size:15px;
+  padding:8px 16px;
+}
+
+@media(max-width:640px){
+  .demo-chip{
+    font-size:13px;
+    padding:6px 12px;
+  }
+}
+
+/* ===================
+   9. Blog (index+posts)
+   =================== */
+
+/* Category nav */
+.blog-cat-nav{
+  margin-top:10px;
+  font-size:16px;
+  font-weight:700;
+}
+.blog-cat-nav a{
+  color:var(--ink);
+  text-decoration:none;
+}
+.blog-cat-nav a:hover{
+  color:var(--hover);
+  text-decoration:underline;
+}
+.blog-cat-nav a.active{
+  color:var(--link);
+}
+
+/* Masonry-style grid */
+.blog-grid{
+  column-count:2;
+  column-gap:24px;
+}
+.blog-card{
+  break-inside:avoid;
+  margin:0 0 24px;
+  background:transparent;
+  border:none;
+}
+.blog-card img{
+  display:block;
+  width:100%;
+  height:auto;
+}
+.blog-card-body{
+  background:var(--alt);
+  border:1px solid var(--border);
+  border-radius:0;
+  padding:14px 16px 18px;
+}
+.blog-card-title{
+  font-size:18px;
+  font-weight:700;
+  margin:0 0 6px;
+  color:var(--hover);
+}
+.blog-card-excerpt{
+  margin:0 0 10px;
+  font-size:15px;
+  line-height:1.6;
+}
+
+/* Blog article */
+.blog-title{
+  font-size:clamp(26px,3.2vw,32px);
+  padding:0 16px;              /* side padding for title */
+}
+.blog-article{
+  margin-top:8px;
+  padding:0 16px;              /* body side padding */
+}
+.blog-article p{
+  font-size:17px;
+  line-height:1.5;
+  margin:0.7rem 0;
+}
+.blog-article h2{
+  font-size:21px;
+  margin:1.2rem 0 0.5rem;
+  color:var(--hover);
+  font-weight:400;
+}
+.blog-article ul{
+  padding-left:1.1rem;
+  margin:0.4rem 0 0.7rem;
+}
+.blog-article li{
+  margin:0.2rem 0;
+  font-size:17px;
+  line-height:1.5;
+}
+
+/* Blog meta + hero alignment */
+.blog-meta{
+  padding:0 16px;
+}
+.post-hero-image,
+.post-hero-quote{
+  padding:0 16px;
+}
+.post-hero-image img{
+  display:block;
+  width:100%;
+  height:auto;
+}
+
+/* Individual blog post hero/content image inside article
+   (hero + any inline images that are direct children) */
+.section.narrow > img,
+.blog-article img{
+  display:block;
+  max-width:100%;
+  height:auto;
+  margin:10px 16px 14px;  /* aligns with 16px text padding */
+}
+
+/* Title-meta-hero chain fallback:
+   h1.blog-title → p.muted (meta "Published:") → img (hero) → blockquote (optional quote) */
+.blog-title + p{
+  padding:0 16px;         /* same side padding for first line under title */
+}
+.blog-title + p + img + blockquote{
+  margin:10px 0 0;
+  padding:0 16px;         /* quote nicely padded under the picture */
+}
+
+/* Desktop/tablet: hero image left, quote right */
+@media (min-width:721px){
+  .post-hero-image{
+    flex:0 0 420px;
+    max-width:460px;
+  }
+  .post-hero-quote{
+    flex:1 1 260px;
+    min-width:240px;
+  }
+}
+
+.back-link{
+  margin-bottom:10px;
+}
+
+/* Share bar */
+.blog-share{
+  margin-top:24px;
+  text-align:center;
+}
+.blog-share-main{
+  margin-bottom:10px;
+}
+.blog-share-icons{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.blog-share-icon{
+  border:1px solid var(--border);
+  background:#fff;
+  border-radius:999px;
+  padding:5px 10px;
+  font-size:13px;
+  line-height:1.2;
+  cursor:pointer;
+  color:var(--ink);
+}
+.blog-share-icon:hover{
+  background:var(--alt);
+}
+.blog-share-icon svg{
+  width:16px;
+  height:16px;
+  display:block;
+}
+
+/* =======================
+   10. Support / Form styles
+   ======================= */
+.form label{
+  font-weight:700;
+  color:var(--ink);
+  display:block;
+  margin-bottom:4px;
+}
+.form .control{
+  width:100%;
+  padding:12px 14px;
+  border:1px solid var(--border);
+  border-radius:14px;
+  background:#fff;
+  color:#2f2f2d;
+  font:inherit;
+  min-height:44px;
+}
+/* Make the topic dropdown text larger */
+.form select.control{
+  font-size:17px;
+  line-height:1.4;
+}
+.form textarea.control{
+  min-height:140px;
+  line-height:1.5;
+  resize:vertical;
+}
+.form .actions{
+  margin-top:14px;
+  text-align:left;
+}
+.band--alt .section.narrow .form{
+  padding:0 16px;
+  box-sizing:border-box;
+}
+
+/* ============
+   11. Affiliate
+   ============ */
+/* Uses cards/steps/lines; any extra styling can stay inline in HTML */
+
+/* =========================
+   12. Home CTA band padding
+   ========================= */
+body.home .band--alt .section.narrow{
+  padding:40px 24px;
+}
+
+/* =======================
+   13. Mobile overrides
+   ======================= */
+
+/* Tablet-ish */
+@media(max-width:980px){
+  .pricing{
+    grid-template-columns:1fr;
+  }
+  .pricing .card.plan{
+    border-right:none;
+    border-top:1px solid var(--border-strong);
+    margin-top:18px;
+    padding-top:24px;
+  }
+  .pricing .card.plan:first-child{
+    border-top:none;
+    margin-top:0;
+    padding-top:22px;
+  }
+
+  /* Give the alt band (Why I built SageDash) comfy side padding on mid-width screens */
+  .band--alt .section.narrow{
+    padding-left:24px;
+    padding-right:24px;
+  }
+
+  /* When Codes stack, keep them centered and not glued to the edges */
+  .about-layout{
+    grid-template-columns:1fr;
+    padding:0 24px;
+    text-align:center;
+  }
+  .about-col{
+    padding:0;
+  }
+  .about-col:not(:first-child)::before{
+    display:none;
+  }
+  .about-col + .about-col{
+    margin-top:22px;
+    border-top:1px solid var(--border-strong);
+    padding-top:22px;
+  }
+
+  .blog-grid{
+    column-count:1;
+  }
+}
+
+/* Phones */
+@media(max-width:720px){
+
+  /* Shorter hero padding on all pages */
+  .section{
+    padding:36px 0;
+  }
+
+  .logo{
+    height:60px;
+  }
+
+  /* Mobile nav: hamburger + slide-down links */
+  .nav{
+    padding:10px 0 10px 10px;
+  }
+
+  .nav-right{
+    position:absolute;
+    top:100%;
+    left:0;
+    right:0;
+    background:#fff;
+    flex-direction:column;
+    align-items:stretch;
+    padding:20px 0;
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+    display:none;
+  }
+
+  /* STYLE ALL ANCHORS, NOT JUST .nav-link */
+  .nav-right a{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:flex-start;
+    width:100%;
+    box-sizing:border-box;
+
+    padding:0 20px !important;
+    height:10px !important;
+    font-family:inherit;
+    font-size:15px;
+    font-weight:700;
+    color:var(--ink);
+    text-decoration:none;
+  }
+
+  /* Tiny dot before each mobile menu link */
+  .nav-right a::before{
+    content:"•";
+    display:inline-block;
+    margin-right:8px;
+    font-size:14px;
+    color:var(--muted);
+    transform:translateY(-1px);
+  }
+
+  .nav-right a:hover{
+    color:var(--hover);
+    text-decoration:underline;
+  }
+
+  .nav-toggle{
+    display:inline-flex;
+    flex-direction:column;
+    justify-content:center;
+    margin-left:auto;
+  }
+  .nav-toggle-checkbox:checked + .nav-toggle + .nav-right{
+    display:flex;
+  }
+
+  /* Home: tighter hero spacing on mobile */
+  body.home .page-title{
+    margin-top:0;
+  }
+  .launch-spacer-top{
+    height:14px;
+  }
+
+  /* Countdown padding so boxes don't hug the edges (SE-safe) */
+  .countdown{
+    padding:0 12px;
+  }
+  .cd-row{
+    gap:8px;
+  }
+  .cd-box{
+    min-width:72px;
+    padding:8px 8px;
+  }
+
+  /* Extra side padding for alt bands (Dashes, Affiliate, home CTA, etc.) */
+  .band--alt .section{
+    padding-left:24px;
+    padding-right:24px;
+  }
+
+  /* More padding inside Seeker/Weaver/Master boxes */
+  .band--alt .lines li{
+    padding-left:16px;
+    padding-right:16px;
+  }
+
+  /* SE-only: border around the final muted paragraph inside band--alt sections */
+  .band--alt .section > p.center.muted:last-child{
+    background:#faf9f8;
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:10px 14px;
+    margin-top:16px;
+  }
+
+  /* About page – center column headings on phones */
+  .about-layout{
+    text-align:center;
+  }
+  .about-subtitle{
+    text-align:center;
+  }
+
+  /* About page – stack + center bottom buttons on phones */
+  .about-cta{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+    margin-top:18px;
+    text-align:center;
+  }
+  .about-cta .btn{
+    width:100%;
+    max-width:260px;
+    text-align:center;
+    margin:0;
+  }
+
+  /* Phones – stack + visually center bottom About buttons */
+  .center .btn{
+    display:block !important;
+    width:auto !important;
+    max-width:260px;
+    margin:0 auto 10px !important;
+    text-align:center;
+  }
+
+  .demo-sample-lines{
+    padding-left:20px;
+    padding-right:20px;
+  }
+
+  /* Extra side padding for the three result lines on Demo (SE) */
+  .demo-result blockquote{
+    padding-left:30px;
+    padding-right:30px;
+  }
+
+  /* Extra side padding for the demo note on small screens */
+  #demoNote{
+    padding-left:24px;
+    padding-right:24px;
+  }
+
+  /* Extra side padding for blog posts on small screens */
+  .blog-title{
+    padding:0 20px;
+  }
+  .blog-title + p{
+    padding:0 20px;
+  }
+  .blog-article{
+    padding:0 20px;
+  }
+
+  /* Make meta + hero containers match title/body padding on phones */
+  .blog-meta,
+  .post-hero-image,
+  .post-hero-quote{
+    padding-left:20px;
+    padding-right:20px;
+   }
+
+  /* Blog images: align with text on phones */
+  .section.narrow > img,
+  .blog-article img{
+    margin:10px 20px 14px;
+  }
+
+  .blog-title + p + img + blockquote{
+    padding:0 24px;      /* more padding for quote under picture on SE */
+  }
+
+  /* Make the "What do you need help with" select menu text larger */
+  .form select.control{
+    font-size:16px;
+  }
+
+  /* Steps on phones: STACK + clean horizontal separators, no brackets */
+  .steps{
+    grid-template-columns:1fr;
+  }
+
+  .steps .card{
+    border:none;
+    border-radius:0;
+    padding:16px 0;
+  }
+
+  .steps .card + .card{
+    border-top:1px solid var(--border-strong);
+    margin-top:8px;
+  }
+
+  /* Footer stacks */
+  .footer{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  .footer-links{
+    justify-content:flex-start;
+  }
+
+}
+
+/* Super-narrow phones */
+@media(max-width:540px){
+  .waitlist-row{
+    padding:12px;
+  }
+}
